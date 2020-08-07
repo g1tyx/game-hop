@@ -6,6 +6,12 @@ import {ISignal, SignalDispatcher} from "ste-signals";
 import {Feature} from "../../engine/Feature";
 import {YearTrackerSaveData} from "./YearTrackerSaveData";
 
+/**
+ * Year tracker to track how far into the year we are.
+ *
+ * Exposes observables for month, monthProgress
+ * Exposes events for onMonthEnd, onMonthStart, onYearEnd, onYearStart
+ */
 export class YearTracker extends Feature {
     name: string = "Year Tracker";
     saveKey: string = 'year-tracker';
