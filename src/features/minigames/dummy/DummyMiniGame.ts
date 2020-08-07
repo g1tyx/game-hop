@@ -29,6 +29,7 @@ export class DummyMiniGame extends Feature implements MiniGame {
     }
 
     reset(): void {
+        this.clicks = 0;
     }
 
 

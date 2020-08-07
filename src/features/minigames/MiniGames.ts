@@ -18,10 +18,13 @@ export class MiniGames extends Feature {
         this.dummy.initialize();
     }
 
+    reset(): void {
+        this.dummy.reset();
+    }
+
     progressReport(): void {
         for (const requirement of this.dummy.yearRequirements) {
-            const progress = requirement.getProgress();
-            console.log(progress.actual, "/", progress.target);
+            console.log(requirement.getProgressString());
         }
     }
 
