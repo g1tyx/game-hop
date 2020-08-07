@@ -6,6 +6,8 @@ import {Achievements} from "./engine/achievements/Achievements";
 import {AchievementsController} from "./engine/achievements/AchievementsController";
 import {YearTracker} from "./features/yeartracker/YearTracker";
 import {Prestige} from "./features/prestige/Prestige";
+import {MiniGames} from "./features/minigames/MiniGames";
+import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
 
 export class App {
 
@@ -27,6 +29,9 @@ export class App {
             new Settings(),
             new YearTracker(15.0),
             new Prestige(),
+            new MiniGames(
+                new DummyMiniGame()
+            ),
             new Wallet(),
             new Statistics(),
             new Achievements(),
