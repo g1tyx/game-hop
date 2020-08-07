@@ -5,6 +5,7 @@ import {Statistics} from "./engine/features/statistics/Statistics";
 import {Achievements} from "./engine/achievements/Achievements";
 import {AchievementsController} from "./engine/achievements/AchievementsController";
 import {YearTracker} from "./features/yeartracker/YearTracker";
+import {Prestige} from "./features/prestige/Prestige";
 
 export class App {
 
@@ -25,6 +26,7 @@ export class App {
         return new Game(
             new Settings(),
             new YearTracker(15.0),
+            new Prestige(),
             new Wallet(),
             new Statistics(),
             new Achievements(),
