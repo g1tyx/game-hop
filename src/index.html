@@ -9,9 +9,7 @@
 <body>
     <div id="root" class="grid-container">
         <div class="currency-bar">
-            <h2>Totalmoney statistic:
-                <span data-bind="text: statistics.getStatistic('totalMoneyGained').value"></span>!
-            </h2>
+            <%= require('html-loader!./features/wallet/wallet.html') %>
         </div>
         <div class="prestige-bar">
             <button data-bind="click: () => save()">Save</button>
