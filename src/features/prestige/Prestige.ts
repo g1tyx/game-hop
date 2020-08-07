@@ -28,6 +28,7 @@ export class Prestige extends Feature {
         //TODO(@Isha) do all prestige things here
         console.log("Directed by Christopher Nolan");
 
+        App.game.miniGames.progressReport();
         App.game.yearTracker.startNewYear();
     }
 
