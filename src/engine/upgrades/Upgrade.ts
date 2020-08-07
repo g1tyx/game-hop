@@ -8,7 +8,7 @@ import {CurrencyType} from "../../features/wallet/CurrencyType";
 /**
  * Generic upgrade class
  */
-export class Upgrade implements Saveable {
+export abstract class Upgrade implements Saveable {
     identifier: string;
     displayName: string;
     maxLevel: number;
@@ -18,41 +18,27 @@ export class Upgrade implements Saveable {
     // (e.g. power is increasing, time is decreasing).
     increasing: boolean;
 
-    // Optional array of costs
-    costList: Currency[] = [];
-    // Optional array of benefits
-    bonusList: number[] = [];
 
-    constructor(identifier: string, displayName: string, maxLevel: number, costList: Currency[], bonusList: number[], increasing = true) {
+    protected constructor(identifier: string, displayName: string, maxLevel: number, increasing = true) {
         this.identifier = identifier;
         this.displayName = displayName;
         this.maxLevel = maxLevel;
         this.level = 0;
-        this.costList = costList;
-        this.bonusList = bonusList;
         this.increasing = increasing;
     }
 
-    getCost(): Currency {
-        if (this.isMaxLevel()) {
-            return new Currency(Infinity, CurrencyType.money);
-        }
-        return this.costList[this.level];
-    }
+    abstract getCost(): Currency;
 
-    // Override with a custom function
-    getBonus(level: number = this.level): number {
-        return this.bonusList[level];
-    }
+    abstract getBonus(level: number): number;
 
-    upgradeBonus() {
+    getUpgradeBonus(): number {
         if (!this.isMaxLevel()) {
             return this.getBonus(this.level + 1) - this.getBonus(this.level);
         }
         return 0;
     }
 
-    isMaxLevel() {
+    isMaxLevel(): boolean {
         return this.level >= this.maxLevel;
     }
 

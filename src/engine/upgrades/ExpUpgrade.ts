@@ -2,12 +2,12 @@ import {Upgrade} from "./Upgrade";
 import {Currency} from "../../features/wallet/Currency";
 import * as ko from "knockout";
 import {ExpUpgradeSaveData} from "./ExpUpgradeSaveData";
-import {UpgradeSaveData} from "./UpgradeSaveData";
+import {DiscreteUpgrade} from "./DiscreteUpgrade";
 
 /**
  * An upgrade that requires experience to level up.
  */
-export class ExpUpgrade extends Upgrade {
+export class ExpUpgrade extends DiscreteUpgrade {
     defaults = {
         level: 0,
         exp: 0,
