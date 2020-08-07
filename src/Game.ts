@@ -1,7 +1,6 @@
 import * as ko from "knockout";
 import Timeout = NodeJS.Timeout;
 
-import {Example} from "./features/example/example";
 import {GameState} from "./GameState";
 import {Feature} from "./engine/Feature";
 import {Wallet} from "./features/wallet/Wallet";
@@ -10,12 +9,13 @@ import {Settings} from "./engine/features/settings/Settings";
 import {Statistics} from "./engine/features/statistics/Statistics";
 import {Achievements} from "./engine/achievements/Achievements";
 import {Controller} from "./engine/controllers/Controller";
+import {YearTracker} from "./features/yeartracker/YearTracker";
 
 export class Game {
     private _tickInterval: Timeout;
 
     public settings: Settings;
-    public example: Example;
+    public yearTracker: YearTracker;
     public wallet: Wallet;
     public statistics: Statistics;
     public achievements: Achievements;
@@ -26,9 +26,9 @@ export class Game {
 
     private readonly TICK_DURATION_MS = 100.0;
 
-    constructor(settings: Settings, example: Example, wallet: Wallet, statistics: Statistics, achievements: Achievements) {
+    constructor(settings: Settings, yearTracker: YearTracker, wallet: Wallet, statistics: Statistics, achievements: Achievements) {
         this.settings = settings;
-        this.example = example;
+        this.yearTracker = yearTracker;
         this.wallet = wallet
         this.statistics = statistics;
         this.achievements = achievements
@@ -112,7 +112,7 @@ export class Game {
 
     public getAllFeatures(): Feature[] {
         // TODO(@Isha) Improve with JS hacks to gain all features
-        return [this.settings, this.example, this.wallet, this.statistics, this.achievements];
+        return [this.settings, this.yearTracker, this.wallet, this.statistics, this.achievements];
     }
 
 

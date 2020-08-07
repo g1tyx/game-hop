@@ -1,10 +1,10 @@
-import {Example} from "./features/example/example";
 import {Game} from "./Game";
 import {Wallet} from "./features/wallet/Wallet";
 import {Settings} from "./engine/features/settings/Settings";
 import {Statistics} from "./engine/features/statistics/Statistics";
 import {Achievements} from "./engine/achievements/Achievements";
 import {AchievementsController} from "./engine/achievements/AchievementsController";
+import {YearTracker} from "./features/yeartracker/YearTracker";
 
 export class App {
 
@@ -24,7 +24,7 @@ export class App {
     static createNewGame(): Game {
         return new Game(
             new Settings(),
-            new Example(),
+            new YearTracker(15.0),
             new Wallet(),
             new Statistics(),
             new Achievements(),
