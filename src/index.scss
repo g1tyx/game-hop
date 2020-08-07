@@ -1,5 +1,30 @@
-@import 'features/example/example';
+html, body, .grid-container { height: 100%; margin: 0; }
 
-.example-paragraph {
-  border: 1px solid black;
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1.6fr 0.5fr 0.9fr;
+  grid-template-rows: 0.4fr 0.4fr 1.9fr 1.3fr;
+  gap: 1px 1px;
+  grid-template-areas: "currency-bar currency-bar currency-bar currency-bar currency-bar" ". progress-bar progress-bar . prestige-bar" ". game-branches game-branches . prestige-bar" ". game-branches game-branches . prestige-bar";
+}
+
+.currency-bar { grid-area: currency-bar; }
+
+.prestige-bar { grid-area: prestige-bar; }
+
+.progress-bar { grid-area: progress-bar; }
+
+.game-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: ". ." ". .";
+  grid-area: game-branches;
+}
+
+/* For presentation only, no need to copy the code below */
+.grid-container * { 
+ border: 1px solid red;
+ position: relative;
 }
