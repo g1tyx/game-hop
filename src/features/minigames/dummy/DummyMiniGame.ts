@@ -24,6 +24,10 @@ export class DummyMiniGame extends Feature implements MiniGame {
         this.yearRequirements.push(new DummyClickRequirement(100))
     }
 
+    click(): void {
+        this.clicks++;
+    }
+
     reset(): void {
     }
 
