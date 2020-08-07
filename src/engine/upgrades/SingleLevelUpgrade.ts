@@ -4,9 +4,13 @@ import {Currency} from "../../features/wallet/Currency";
 /**
  * An upgrade with a max level of 1
  */
-export class singleLevelUpgrade extends DiscreteUpgrade {
+export class SingleLevelUpgrade extends DiscreteUpgrade {
 
-    constructor(identifier: string, displayName: string, maxLevel: number, cost: Currency, bonus: number) {
+    constructor(identifier: string, displayName: string, cost: Currency, bonus: number) {
         super(identifier, displayName, 1, [cost], [bonus], true);
+    }
+
+    isBought(): boolean {
+        return this.isMaxLevel();
     }
 }
