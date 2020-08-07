@@ -11,6 +11,11 @@ export abstract class Requirement {
         return new RequirementProgress(Math.min(this.getActualValue(), targetValue), targetValue);
     }
 
+    getProgressString(): string {
+        const targetValue = this.getTargetValue();
+        return `${Math.min(this.getActualValue(), targetValue)}/${targetValue}`;
+    }
+
     abstract lockedReason(): string;
 
     abstract getActualValue(): number;
