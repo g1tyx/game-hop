@@ -1,7 +1,6 @@
 import * as ko from "knockout";
 import Timeout = NodeJS.Timeout;
 
-import {Example} from "./features/example/example";
 import {GameState} from "./GameState";
 import {Feature} from "./engine/Feature";
 import {Wallet} from "./features/wallet/Wallet";
