@@ -39,11 +39,11 @@ export class Wallet extends Feature {
         this.currencies[currency.type] += currency.amount;
     }
 
-    public hasCurrency(currency: Currency) {
+    public hasCurrency(currency: Currency): boolean {
         return this.currencies[currency.type] >= currency.amount;
     }
 
-    public loseCurrency(currency: Currency) {
+    public loseCurrency(currency: Currency): void {
         if (isNaN(currency.amount) || currency.amount <= 0) {
             console.trace(`Could not lose currency ${currency.toString()}`);
             return;
@@ -56,17 +56,17 @@ export class Wallet extends Feature {
     saveKey = "wallet";
 
     load(data: WalletSaveData): void {
-        this.currencies = new ArrayOfObservables([data.money, data.somethingElse]);
+        this.currencies = new ArrayOfObservables([data.money, data.prestige]);
     }
 
     save(): WalletSaveData {
-        return new WalletSaveData(this.currencies[CurrencyType.money], this.currencies[CurrencyType.somethingElse])
+        return new WalletSaveData(this.currencies[CurrencyType.money], this.currencies[CurrencyType.prestige])
     }
 
     parseSaveData(json: Record<string, unknown>): WalletSaveData {
         const money = json[CurrencyType[CurrencyType.money]] as number ?? 0;
-        const somethingElse = json[CurrencyType[CurrencyType.somethingElse]] as number ?? 0;
-        return new WalletSaveData(money, somethingElse);
+        const prestige = json[CurrencyType[CurrencyType.prestige]] as number ?? 0;
+        return new WalletSaveData(money, prestige);
     }
 
     initialize(): void {

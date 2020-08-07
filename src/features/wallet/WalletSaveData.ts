@@ -2,12 +2,12 @@ import {SaveData} from "../../engine/saving/SaveData";
 
 export class WalletSaveData extends SaveData {
     money: number;
-    somethingElse: number;
+    prestige: number;
 
 
-    constructor(money: number, somethingElse: number) {
+    constructor(money: number, prestige: number) {
         super();
         this.money = money;
-        this.somethingElse = somethingElse;
+        this.prestige = prestige;
     }
 }
