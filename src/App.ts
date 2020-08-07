@@ -24,7 +24,7 @@ export class App {
     static createNewGame(): Game {
         return new Game(
             new Settings(),
-            new YearTracker(1.0),
+            new YearTracker(15.0),
             new Wallet(),
             new Statistics(),
             new Achievements(),
