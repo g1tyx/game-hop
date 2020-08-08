@@ -2,24 +2,30 @@ import {Feature} from "../../engine/Feature";
 import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGameSaveData} from "./dummy/DummyMiniGameSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
+import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
+import {MarketingMiniGameSaveData} from "./marketing/MarketingMiniGameSaveData";
 
 export class MiniGames extends Feature {
     name: string = 'Minigames';
     saveKey: string = 'minigames';
 
     dummy: DummyMiniGame
+    marketing: MarketingMiniGame
 
-    constructor(dummy: DummyMiniGame) {
+    constructor(dummy: DummyMiniGame, marketing: MarketingMiniGame) {
         super();
         this.dummy = dummy;
+        this.marketing = marketing;
     }
 
     initialize(): void {
         this.dummy.initialize();
+        this.marketing.initialize();
     }
 
     reset(): void {
         this.dummy.reset();
+        this.marketing.reset();
     }
 
     progressReport(): void {
@@ -30,16 +36,18 @@ export class MiniGames extends Feature {
 
     load(data: MiniGamesSaveData): void {
         this.dummy.load(data.dummy);
+        this.marketing.load(data.marketing);
     }
 
     parseSaveData(json: Record<string, unknown>): MiniGamesSaveData {
         const dummyData = this.dummy.parseSaveData(json?.dummy as Record<string, unknown>);
-        return new MiniGamesSaveData(dummyData);
+        const marketingData = this.marketing.parseSaveData(json?.marketing as Record<string, unknown>);
+        return new MiniGamesSaveData(dummyData, marketingData);
 
     }
 
     save(): MiniGamesSaveData {
-        return new MiniGamesSaveData(this.dummy.save() as DummyMiniGameSaveData);
+        return new MiniGamesSaveData(this.dummy.save(), this.marketing.save());
     }
 
 }

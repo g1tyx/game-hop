@@ -4,6 +4,7 @@ $defaultBackground: #02110a;
 
 @import 'features/yeartracker/yearTracker.scss';
 @import 'features/wallet/wallet.scss';
+@import 'features/minigames/marketing/marketing.scss';
 
 html, body, .grid-container { height: 100%; margin: 0; }
 
@@ -243,5 +244,5 @@ to { transform: translate(0, 100vh)}
   100% {
       transform: scaleX(calc(1 / var(--width))) scaleY(calc(1 / var(--height)));
       opacity: 0;
-  }  
+  }
 }

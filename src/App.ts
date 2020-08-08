@@ -8,6 +8,7 @@ import {YearTracker} from "./features/yeartracker/YearTracker";
 import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
 import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
+import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGame";
 
 export class App {
 
@@ -30,7 +31,8 @@ export class App {
             new YearTracker(15.0),
             new Prestige(),
             new MiniGames(
-                new DummyMiniGame()
+                new DummyMiniGame(),
+                new MarketingMiniGame(),
             ),
             new Wallet(),
             new Statistics(),

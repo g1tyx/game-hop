@@ -41,7 +41,7 @@ export class DummyMiniGame extends Feature implements MiniGame {
         return new DummyMiniGameSaveData(json?.clicks as number ?? 0);
     }
 
-    save(): SaveData {
+    save(): DummyMiniGameSaveData {
         return new DummyMiniGameSaveData(this.clicks);
     }
 
