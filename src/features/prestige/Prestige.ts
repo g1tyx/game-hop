@@ -32,7 +32,8 @@ export class Prestige extends Feature {
         //TODO(@Isha) do all prestige things here
         console.log("Directed by Christopher Nolan");
 
-        App.game.miniGames.progressReport();
+        const report = App.game.miniGames.getEndOfYearReport();
+        report.print();
         App.game.miniGames.reset();
 
         App.game.yearTracker.startNewYear();

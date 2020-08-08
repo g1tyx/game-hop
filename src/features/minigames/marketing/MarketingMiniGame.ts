@@ -11,11 +11,12 @@ import {CurrencyType} from "../../wallet/CurrencyType";
 import {App} from "../../../App";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
+import {MiniGameRequirement} from "../MiniGameRequirement";
 
 export class MarketingMiniGame extends Feature implements MiniGame {
     name: string = "Marketing";
     saveKey: string = "marketing";
-    yearRequirements: Requirement[];
+    yearRequirements: MiniGameRequirement[];
 
     private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
@@ -33,7 +34,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new MarketingFameRequirement(1000));
+        this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000));
 
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
     }

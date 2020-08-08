@@ -2,6 +2,8 @@ import {Feature} from "../../engine/Feature";
 import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
+import {EndOfYearReport} from "./EndOfYearReport";
+import {MiniGameReport} from "./MiniGameReport";
 
 export class MiniGames extends Feature {
     name: string = 'Minigames';
@@ -33,10 +35,15 @@ export class MiniGames extends Feature {
         this.marketing.reset();
     }
 
-    progressReport(): void {
+    getEndOfYearReport(): EndOfYearReport {
+        const report = new EndOfYearReport([]);
         for (const requirement of this.dummy.yearRequirements) {
-            console.log(requirement.getProgressString());
+            report.addReport(requirement.getReport());
         }
+        for (const requirement of this.marketing.yearRequirements) {
+            report.addReport(requirement.getReport());
+        }
+        return report;
     }
 
     load(data: MiniGamesSaveData): void {

@@ -1,25 +1,14 @@
 import {Requirement} from "../../../engine/requirements/Requirement";
 import {App} from "../../../App";
+import {MiniGameRequirement} from "../MiniGameRequirement";
 
-export class MarketingFameRequirement extends Requirement {
-    target: number;
-
-    constructor(target: number) {
-        super();
-        this.target = target;
+export class MarketingFameRequirement extends MiniGameRequirement {
+    constructor(description: string, target: number) {
+        super(description, target);
     }
 
     getActualValue(): number {
         return App.game.miniGames.marketing.fame;
     }
-
-    getTargetValue(): number {
-        return this.target;
-    }
-
-    lockedReason(): string {
-        return "Needs more more";
-    }
-
 
 }

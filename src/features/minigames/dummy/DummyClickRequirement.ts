@@ -1,25 +1,14 @@
-import {Requirement} from "../../../engine/requirements/Requirement";
 import {App} from "../../../App";
+import {MiniGameRequirement} from "../MiniGameRequirement";
 
-export class DummyClickRequirement extends Requirement {
-    target: number;
+export class DummyClickRequirement extends MiniGameRequirement {
 
-    constructor(target: number) {
-        super();
-        this.target = target;
+    constructor(description: string, target: number) {
+        super(description, target);
     }
 
     getActualValue(): number {
         return App.game.miniGames.dummy.clicks;
     }
-
-    getTargetValue(): number {
-        return this.target;
-    }
-
-    lockedReason(): string {
-        return "Needs more clicks";
-    }
-
 
 }
