@@ -1,5 +1,7 @@
-Month: <span data-bind="text: yearTracker.month"></span>!
-MonthProgress: <span data-bind="text: yearTracker.monthProgress"></span>!
-<div class="progressBarOuter">
-    <div class="progressBarInner" data-bind="style: {width: yearTracker.monthProgress * 100 + '%'}"></div>
+<div class="barRoot">
+    <div class="monthLabel">Month: <span data-bind="text: yearTracker.month"></span></div>
+    <div class="progressBarOuter">
+        <div class="progressBarInner" data-bind="style: {width: yearTracker.monthProgress * 100 + '%'}"></div>
+    </div>
+    <span data-bind="text: (yearTracker.monthProgress * 100).toFixed(0) + '%'"></span>
 </div>
