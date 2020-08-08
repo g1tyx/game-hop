@@ -77,7 +77,9 @@ export class MarketingMiniGame extends Feature implements MiniGame {
 
     reset(): void {
         this.fame = 0;
-        this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
+        while (this.availableCampaigns.length > 0) {
+            this.availableCampaigns.pop();
+        }
     }
 
     load(data: MarketingMiniGameSaveData): void {
