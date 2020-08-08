@@ -3,6 +3,8 @@ import {Currency} from "../../wallet/Currency";
 import {App} from "../../../App";
 
 export class MarketingCampaign {
+    public description: string;
+
     public monthsToComplete: number;
     public cost: Currency;
     public fameReward: number;
@@ -10,7 +12,8 @@ export class MarketingCampaign {
     private readonly _completionProgress: ko.Observable<number>;
     private readonly _isStarted: ko.Observable<boolean>;
 
-    constructor(monthsToComplete: number, cost: Currency, fameReward: number) {
+    constructor(description: string, monthsToComplete: number, cost: Currency, fameReward: number) {
+        this.description = description;
         this.monthsToComplete = monthsToComplete;
         this.cost = cost;
         this.fameReward = fameReward;
@@ -20,6 +23,9 @@ export class MarketingCampaign {
     }
 
     public tryToStart(): boolean {
+        if (this.isStarted) {
+            return false;
+        }
         if (!App.game.wallet.hasCurrency(this.cost)) {
             return false;
         }

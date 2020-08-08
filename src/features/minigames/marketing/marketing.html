@@ -7,10 +7,7 @@
     <div class="campaignGrid">
         <div class="campaignOffers">
             <p>Campaign Offers</p>
-            <div class="campaignOffer">
-                <p>Post on r/sample (1.4 months, 100 fame, 1000 money)</p>
-                <div class="progressBar"></div>
-            </div>
+            <div data-bind="template: { name: 'campaign-offer-template', foreach: miniGames.marketing.availableCampaigns }"></div>
         </div>
         <div class="campaignUpgrades">
             <p>Upgrades</p>

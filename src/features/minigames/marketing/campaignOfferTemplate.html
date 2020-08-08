@@ -1,0 +1,13 @@
+<script type="text/html" id="campaign-offer-template">
+    <div class="campaignOffer">
+        <p>
+            <span data-bind="text: $data.description">Description</span>
+            <span data-bind="text: $data.monthsToComplete">Time</span> Months
+            <span data-bind="text: $data.cost.amount">Cost</span> Money
+            <span data-bind="text: $data.fameReward">Fame</span> Fame
+
+        </p>
+        <div class="progressBar"></div>
+        <button data-bind="click: () => $data.tryToStart()">Start</button>
+    </div>
+</script>

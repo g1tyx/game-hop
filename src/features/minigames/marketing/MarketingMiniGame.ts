@@ -8,6 +8,7 @@ import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {App} from "../../../App";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
+import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 
 export class MarketingMiniGame extends Feature implements MiniGame {
     name: string = "Marketing";
@@ -15,7 +16,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     yearRequirements: Requirement[];
 
     fame: number;
-    availableCampaigns: MarketingCampaign[];
+    availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
 
     private readonly _onCampaignCompletion = new SimpleEventDispatcher<MarketingCampaign>();
 
@@ -23,7 +24,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     constructor() {
         super();
         this.yearRequirements = [];
-        this.availableCampaigns = [];
+        this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
     }
 
     initialize(): void {
@@ -51,7 +52,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     }
 
     spawnCampaign(): void {
-        this.availableCampaigns.push(new MarketingCampaign(0.5, new Currency(100, CurrencyType.money), 100))
+        this.availableCampaigns.push(new MarketingCampaign("Flavour text", 0.5, new Currency(100, CurrencyType.money), 100))
     }
 
     update(delta: number): void {
@@ -76,7 +77,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
 
     reset(): void {
         this.fame = 0;
-        this.availableCampaigns = [];
+        this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
     }
 
     load(data: MarketingMiniGameSaveData): void {
