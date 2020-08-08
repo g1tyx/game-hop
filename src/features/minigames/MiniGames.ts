@@ -1,9 +1,7 @@
 import {Feature} from "../../engine/Feature";
 import {MiniGamesSaveData} from "./MiniGamesSaveData";
-import {DummyMiniGameSaveData} from "./dummy/DummyMiniGameSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
-import {MarketingMiniGameSaveData} from "./marketing/MarketingMiniGameSaveData";
 
 export class MiniGames extends Feature {
     name: string = 'Minigames';
@@ -18,9 +16,16 @@ export class MiniGames extends Feature {
         this.marketing = marketing;
     }
 
+
     initialize(): void {
         this.dummy.initialize();
         this.marketing.initialize();
+    }
+
+
+    update(delta: number): void {
+        this.dummy.update(delta);
+        this.marketing.update(delta);
     }
 
     reset(): void {
