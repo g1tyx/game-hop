@@ -6,8 +6,9 @@
     <title>Incremental game</title>
 </head>
 
-<body>
-
+<body id="body">
+<!-- Load all templates-->
+<%= require('html-loader!./engine/features/settings/booleanSettingTemplate.html') %>
 
 
     <div class="tv">
@@ -19,6 +20,8 @@
                 <div class="prestige-bar">
                     <button data-bind="click: () => save()">Save</button>
                     <button data-bind="click: () => deleteSave()">Delete save (no confirmation)</button>
+                    <%= require('html-loader!./engine/features/settings/settings.html') %>
+
                 </div>
                 <div class="progress-bar">
                     <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
@@ -31,8 +34,11 @@
                 </div>
             </div>
         </div>
-        <div class="flicker"></div>
-        <div class="scanlines"></div>
+        <!-- ko if: settings.getSetting('crt-style').value -->
+            <div class="flicker"></div>
+            <div class="scanlines"></div>
+        <!-- /ko -->
+
     </div>
 
 
