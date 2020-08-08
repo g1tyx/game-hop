@@ -11,7 +11,7 @@ export class Settings extends Feature {
     list: Setting[] = [];
 
     initialize(): void {
-        this.add(new BooleanSetting('exampleSetting', 'Doesnt do much really', true));
+        this.add(new BooleanSetting('crt-style', 'Use CRT-style flickering', true));
     }
 
     public add(setting: Setting): void {

@@ -25,7 +25,7 @@ $(function () {
     }
 
 
-    ko.applyBindings(App.game, document.getElementById('root'));
+    ko.applyBindings(App.game, document.getElementById('body'));
 
     console.log("Launched");
 });
