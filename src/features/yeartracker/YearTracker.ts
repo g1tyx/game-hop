@@ -50,7 +50,7 @@ export class YearTracker extends Feature {
         if (this.yearHasEnded) {
             return;
         }
-        this.monthProgress += delta / this.realMonthTime;
+        this.monthProgress += this.secondsToMonthPercentage(delta);
         if (this.monthProgress >= 1) {
             this.nextMonth();
         }
@@ -82,6 +82,10 @@ export class YearTracker extends Feature {
     yearEnd(): void {
         this.yearHasEnded = true;
         this._onYearEnd.dispatch();
+    }
+
+    secondsToMonthPercentage(seconds: number): number {
+        return seconds / this.realMonthTime;
     }
 
     load(data: YearTrackerSaveData): void {
