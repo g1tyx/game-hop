@@ -22,7 +22,7 @@
 }
 
 .progressBarInner {
-    background-color:limegreen;
+    background-color: $progressBarColor;
     height:100%;
     // transition: width .3s;
     border-radius:10px;
