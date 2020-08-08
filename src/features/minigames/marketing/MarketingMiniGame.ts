@@ -18,6 +18,8 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     fame: number;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
 
+    private readonly maxCampaigns: number = 4;
+
     private readonly _onCampaignCompletion = new SimpleEventDispatcher<MarketingCampaign>();
 
 
@@ -52,7 +54,10 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     }
 
     spawnCampaign(): void {
-        this.availableCampaigns.push(new MarketingCampaign("Flavour text", 0.5, new Currency(100, CurrencyType.money), 100))
+        if (this.availableCampaigns.length < this.maxCampaigns) {
+            this.availableCampaigns.push(new MarketingCampaign("Flavour text", 0.5, new Currency(100, CurrencyType.money), 100))
+
+        }
     }
 
     update(delta: number): void {
