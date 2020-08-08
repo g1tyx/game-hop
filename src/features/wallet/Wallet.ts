@@ -12,14 +12,14 @@ export class Wallet extends Feature {
     currencies: ArrayOfObservables<number>;
 
     private _onMoneyGain = new SimpleEventDispatcher<number>();
+    private _onPrestigeGain = new SimpleEventDispatcher<number>();
 
     constructor() {
         super();
         this.currencies = new ArrayOfObservables([0, 0]);
     }
 
-    public gainMoney(base: number, origin?: string): number {
-
+    public gainMoney(base: number): number {
         const money = base * App.game.getTotalMoneyMultiplier();
 
         this._onMoneyGain.dispatch(money);
@@ -27,6 +27,12 @@ export class Wallet extends Feature {
         return money;
     }
 
+
+    public gainPrestige(base: number): number {
+        this._onPrestigeGain.dispatch(base);
+        this.addCurrency(new Currency(base, CurrencyType.prestige));
+        return base;
+    }
 
     private addCurrency(currency: Currency) {
         if (isNaN(currency.amount) || currency.amount <= 0) {
@@ -76,6 +82,9 @@ export class Wallet extends Feature {
 
     public get onMoneyGain(): ISimpleEvent<number> {
         return this._onMoneyGain.asEvent();
+    }
+    public get onPrestigeGain(): ISimpleEvent<number> {
+        return this._onPrestigeGain.asEvent();
     }
 
 

@@ -34,6 +34,12 @@ export class Prestige extends Feature {
 
         const report = App.game.miniGames.getEndOfYearReport();
         report.print();
+        let reward = 0;
+        for (const rep of report.reports) {
+            reward += rep.getPercentage();
+        }
+
+        App.game.wallet.gainPrestige(reward * 300);
         App.game.miniGames.reset();
 
         App.game.yearTracker.startNewYear();
