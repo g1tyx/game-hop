@@ -1,3 +1,5 @@
+import * as ko from "knockout";
+
 import {MiniGame} from "../MiniGame";
 import {Feature} from "../../../engine/Feature";
 import {Requirement} from "../../../engine/requirements/Requirement";
@@ -15,7 +17,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
     saveKey: string = "marketing";
     yearRequirements: Requirement[];
 
-    fame: number;
+    private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
 
     private readonly maxCampaigns: number = 4;
@@ -25,6 +27,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
 
     constructor() {
         super();
+        this._fame = ko.observable(0);
         this.yearRequirements = [];
         this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
     }
@@ -98,6 +101,14 @@ export class MarketingMiniGame extends Feature implements MiniGame {
         return undefined;
     }
 
+    // Knockout getters/setters
+    get fame(): number {
+        return this._fame();
+    }
+
+    set fame(value: number) {
+        this._fame(value);
+    }
 
     // Event getters/setters
     public get onCampaignCompletion(): ISimpleEvent<MarketingCampaign> {
