@@ -6,7 +6,12 @@ $defaultBackground: #02110a;
 @import 'features/wallet/wallet.scss';
 @import 'features/minigames/marketing/marketing.scss';
 
-html, body, .grid-container { height: 100%; margin: 0; }
+html,
+body,
+.grid-container {
+  height: 100%;
+  margin: 0;
+}
 
 @font-face {
   font-family: WhiteRabbit;
@@ -16,46 +21,29 @@ html, body, .grid-container { height: 100%; margin: 0; }
 * {
   font-family: WhiteRabbit, serif;
   color: $textColorMain;
+  margin: 0;
+  padding: 0;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 0.5fr 1.5fr 1.6fr 0.5fr 0.9fr;
-  grid-template-rows: 0.4fr 0.4fr 1.9fr 1.3fr;
-  gap: 1px 1px;
-  grid-template-areas: "currency-bar currency-bar currency-bar currency-bar currency-bar" ". progress-bar progress-bar . prestige-bar" ". game-branches game-branches . prestige-bar" ". game-branches game-branches . prestige-bar";
-}
-
-.currency-bar { grid-area: currency-bar; }
-
-.prestige-bar { grid-area: prestige-bar; }
-
-.progress-bar { grid-area: progress-bar; }
 
 .game-branches {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1px 1px;
-  grid-template-areas: ". ." ". .";
-  grid-area: game-branches;
+  height: 100%;
 }
 
-/* For presentation only, no need to copy the code below */
-// .grid-container * {
-//  border: 1px solid red;
-//  position: relative;
-// }
+.full-height {
+  height: 100%
+}
 
 
 
 /*
  * part of the style based on http://js13kgames.com/entries/lost-in-cyberspace
  */
- body {
+body {
   margin: 0;
   background: $defaultBackground;
 }
+
 #term {
   height: 100vh;
 }
@@ -64,6 +52,7 @@ html, body, .grid-container { height: 100%; margin: 0; }
 .self {
   transform: scale(-1, 1);
 }
+
 /* flicker animation taken from http://goonhub.com/secret */
 .flicker {
   position: fixed;
@@ -77,75 +66,98 @@ html, body, .grid-container { height: 100%; margin: 0; }
   pointer-events: none;
   animation: flicker 10s infinite;
 }
+
 @keyframes flicker {
-0% {
-  opacity: 0.552;
+  0% {
+    opacity: 0.552;
+  }
+
+  5% {
+    opacity: 0.48287;
+  }
+
+  10% {
+    opacity: 0.59134;
+  }
+
+  15.0% {
+    opacity: 0.79543;
+  }
+
+  20% {
+    opacity: 0.75134;
+  }
+
+  25% {
+    opacity: 0.1956;
+  }
+
+  30.0% {
+    opacity: 0.90687;
+  }
+
+  35% {
+    opacity: 0.122;
+  }
+
+  40% {
+    opacity: 0.62254;
+  }
+
+  45% {
+    opacity: 0.56977;
+  }
+
+  50% {
+    opacity: 0.9925;
+  }
+
+  55.0% {
+    opacity: 0.55487;
+  }
+
+  60.0% {
+    opacity: 0.16607;
+  }
+
+  65% {
+    opacity: 0.12353;
+  }
+
+  70% {
+    opacity: 0.2214;
+  }
+
+  75% {
+    opacity: 0.67908;
+  }
+
+  80% {
+    opacity: 0.97163;
+  }
+
+  85.0% {
+    opacity: 0.1275;
+  }
+
+  90% {
+    opacity: 0.37186;
+  }
+
+  95% {
+    opacity: 0.24475;
+  }
+
+  100% {
+    opacity: 0.37221;
+  }
 }
-5% {
-  opacity: 0.48287;
-}
-10% {
-  opacity: 0.59134;
-}
-15.0% {
-  opacity: 0.79543;
-}
-20% {
-  opacity: 0.75134;
-}
-25% {
-  opacity: 0.1956;
-}
-30.0% {
-  opacity: 0.90687;
-}
-35% {
-  opacity: 0.122;
-}
-40% {
-  opacity: 0.62254;
-}
-45% {
-  opacity: 0.56977;
-}
-50% {
-  opacity: 0.9925;
-}
-55.0% {
-  opacity: 0.55487;
-}
-60.0% {
-  opacity: 0.16607;
-}
-65% {
-  opacity: 0.12353;
-}
-70% {
-  opacity: 0.2214;
-}
-75% {
-  opacity: 0.67908;
-}
-80% {
-  opacity: 0.97163;
-}
-85.0% {
-  opacity: 0.1275;
-}
-90% {
-  opacity: 0.37186;
-}
-95% {
-  opacity: 0.24475;
-}
-100% {
-  opacity: 0.37221;
-}
-}
+
 /* glow */
 .terminal {
   text-shadow: 0 0.2rem 1rem #0c7b46;
 }
+
 /* based on
 https://blog.carbonfive.com/2015/01/07/vintage-terminal-effect-in-css3/
 */
@@ -154,65 +166,72 @@ https://blog.carbonfive.com/2015/01/07/vintage-terminal-effect-in-css3/
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0),
-      rgba(255,255,255,0) 50%,
-      rgba(0,0,0,.2) 70%,
-      rgba(0,0,0,.6)
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, .2) 70%,
+      rgba(0, 0, 0, .6));
   background-size: 100% .13rem;
   position: fixed;
   pointer-events: none;
 }
+
 .scanlines:before {
-position: absolute;
-top: 0px;
-width: 100%;
-height: 5px;
-background: #fff;
-background: linear-gradient(to bottom,
-    rgba(255,0,0,0) 0%,
-    rgba(255,250,250,1) 50%,
-    rgba(255,255,255,0.98) 51%,
-    rgba(255,0,0,0) 100%
-); /* W3C */
-opacity: .1;
-}
-.scanlines:after {
-box-shadow: 0 2px 6px rgba(25,25,25,0.2),
-    inset 0 1px rgba(50,50,50,0.1),
-    inset 0 3px rgba(50,50,50,0.05),
-    inset 0 3px 8px rgba(64,64,64,0.05),
-    inset 0 -5px 10px rgba(25,25,25,0.1);
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 5px;
+  background: #fff;
+  background: linear-gradient(to bottom,
+      rgba(255, 0, 0, 0) 0%,
+      rgba(255, 250, 250, 1) 50%,
+      rgba(255, 255, 255, 0.98) 51%,
+      rgba(255, 0, 0, 0) 100%);
+  /* W3C */
+  opacity: .1;
 }
 
-#term:focus-within + .scanlines:before {
-content: '';
-animation: vline calc(var(--time, 2) * 1s) linear infinite;
+.scanlines:after {
+  box-shadow: 0 2px 6px rgba(25, 25, 25, 0.2),
+    inset 0 1px rgba(50, 50, 50, 0.1),
+    inset 0 3px rgba(50, 50, 50, 0.05),
+    inset 0 3px 8px rgba(64, 64, 64, 0.05),
+    inset 0 -5px 10px rgba(25, 25, 25, 0.1);
 }
+
+#term:focus-within+.scanlines:before {
+  content: '';
+  animation: vline calc(var(--time, 2) * 1s) linear infinite;
+}
+
 /*
 * MS Edge don't support focus-within and css vars
 * inside pseudo selector
 */
 @supports (-ms-ime-align:auto) {
   .scanlines:before {
-      content: '';
-      animation: vline 3s linear infinite;
+    content: '';
+    animation: vline 3s linear infinite;
   }
 }
+
 @keyframes vline {
-to { transform: translate(0, 100vh)}
+  to {
+    transform: translate(0, 100vh)
+  }
 }
+
 /* turn off animation */
 .tv {
   height: 100vh;
   position: relative;
 }
+
 .tv.collapse {
   animation: size 2s ease-out;
   animation-fill-mode: forwards;
 }
+
 .tv.collapse:before {
   content: '';
   display: block;
@@ -230,20 +249,25 @@ to { transform: translate(0, 100vh)}
 }
 
 @keyframes opacity {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
+
 @keyframes size {
   50% {
-      transform: scaleX(calc(1 / var(--width)));
-      opacity: 1;
+    transform: scaleX(calc(1 / var(--width)));
+    opacity: 1;
   }
+
   98% {
-      transform: scaleX(calc(1 / var(--width))) scaleY(calc(1 / var(--height)));
-      opacity: 1;
+    transform: scaleX(calc(1 / var(--width))) scaleY(calc(1 / var(--height)));
+    opacity: 1;
   }
+
   100% {
-      transform: scaleX(calc(1 / var(--width))) scaleY(calc(1 / var(--height)));
-      opacity: 0;
+    transform: scaleX(calc(1 / var(--width))) scaleY(calc(1 / var(--height)));
+    opacity: 0;
   }
 }
 
@@ -253,5 +277,5 @@ to { transform: translate(0, 100vh)}
 a.btn {
   text-decoration: none;
   cursor: pointer;
-  border-bottom:1px solid $textColorMain;
+  border-bottom: 1px solid $textColorMain;
 }
