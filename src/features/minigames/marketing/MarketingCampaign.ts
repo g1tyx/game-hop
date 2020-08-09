@@ -5,18 +5,18 @@ import {App} from "../../../App";
 export class MarketingCampaign {
     public description: string;
 
-    public monthsToComplete: number;
-    public cost: Currency;
-    public fameReward: number;
+    private readonly _baseMonthsToComplete: number;
+    private readonly _baseCost: Currency;
+    private readonly _baseFameReward: number;
 
     private readonly _completionProgress: ko.Observable<number>;
     private readonly _isStarted: ko.Observable<boolean>;
 
     constructor(description: string, monthsToComplete: number, cost: Currency, fameReward: number) {
         this.description = description;
-        this.monthsToComplete = monthsToComplete;
-        this.cost = cost;
-        this.fameReward = fameReward;
+        this._baseMonthsToComplete = monthsToComplete;
+        this._baseCost = cost;
+        this._baseFameReward = fameReward;
 
         this._completionProgress = ko.observable(0);
         this._isStarted = ko.observable(false);
@@ -66,6 +66,19 @@ export class MarketingCampaign {
 
     set isStarted(value: boolean) {
         this._isStarted(value);
+    }
+
+
+    get fameReward(): number {
+        return this._baseFameReward * App.game.miniGames.marketing.getFameGainMultiplier();
+    }
+
+    get cost(): Currency {
+        return new Currency(this._baseCost.amount * App.game.miniGames.marketing.getCostMultiplier(), this._baseCost.type);
+    }
+
+    get monthsToComplete(): number {
+        return this._baseMonthsToComplete * App.game.miniGames.marketing.getSpeedMultiplier();
     }
 
 }

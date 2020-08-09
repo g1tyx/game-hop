@@ -21,8 +21,8 @@ export class Prestige extends Feature {
     }
 
     initialize(): void {
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 0.10)))
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 0.20), [new SkillTreeRequirement('marketing-fame-1')]))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
 
         App.game.yearTracker.onYearEnd.subscribe(() => this.prestige());
     }
@@ -39,7 +39,7 @@ export class Prestige extends Feature {
             reward += rep.getPercentage();
         }
 
-        App.game.wallet.gainPrestige(reward * 300);
+        App.game.wallet.gainPrestige(reward * 300 + 1);
         App.game.miniGames.reset();
 
         App.game.yearTracker.startNewYear();

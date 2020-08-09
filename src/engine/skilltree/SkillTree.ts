@@ -1,6 +1,7 @@
 import {SkillTreeUpgrade} from "./SkillTreeUpgrade";
 import {Saveable} from "../saving/Saveable";
 import {SkillTreeSaveData} from "./SkillTreeSaveData";
+import {PrestigeUpgradeType} from "../../features/prestige/PrestigeUpgradeType";
 
 export class SkillTree implements Saveable {
     upgrades: SkillTreeUpgrade[];
@@ -20,6 +21,19 @@ export class SkillTree implements Saveable {
             }
         }
         return null;
+    }
+
+    getBoughtUpgradesOfType(type: PrestigeUpgradeType): SkillTreeUpgrade[] {
+        return this.upgrades.filter(upgrade => upgrade.isBought() && upgrade.type == type);
+    }
+
+    getTotalMultiplierForType(type: PrestigeUpgradeType): number {
+        let multiplier = 1;
+        const boughtUpgradesOfType = this.getBoughtUpgradesOfType(type);
+        for (const upgrade of boughtUpgradesOfType) {
+            multiplier *= upgrade.getBonus();
+        }
+        return multiplier;
     }
 
     saveKey: string = 'skill-tree'

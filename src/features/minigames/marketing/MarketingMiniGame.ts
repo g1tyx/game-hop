@@ -12,6 +12,7 @@ import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {MiniGameRequirement} from "../MiniGameRequirement";
 import {SingleLevelUpgrade} from "../../../engine/upgrades/SingleLevelUpgrade";
+import {PrestigeUpgradeType} from "../../prestige/PrestigeUpgradeType";
 
 export class MarketingMiniGame extends Feature implements MiniGame {
     name: string = "Marketing";
@@ -39,9 +40,21 @@ export class MarketingMiniGame extends Feature implements MiniGame {
         this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000));
 
 
-        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-1', "Dummy upgrade", new Currency(100, CurrencyType.money), 0.10));
-        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-2', "Dummy upgrade 2", new Currency(300, CurrencyType.money), 0.10));
+        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-1', "Dummy upgrade", new Currency(100, CurrencyType.money), 1.10));
+        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-2', "Dummy upgrade 2", new Currency(300, CurrencyType.money), 1.10));
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
+    }
+
+    public getFameGainMultiplier(): number {
+        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingFame) * 3;
+    }
+
+    getCostMultiplier(): number {
+        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingCost) * 3;
+    }
+
+    getSpeedMultiplier(): number {
+        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingSpeed) * 3;
     }
 
     /**

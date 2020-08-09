@@ -23,10 +23,16 @@ export class SkillTreeUpgrade {
         return this.upgrade.canBuy();
     }
 
-    buy(): void {
+    buy(): boolean {
         if (this.canBuy()) {
             this.upgrade.buy();
+            return true;
         }
+        return false
+    }
+
+    getBonus(): number {
+        return this.upgrade.getBonus();
     }
 
     isBought(): boolean {
