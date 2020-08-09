@@ -35,6 +35,10 @@ export class MarketingCampaign {
         return true;
     }
 
+    public getProgressPercentage(): number {
+        return this.completionProgress / this.monthsToComplete;
+    }
+
     public isCompleted(): boolean {
         return this.completionProgress >= this.monthsToComplete;
     }
