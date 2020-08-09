@@ -18,7 +18,7 @@ export abstract class MiniGameRequirement extends Requirement {
     }
 
     getReport(): MiniGameReport {
-        return new MiniGameReport(this.description, this.getActualValue(), this.getTargetValue());
+        return new MiniGameReport(this.description, Math.min(this.getActualValue(), this.getTargetValue()), this.getTargetValue());
     }
 
     lockedReason(): string {
