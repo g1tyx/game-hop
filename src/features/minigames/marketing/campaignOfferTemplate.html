@@ -9,9 +9,12 @@
         </p>
 
         <!-- ko if: $data.isStarted -->
-            <span data-bind="text: ($data.getProgressPercentage() * 100).toFixed(0) + '%'"></span>
+        <span data-bind="text: ($data.getProgressPercentage() * 100).toFixed(0) + '%'"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: $data.isStarted -->
+        <button data-bind="click: () => $data.tryToStart()">Start</button>
+        <button data-bind="click: () => $data.cancel()">Cancel</button>
         <!-- /ko -->
 
-        <button data-bind="click: () => $data.tryToStart()">Start</button>
     </div>
 </script>

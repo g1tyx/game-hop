@@ -35,6 +35,10 @@ export class MarketingCampaign {
         return true;
     }
 
+    public cancel(): void {
+        App.game.miniGames.marketing.removeCampaign(this);
+    }
+
     public getProgressPercentage(): number {
         return this.completionProgress / this.monthsToComplete;
     }
