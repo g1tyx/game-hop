@@ -10,6 +10,9 @@
 
         <!-- ko if: $data.isStarted -->
         <span data-bind="text: ($data.getProgressPercentage() * 100).toFixed(0) + '%'"></span>
+        <div class="progressBar" data-bind="style: {width: $data.getProgressPercentage() * 100 + '%'}">
+
+        </div>
         <!-- /ko -->
         <!-- ko ifnot: $data.isStarted -->
         <button data-bind="click: () => $data.tryToStart()">Start</button>
