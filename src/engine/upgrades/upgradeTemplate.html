@@ -1,0 +1,12 @@
+<script type="text/html" id="upgrade-template">
+    <div class="upgrade">
+        <p>
+            <span data-bind="text: $data.displayName">Name</span>
+
+            <!-- ko if: !$data.isMaxLevel() -->
+                <span data-bind="template: { name: 'currency-template', data: $data.getCost() }"></span>
+                <button data-bind="click: () => $data.buy()">Buy</button>
+            <!-- /ko -->
+        </p>
+    </div>
+</script>

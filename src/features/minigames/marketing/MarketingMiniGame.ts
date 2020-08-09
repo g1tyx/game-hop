@@ -2,7 +2,6 @@ import * as ko from "knockout";
 
 import {MiniGame} from "../MiniGame";
 import {Feature} from "../../../engine/Feature";
-import {Requirement} from "../../../engine/requirements/Requirement";
 import {MarketingMiniGameSaveData} from "./MarketingMiniGameSaveData";
 import {MarketingFameRequirement} from "./MarketingFameRequirement";
 import {MarketingCampaign} from "./MarketingCampaign";
@@ -12,6 +11,7 @@ import {App} from "../../../App";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {MiniGameRequirement} from "../MiniGameRequirement";
+import {SingleLevelUpgrade} from "../../../engine/upgrades/SingleLevelUpgrade";
 
 export class MarketingMiniGame extends Feature implements MiniGame {
     name: string = "Marketing";
@@ -20,6 +20,7 @@ export class MarketingMiniGame extends Feature implements MiniGame {
 
     private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
+    upgrades: ObservableArrayProxy<SingleLevelUpgrade>;
 
     private readonly maxCampaigns: number = 4;
 
@@ -31,11 +32,15 @@ export class MarketingMiniGame extends Feature implements MiniGame {
         this._fame = ko.observable(0);
         this.yearRequirements = [];
         this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
+        this.upgrades = new ObservableArrayProxy<SingleLevelUpgrade>([]);
     }
 
     initialize(): void {
         this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000));
 
+
+        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-1', "Dummy upgrade", new Currency(100, CurrencyType.money), 0.10));
+        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-2', "Dummy upgrade 2", new Currency(300, CurrencyType.money), 0.10));
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
     }
 

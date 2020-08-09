@@ -11,11 +11,8 @@
         </div>
         <div class="campaignUpgrades">
             <p>Upgrades</p>
-            <div class="upgradeOffer">
-                <a href="#" class="btn">
-                    Automated buying 1 (100 money)
-                </a>
-            </div>
+            <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
+
         </div>
     </div>
 </div>
