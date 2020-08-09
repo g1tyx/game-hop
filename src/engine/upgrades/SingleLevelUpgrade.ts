@@ -7,7 +7,7 @@ import {Currency} from "../../features/wallet/Currency";
 export class SingleLevelUpgrade extends DiscreteUpgrade {
 
     constructor(identifier: string, displayName: string, cost: Currency, bonus: number) {
-        super(identifier, displayName, 1, [cost], [bonus], true);
+        super(identifier, displayName, 1, [cost], [0, bonus], true);
     }
 
     isBought(): boolean {

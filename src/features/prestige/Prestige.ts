@@ -4,21 +4,25 @@ import {SingleLevelUpgrade} from "../../engine/upgrades/SingleLevelUpgrade";
 import {Currency} from "../wallet/Currency";
 import {CurrencyType} from "../wallet/CurrencyType";
 import {App} from "../../App";
+import {SkillTree} from "../../engine/skilltree/SkillTree";
+import {SkillTreeUpgrade} from "../../engine/skilltree/SkillTreeUpgrade";
+import {PrestigeUpgradeType} from "./PrestigeUpgradeType";
+import {SkillTreeRequirement} from "../../engine/skilltree/SkillTreeRequirement";
 
 export class Prestige extends Feature {
     name: string = "Prestige";
     saveKey: string = 'prestige';
 
-    upgrades: SingleLevelUpgrade[];
+    skillTree: SkillTree;
 
     constructor() {
         super();
-        this.upgrades = [];
+        this.skillTree = new SkillTree([]);
     }
 
     initialize(): void {
-        this.upgrades.push(new SingleLevelUpgrade('example-prestige-1', "Gain 10% more x", new Currency(10, CurrencyType.prestige), 0.10))
-        this.upgrades.push(new SingleLevelUpgrade('example-prestige-2', "Gain 10% more y", new Currency(10, CurrencyType.prestige), 0.10))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
 
         App.game.yearTracker.onYearEnd.subscribe(() => this.prestige());
     }
@@ -28,52 +32,33 @@ export class Prestige extends Feature {
         //TODO(@Isha) do all prestige things here
         console.log("Directed by Christopher Nolan");
 
-        App.game.miniGames.progressReport();
+        const report = App.game.miniGames.getEndOfYearReport();
+        report.print();
+        let reward = 0;
+        for (const rep of report.reports) {
+            reward += rep.getPercentage();
+        }
+
+        App.game.wallet.gainPrestige(reward * 300 + 1);
         App.game.miniGames.reset();
 
         App.game.yearTracker.startNewYear();
     }
 
-    getUpgrade(key: string): SingleLevelUpgrade {
-        for (const upgrade of this.upgrades) {
-            if (upgrade.identifier === key) {
-                return upgrade;
-            }
-        }
-        return null;
+    getUpgrade(key: string): SkillTreeUpgrade {
+        return this.skillTree.getUpgrade(key);
     }
 
     load(data: PrestigeSaveData): void {
-        for (const key of data.upgradeKeys) {
-            const upgrade = this.getUpgrade(key);
-            if (key == null) {
-                console.warn(`Could not load upgrade ${key}`);
-            } else {
-                upgrade.level = 1;
-            }
-        }
+        this.skillTree.load(data.skillTree);
     }
 
     parseSaveData(json: Record<string, unknown>): PrestigeSaveData {
-        const data = new PrestigeSaveData();
-        const list = json?.upgradeKeys as string[];
-        if (list == null) {
-            return data;
-        }
-        for (const key of list) {
-            data.addUpgrade(key);
-        }
-        return data;
+        return new PrestigeSaveData(this.skillTree.parseSaveData(json?.skillTree as Record<string, unknown>));
     }
 
     save(): PrestigeSaveData {
-        const data = new PrestigeSaveData();
-        for (const upgrade of this.upgrades) {
-            if (upgrade.isBought()) {
-                data.addUpgrade(upgrade.identifier);
-            }
-        }
-        return data;
+        return new PrestigeSaveData(this.skillTree.save());
     }
 
 }

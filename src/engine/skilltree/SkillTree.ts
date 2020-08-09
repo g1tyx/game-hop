@@ -1,13 +1,17 @@
 import {SkillTreeUpgrade} from "./SkillTreeUpgrade";
 import {Saveable} from "../saving/Saveable";
 import {SkillTreeSaveData} from "./SkillTreeSaveData";
-import {PrestigeSaveData} from "../../features/prestige/PrestigeSaveData";
+import {PrestigeUpgradeType} from "../../features/prestige/PrestigeUpgradeType";
 
 export class SkillTree implements Saveable {
     upgrades: SkillTreeUpgrade[];
 
     constructor(upgrades: SkillTreeUpgrade[]) {
         this.upgrades = upgrades;
+    }
+
+    addUpgrade(upgrade: SkillTreeUpgrade): void {
+        this.upgrades.push(upgrade)
     }
 
     getUpgrade(key: string): SkillTreeUpgrade {
@@ -17,6 +21,19 @@ export class SkillTree implements Saveable {
             }
         }
         return null;
+    }
+
+    getBoughtUpgradesOfType(type: PrestigeUpgradeType): SkillTreeUpgrade[] {
+        return this.upgrades.filter(upgrade => upgrade.isBought() && upgrade.type == type);
+    }
+
+    getTotalMultiplierForType(type: PrestigeUpgradeType): number {
+        let multiplier = 1;
+        const boughtUpgradesOfType = this.getBoughtUpgradesOfType(type);
+        for (const upgrade of boughtUpgradesOfType) {
+            multiplier *= upgrade.getBonus();
+        }
+        return multiplier;
     }
 
     saveKey: string = 'skill-tree'
@@ -33,7 +50,7 @@ export class SkillTree implements Saveable {
     }
 
     parseSaveData(json: Record<string, unknown>): SkillTreeSaveData {
-        const data = new PrestigeSaveData();
+        const data = new SkillTreeSaveData();
         const list = json?.upgradeKeys as string[];
         if (list == null) {
             return data;
@@ -45,7 +62,7 @@ export class SkillTree implements Saveable {
     }
 
     save(): SkillTreeSaveData {
-        const data = new PrestigeSaveData();
+        const data = new SkillTreeSaveData();
         for (const upgrade of this.upgrades) {
             if (upgrade.isBought()) {
                 data.addUpgrade(upgrade.identifier);

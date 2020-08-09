@@ -1,5 +1,6 @@
 import {Requirement} from "../requirements/Requirement";
 import {SkillTree} from "./SkillTree";
+import {App} from "../../App";
 
 export class SkillTreeRequirement extends Requirement {
     skillTree: SkillTree
@@ -11,10 +12,8 @@ export class SkillTreeRequirement extends Requirement {
         this.upgradeKey = upgradeKey;
     }
 
-    // TODO(@Isha) change to App.game.miniGames.marketing.skillTree.getUpgrade(this.upgradeKey).level;
     getActualValue(): number {
-        // return App.game.miniGames.marketing.skillTree.getUpgrade(this.upgradeKey).level;
-        return 0;
+        return App.game.prestige.skillTree.getUpgrade(this.upgradeKey).level;
     }
 
     getTargetValue(): number {

@@ -9,6 +9,9 @@
 <body id="body">
 <!-- Load all templates-->
 <%= require('html-loader!./engine/features/settings/booleanSettingTemplate.html') %>
+<%= require('html-loader!./features/minigames/marketing/campaignOfferTemplate.html') %>
+<%= require('html-loader!./engine/upgrades/upgradeTemplate.html') %>
+<%= require('html-loader!./features/wallet/currencyTemplate.html') %>
 
 
     <div class="tv">
@@ -27,7 +30,8 @@
                     <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
                 </div>
                 <div class="game-branches">
-                    <%= require('html-loader!./features/minigames/dummy/dummy.html') %>
+                    <!-- <%= require('html-loader!./features/minigames/dummy/dummy.html') %> -->
+                    <%= require('html-loader!./features/minigames/marketing/marketing.html') %>
 
                     <h2>Gamestate: <span data-bind="text: state"> </span>!</h2>
 

@@ -10,6 +10,10 @@ export class Currency {
         this.type = type;
     }
 
+    public getTypeString(): string {
+        return CurrencyType[this.type];
+    }
+
     public toString(): string {
         return `Currency(${this.amount}, ${CurrencyType[this.type]})`;
     }

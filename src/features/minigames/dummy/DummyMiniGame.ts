@@ -1,15 +1,14 @@
 import {MiniGame} from "../MiniGame";
 import {Feature} from "../../../engine/Feature";
-import {Requirement} from "../../../engine/requirements/Requirement";
-import {SaveData} from "../../../engine/saving/SaveData";
 import * as ko from "knockout";
 import {DummyClickRequirement} from "./DummyClickRequirement";
 import {DummyMiniGameSaveData} from "./DummyMiniGameSaveData";
+import {MiniGameRequirement} from "../MiniGameRequirement";
 
 export class DummyMiniGame extends Feature implements MiniGame {
     name: string = "Dummy MiniGame";
     saveKey: string = "dummy";
-    yearRequirements: Requirement[];
+    yearRequirements: MiniGameRequirement[];
 
     _clicks: ko.Observable<number>;
 
@@ -21,7 +20,7 @@ export class DummyMiniGame extends Feature implements MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new DummyClickRequirement(100))
+        this.yearRequirements.push(new DummyClickRequirement("Clicks", 100))
     }
 
     click(): void {
@@ -41,7 +40,7 @@ export class DummyMiniGame extends Feature implements MiniGame {
         return new DummyMiniGameSaveData(json?.clicks as number ?? 0);
     }
 
-    save(): SaveData {
+    save(): DummyMiniGameSaveData {
         return new DummyMiniGameSaveData(this.clicks);
     }
 

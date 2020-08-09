@@ -1,11 +1,9 @@
+import {SkillTreeSaveData} from "../../engine/skilltree/SkillTreeSaveData";
+
 export class PrestigeSaveData {
-    upgradeKeys: string[]
+    skillTree: SkillTreeSaveData;
 
-    constructor() {
-        this.upgradeKeys = [];
-    }
-
-    addUpgrade(key: string): void {
-        this.upgradeKeys.push(key);
+    constructor(skillTree: SkillTreeSaveData) {
+        this.skillTree = skillTree;
     }
 }
