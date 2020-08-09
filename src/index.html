@@ -4,43 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Incremental game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"
+        integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug=="
+        crossorigin="anonymous" />
+
 </head>
 
 <body id="body">
-<!-- Load all templates-->
-<%= require('html-loader!./engine/features/settings/booleanSettingTemplate.html') %>
-<%= require('html-loader!./features/minigames/marketing/campaignOfferTemplate.html') %>
-<%= require('html-loader!./engine/upgrades/upgradeTemplate.html') %>
-<%= require('html-loader!./features/wallet/currencyTemplate.html') %>
+    <!-- Load all templates-->
+    <%= require('html-loader!./engine/features/settings/booleanSettingTemplate.html') %>
+    <%= require('html-loader!./features/minigames/marketing/campaignOfferTemplate.html') %>
+    <%= require('html-loader!./engine/upgrades/upgradeTemplate.html') %>
+    <%= require('html-loader!./features/wallet/currencyTemplate.html') %>
 
 
     <div class="tv">
         <div id="term">
-            <div id="root" class="grid-container">
-                <div class="currency-bar">
-                    <%= require('html-loader!./features/wallet/wallet.html') %>
+            <div class="grid-y medium-grid-frame">                           
+                <div class="cell shrink header medium-cell-block-container">   
+                    <div class="currency-bar cell">
+                        <%= require('html-loader!./features/wallet/wallet.html') %>
+                        <div class="progress-bar">
+                            <!-- main progress bar display -->
+                            <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
+                        </div> 
+                    </div>
+                </div> 
+                <div class="cell medium-auto medium-cell-block-container">     
+                  <div class="grid-x grid-padding-x full-height">                          
+                    <div class="cell medium-10 medium-cell-block-y">
+                        <div class="game-branches">
+                            <%= require('html-loader!./features/minigames/marketing/marketing.html') %>
+                        </div>                    
+                    </div>
+                    <div class="cell medium-2 medium-cell-block-y">
+                        <div class="prestige-bar">
+                            <%= require('html-loader!./engine/features/settings/settings.html') %>
+                            <button data-bind="click: () => save()">Save</button>
+                            <button data-bind="click: () => deleteSave()">Delete save (no confirmation)</button>
+                        </div>
+                    </div>  
+                  </div>
                 </div>
-                <div class="prestige-bar">
-                    <button data-bind="click: () => save()">Save</button>
-                    <button data-bind="click: () => deleteSave()">Delete save (no confirmation)</button>
-                    <%= require('html-loader!./engine/features/settings/settings.html') %>
-
-                </div>
-                <div class="progress-bar">
-                    <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
-                </div>
-                <div class="game-branches">
-                    <!-- <%= require('html-loader!./features/minigames/dummy/dummy.html') %> -->
-                    <%= require('html-loader!./features/minigames/marketing/marketing.html') %>
-
-                    <h2>Gamestate: <span data-bind="text: state"> </span>!</h2>
-
-                </div>
-            </div>
+              </div>
         </div>
         <!-- ko if: settings.getSetting('crt-style').value -->
-            <div class="flicker"></div>
-            <div class="scanlines"></div>
+        <div class="flicker"></div>
+        <div class="scanlines"></div>
         <!-- /ko -->
 
     </div>
