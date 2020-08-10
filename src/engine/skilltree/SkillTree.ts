@@ -1,7 +1,7 @@
 import {SkillTreeUpgrade} from "./SkillTreeUpgrade";
 import {Saveable} from "../saving/Saveable";
 import {SkillTreeSaveData} from "./SkillTreeSaveData";
-import {PrestigeUpgradeType} from "../../features/prestige/PrestigeUpgradeType";
+import {MiniGameUpgradeType} from "../../features/minigames/MiniGameUpgradeType";
 
 export class SkillTree implements Saveable {
     upgrades: SkillTreeUpgrade[];
@@ -23,11 +23,11 @@ export class SkillTree implements Saveable {
         return null;
     }
 
-    getBoughtUpgradesOfType(type: PrestigeUpgradeType): SkillTreeUpgrade[] {
+    getBoughtUpgradesOfType(type: MiniGameUpgradeType): SkillTreeUpgrade[] {
         return this.upgrades.filter(upgrade => upgrade.isBought() && upgrade.type == type);
     }
 
-    getTotalMultiplierForType(type: PrestigeUpgradeType): number {
+    getTotalMultiplierForType(type: MiniGameUpgradeType): number {
         let multiplier = 1;
         const boughtUpgradesOfType = this.getBoughtUpgradesOfType(type);
         for (const upgrade of boughtUpgradesOfType) {

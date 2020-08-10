@@ -3,7 +3,7 @@ import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
 import {EndOfYearReport} from "./EndOfYearReport";
-import {MiniGameReport} from "./MiniGameReport";
+import {MiniGame} from "./MiniGame";
 
 export class MiniGames extends Feature {
     name: string = 'Minigames';
@@ -18,31 +18,38 @@ export class MiniGames extends Feature {
         this.marketing = marketing;
     }
 
+    // TODO(@Isha) add more minigames
+    getMiniGames(): MiniGame[] {
+        return [this.dummy, this.marketing];
+    }
 
     initialize(): void {
-        this.dummy.initialize();
-        this.marketing.initialize();
+        for (const miniGame of this.getMiniGames()) {
+            miniGame.initialize();
+        }
     }
 
 
     update(delta: number): void {
-        this.dummy.update(delta);
-        this.marketing.update(delta);
+        for (const miniGame of this.getMiniGames()) {
+            miniGame.update(delta);
+        }
     }
 
     reset(): void {
-        this.dummy.reset();
-        this.marketing.reset();
+        for (const miniGame of this.getMiniGames()) {
+            miniGame.reset();
+        }
     }
 
     getEndOfYearReport(): EndOfYearReport {
         const report = new EndOfYearReport([]);
-        for (const requirement of this.dummy.yearRequirements) {
-            report.addReport(requirement.getReport());
+        for (const miniGame of this.getMiniGames()) {
+            for (const requirement of miniGame.yearRequirements) {
+                report.addReport(requirement.getReport());
+            }
         }
-        for (const requirement of this.marketing.yearRequirements) {
-            report.addReport(requirement.getReport());
-        }
+
         return report;
     }
 

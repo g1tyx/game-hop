@@ -1,7 +1,6 @@
 import * as ko from "knockout";
 
 import {MiniGame} from "../MiniGame";
-import {Feature} from "../../../engine/Feature";
 import {MarketingMiniGameSaveData} from "./MarketingMiniGameSaveData";
 import {MarketingFameRequirement} from "./MarketingFameRequirement";
 import {MarketingCampaign} from "./MarketingCampaign";
@@ -10,18 +9,15 @@ import {CurrencyType} from "../../wallet/CurrencyType";
 import {App} from "../../../App";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
-import {MiniGameRequirement} from "../MiniGameRequirement";
-import {SingleLevelUpgrade} from "../../../engine/upgrades/SingleLevelUpgrade";
-import {PrestigeUpgradeType} from "../../prestige/PrestigeUpgradeType";
+import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
+import {MiniGameUpgrade} from "../MiniGameUpgrade";
 
-export class MarketingMiniGame extends Feature implements MiniGame {
+export class MarketingMiniGame extends MiniGame  {
     name: string = "Marketing";
     saveKey: string = "marketing";
-    yearRequirements: MiniGameRequirement[];
 
     private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
-    upgrades: ObservableArrayProxy<SingleLevelUpgrade>;
 
     private readonly maxCampaigns: number = 4;
 
@@ -33,28 +29,26 @@ export class MarketingMiniGame extends Feature implements MiniGame {
         this._fame = ko.observable(0);
         this.yearRequirements = [];
         this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
-        this.upgrades = new ObservableArrayProxy<SingleLevelUpgrade>([]);
     }
 
     initialize(): void {
         this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000));
 
-
-        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-1', "Dummy upgrade", new Currency(100, CurrencyType.money), 1.10));
-        this.upgrades.push(new SingleLevelUpgrade('marketing-upgrade-2', "Dummy upgrade 2", new Currency(300, CurrencyType.money), 1.10));
+        this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 10% cheaper", new Currency(100, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 20% cheaper", new Currency(300, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingCost));
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
     }
 
     public getFameGainMultiplier(): number {
-        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingFame) * 3;
+        return App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.MarketingFame) * this.getTotalMultiplierForType(MiniGameUpgradeType.MarketingFame);
     }
 
-    getCostMultiplier(): number {
-        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingCost) * 3;
+    public getCostMultiplier(): number {
+        return App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.MarketingCost) * this.getTotalMultiplierForType(MiniGameUpgradeType.MarketingCost)
     }
 
-    getSpeedMultiplier(): number {
-        return App.game.prestige.skillTree.getTotalMultiplierForType(PrestigeUpgradeType.MarketingSpeed) * 3;
+    public getSpeedMultiplier(): number {
+        return App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.MarketingSpeed) * this.getTotalMultiplierForType(MiniGameUpgradeType.MarketingSpeed)
     }
 
     /**

@@ -1,14 +1,11 @@
 import {MiniGame} from "../MiniGame";
-import {Feature} from "../../../engine/Feature";
 import * as ko from "knockout";
 import {DummyClickRequirement} from "./DummyClickRequirement";
 import {DummyMiniGameSaveData} from "./DummyMiniGameSaveData";
-import {MiniGameRequirement} from "../MiniGameRequirement";
 
-export class DummyMiniGame extends Feature implements MiniGame {
+export class DummyMiniGame extends MiniGame {
     name: string = "Dummy MiniGame";
     saveKey: string = "dummy";
-    yearRequirements: MiniGameRequirement[];
 
     _clicks: ko.Observable<number>;
 
@@ -16,7 +13,6 @@ export class DummyMiniGame extends Feature implements MiniGame {
     constructor() {
         super();
         this._clicks = ko.observable(0);
-        this.yearRequirements = [];
     }
 
     initialize(): void {
