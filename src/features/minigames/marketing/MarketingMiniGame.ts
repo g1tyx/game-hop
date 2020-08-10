@@ -11,8 +11,9 @@ import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 import {MiniGameUpgrade} from "../MiniGameUpgrade";
+import {RandomHelper} from "../../../engine/util/RandomHelper";
 
-export class MarketingMiniGame extends MiniGame  {
+export class MarketingMiniGame extends MiniGame {
     name: string = "Marketing";
     saveKey: string = "marketing";
 
@@ -32,7 +33,7 @@ export class MarketingMiniGame extends MiniGame  {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000, 200));
+        this.yearRequirements.push(new MarketingFameRequirement("Marketing - Gain fame", 1000, 200));
 
         this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 10% cheaper", new Currency(100, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingCost));
         this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 20% cheaper", new Currency(300, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingCost));
@@ -71,9 +72,16 @@ export class MarketingMiniGame extends MiniGame  {
 
     spawnCampaign(): void {
         if (this.availableCampaigns.length < this.maxCampaigns) {
-            this.availableCampaigns.push(new MarketingCampaign("Flavour text", 0.5, new Currency(100, CurrencyType.money), 100))
+            this.availableCampaigns.push(this.generateRandomCampaign())
 
         }
+    }
+
+    private generateRandomCampaign(): MarketingCampaign {
+        const fameReward = RandomHelper.fuzzNumber(30 + RandomHelper.randomBetween(100, 300), 0.4);
+        const cost = RandomHelper.fuzzNumber(fameReward/2.5, 0.4);
+        const monthsToComplete = RandomHelper.fuzzNumber(fameReward/100, 0.8);
+        return new MarketingCampaign("Flavour text", monthsToComplete, new Currency(cost, CurrencyType.money), fameReward)
     }
 
     update(delta: number): void {

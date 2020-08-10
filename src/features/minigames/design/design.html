@@ -4,13 +4,33 @@
         <p data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</p>
     </div>
 
-    <p>Target:<span data-bind="text: miniGames.design.targetShape.toString()"> Target</span></p>
+    <!--    Stupid webpack not bundling ko images correctly -->
+    <!-- ko if: miniGames.design.targetShape.shape == "Circle" -->
+    <img src="./shapes/circle.png"
+         data-bind="attr:{class: 'design-shape-' + miniGames.design.targetShape.color.toLowerCase()}">
+    <!-- /ko -->
+    <!-- ko if: miniGames.design.targetShape.shape == "Triangle" -->
+    <img src="./shapes/triangle.png"
+         data-bind="attr:{class: 'design-shape-' + miniGames.design.targetShape.color.toLowerCase()}">
+    <!-- /ko -->
+    <!-- ko if: miniGames.design.targetShape.shape == "Square" -->
+    <img src="./shapes/square.png"
+         data-bind="attr:{class: 'design-shape-' + miniGames.design.targetShape.color.toLowerCase()}">
+    <!-- /ko -->
+    <!-- ko if: miniGames.design.targetShape.shape == "Pentagon" -->
+    <img src="./shapes/pentagon.png"
+         data-bind="attr:{class: 'design-shape-' + miniGames.design.targetShape.color.toLowerCase()}">
+    <!-- /ko -->
+    <!-- ko if: miniGames.design.targetShape.shape == "Hexagon" -->
+    <img src="./shapes/hexagon.png"
+         data-bind="attr:{class: 'design-shape-' + miniGames.design.targetShape.color.toLowerCase()}">
+    <!-- /ko -->
+
 
     <div data-bind="foreach: miniGames.design.shapeOptions">
-        <button style="border:1px solid red;"  data-bind="click: () => $data.guess()">
+        <button style="border:1px solid red;" data-bind="click: () => $data.guess()">
             <span data-bind="text: $data.toString()">Description</span>
         </button>
     </div>
-
 
 </div>

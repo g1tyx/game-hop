@@ -5,7 +5,6 @@ import {Currency} from "./Currency";
 import {CurrencyType} from "./CurrencyType";
 import {WalletSaveData} from "./WalletSaveData";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
-import {StatisticRequirement} from "../../engine/requirements/StatisticRequirement";
 
 export class Wallet extends Feature {
     name = 'Wallet';
@@ -17,6 +16,10 @@ export class Wallet extends Feature {
     constructor() {
         super();
         this.currencies = new ArrayOfObservables([0, 0]);
+    }
+
+    public resetMoney(): void {
+        this.currencies[CurrencyType.money] = 0;
     }
 
     public gainMoney(base: number): number {
@@ -83,6 +86,7 @@ export class Wallet extends Feature {
     public get onMoneyGain(): ISimpleEvent<number> {
         return this._onMoneyGain.asEvent();
     }
+
     public get onPrestigeGain(): ISimpleEvent<number> {
         return this._onPrestigeGain.asEvent();
     }

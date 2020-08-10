@@ -16,6 +16,8 @@ export class YearTracker extends Feature {
     name: string = "Year Tracker";
     saveKey: string = 'year-tracker';
 
+    public readonly monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     private readonly _month: ko.Observable<number>;
     private readonly _monthProgress: ko.Observable<number>
 
@@ -24,20 +26,21 @@ export class YearTracker extends Feature {
     private readonly _onYearStart = new SignalDispatcher();
     private readonly _onYearEnd = new SignalDispatcher();
 
+    private _isStarted: boolean = false;
+
     private readonly realMonthTime: number;
-    private yearHasEnded: boolean;
+    private _yearHasEnded: ko.Observable<boolean>;
 
     constructor(realMonthTime: number) {
         super();
         this.realMonthTime = realMonthTime;
-        this.yearHasEnded = false;
+        this._yearHasEnded = ko.observable(false);
         this._month = ko.observable(0);
         this._monthProgress = ko.observable(0);
 
     }
 
     initialize(): void {
-        this.startNewYear();
     }
 
     startNewYear(): void {
@@ -47,6 +50,10 @@ export class YearTracker extends Feature {
     }
 
     update(delta: number): void {
+        if (!this._isStarted) {
+            this._isStarted = true;
+            this.startNewYear();
+        }
         if (this.yearHasEnded) {
             return;
         }
@@ -65,18 +72,19 @@ export class YearTracker extends Feature {
     nextMonth(): void {
         if (this.yearHasEnded) {
             console.error("Cannot go to next month when year is ended");
+            return;
         }
 
         this._onMonthEnd.dispatch(this.month);
         this.month++;
         this.monthProgress = 0;
-        this._onMonthStart.dispatch(this.month);
 
         // 11 is the last year, so 12 after incrementing
         if (this.month == 12) {
             this.yearEnd();
+            return;
         }
-
+        this._onMonthStart.dispatch(this.month);
     }
 
     yearEnd(): void {
@@ -121,6 +129,14 @@ export class YearTracker extends Feature {
     }
 
     // Knockout getters/setters
+    get yearHasEnded(): boolean {
+        return this._yearHasEnded();
+    }
+
+    set yearHasEnded(value: boolean) {
+        this._yearHasEnded(value);
+    }
+
     get month(): number {
         return this._month();
     }

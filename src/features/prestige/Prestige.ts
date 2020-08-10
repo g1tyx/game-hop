@@ -24,7 +24,6 @@ export class Prestige extends Feature {
         this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
         this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
 
-        App.game.yearTracker.onYearEnd.subscribe(() => this.prestige());
     }
 
 
@@ -35,15 +34,15 @@ export class Prestige extends Feature {
         App.game.miniGames.updateEndOfYearReport()
         const report = App.game.miniGames.endOfYearReport;
         report.print();
-        let reward = 0;
-        for (const rep of report.reports) {
-            reward += rep.getPercentage();
+
+        App.game.wallet.resetMoney();
+
+        if (report.isCompleted()) {
+            App.game.budget.shrinkBudget(report.moneyLeft);
         }
 
-        App.game.wallet.gainPrestige(reward * 300 + 1);
+        App.game.wallet.gainPrestige(report.getTotalReward());
         App.game.miniGames.reset();
-
-        App.game.yearTracker.startNewYear();
     }
 
     getUpgrade(key: string): SkillTreeUpgrade {

@@ -55,7 +55,7 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new BalancingFocusRequirement("Gain focus", 1000, 100))
+        this.yearRequirements.push(new BalancingFocusRequirement("Development - Stay focused", 1000, 100))
 
         this.randomizeTarget();
     }

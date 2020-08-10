@@ -10,7 +10,7 @@ export class AchievementsController extends Controller {
 
 
     constructor(achievements: Achievements) {
-        super();
+        super('achievements');
         this.achievements = achievements;
     }
 

@@ -20,12 +20,124 @@
         <span data-bind="text: '(' + ($data.getPercentage() * 100).toFixed(0) + '%)'"></span>
     </div>
     <div class="cell large-3">
-        <p data-bind="text: $data.actual"></p>
+        <p data-bind="text: $data.actual.toFixed(2)"></p>
     </div>
     <div class="cell large-3">
-        <p data-bind="text: $data.target"></p>
+        <p data-bind="text: $data.target.toFixed(2)"></p>
     </div>
     <div class="cell large-3">
-        <span data-bind="text: $data.getReward()"></span><span> Prestige Points</span>
+        <span data-bind="text: $data.getReward().toFixed(2)"></span><span> Prestige Points</span>
     </div>
 </div>
+
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Completion Bonus</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            <span data-bind="text: miniGames.endOfYearReport.getCompletionBonus().toFixed(2)"></span> Prestige Points
+        </p>
+    </div>
+</div>
+
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Multiplier</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            <span data-bind="text: miniGames.endOfYearReport.multiplier.toFixed(2)"></span>x
+        </p>
+    </div>
+</div>
+<hr>
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Total</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            <span data-bind="text: miniGames.endOfYearReport.getTotalReward().toFixed(2)"></span> Prestige Points
+        </p>
+    </div>
+</div>
+
+<hr>
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Previous Budget</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            $<span data-bind="text: (budget.yearlyBudget + miniGames.endOfYearReport.getSurplus()).toFixed(2)"></span>
+        </p>
+    </div>
+</div>
+
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Surplus</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            $<span data-bind="text: miniGames.endOfYearReport.getSurplus().toFixed(2)"></span>
+        </p>
+    </div>
+</div>
+
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>New Budget</p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p></p>
+    </div>
+    <div class="cell large-3">
+        <p>
+            $<span data-bind="text: budget.yearlyBudget.toFixed(2)"></span>
+        </p>
+    </div>
+</div>
+
+<hr>
+
+
+<!-- ko if: yearTracker.yearHasEnded -->
+<button style="border: 1px solid red;" data-bind="click: () => getController('year-tracker').startNewYear()">Start a new
+    year
+</button>
+<!-- /ko -->

@@ -7,10 +7,11 @@ import {AchievementsController} from "./engine/achievements/AchievementsControll
 import {YearTracker} from "./features/yeartracker/YearTracker";
 import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
-import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGame";
 import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGame";
 import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
+import {Budget} from "./features/budget/Budget";
+import {YearTrackerController} from "./controllers/YearTrackerController";
 
 export class App {
 
@@ -21,6 +22,7 @@ export class App {
         App.game = this.createNewGame();
 
         App.game.addController(new AchievementsController(App.game.achievements));
+        App.game.addController(new YearTrackerController());
 
         App.game.initialize();
         App.game.load();
@@ -33,12 +35,12 @@ export class App {
             new YearTracker(15.0),
             new Prestige(),
             new MiniGames(
-                new DummyMiniGame(),
                 new MarketingMiniGame(),
                 new BalancingMiniGame(),
                 new DesignMiniGame()
             ),
             new Wallet(),
+            new Budget(),
             new Statistics(),
             new Achievements(),
         );
