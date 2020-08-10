@@ -2,9 +2,9 @@
     <div class="campaignOffer">
         <p>
             <span data-bind="text: $data.description">Description</span>
-            <span data-bind="text: $data.monthsToComplete">Time</span> Months
-            <span data-bind="text: $data.cost.amount">Cost</span> Money
-            <span data-bind="text: $data.fameReward">Fame</span> Fame
+            <span data-bind="text: $data.monthsToComplete.toFixed(2)">Time</span> Months
+            $<span data-bind="text: $data.cost.amount.toFixed(2)">Cost</span>
+            <span data-bind="text: $data.fameReward.toFixed(2)">Fame</span> Fame
 
         </p>
 
