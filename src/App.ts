@@ -10,6 +10,7 @@ import {MiniGames} from "./features/minigames/MiniGames";
 import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGame";
 import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGame";
+import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
 
 export class App {
 
@@ -35,6 +36,7 @@ export class App {
                 new DummyMiniGame(),
                 new MarketingMiniGame(),
                 new BalancingMiniGame(),
+                new DesignMiniGame()
             ),
             new Wallet(),
             new Statistics(),
