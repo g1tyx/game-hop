@@ -80,10 +80,11 @@ export class DesignMiniGame extends MiniGame {
     }
 
     load(data: DesignMiniGameSaveData): void {
+        this.shapesCorrect = data.correct;
     }
 
     parseSaveData(json: Record<string, unknown>): DesignMiniGameSaveData {
-        return undefined;
+        return new DesignMiniGameSaveData(json?.correct as number ?? 0)
     }
 
     reset(): void {
@@ -91,7 +92,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     save(): DesignMiniGameSaveData {
-        return undefined;
+        return new DesignMiniGameSaveData(this.shapesCorrect)
     }
 
     // Knockout getters/setters
