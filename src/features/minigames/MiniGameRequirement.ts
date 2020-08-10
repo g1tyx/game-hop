@@ -4,11 +4,13 @@ import {MiniGameReport} from "./MiniGameReport";
 export abstract class MiniGameRequirement extends Requirement {
     description: string;
     target: number;
+    basePrestigeReward: number;
 
-    protected constructor(description: string, target: number) {
+    protected constructor(description: string, target: number, basePrestigeReward: number) {
         super();
         this.description = description;
         this.target = target;
+        this.basePrestigeReward = basePrestigeReward;
     }
 
     abstract getActualValue(): number;
@@ -18,7 +20,7 @@ export abstract class MiniGameRequirement extends Requirement {
     }
 
     getReport(): MiniGameReport {
-        return new MiniGameReport(this.description, Math.min(this.getActualValue(), this.getTargetValue()), this.getTargetValue());
+        return new MiniGameReport(this.description, Math.min(this.getActualValue(), this.getTargetValue()), this.getTargetValue(), this.basePrestigeReward);
     }
 
     lockedReason(): string {
