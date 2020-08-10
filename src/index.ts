@@ -18,7 +18,8 @@ declare global {
 $(function () {
     App.start();
 
-    $().foundation(); //this should init the tabs but it doesnt
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    $(document).foundation();
 
     // Expose the App class to the window (and the console)
     if (process.env.DEBUG && typeof window !== undefined) {
