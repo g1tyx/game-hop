@@ -7,7 +7,7 @@
     <span data-bind="text: (yearTracker.monthProgress * 100).toFixed(0) + '%'"></span>
     <!-- /ko -->
     <!-- ko if: yearTracker.yearHasEnded -->
-    <button data-bind="click: () => yearTracker.startNewYear()">Start a new year</button>
+    <button style="border: 1px solid red;" data-bind="click: () => getController('year-tracker').startNewYear()">Start a new year</button>
     <!-- /ko -->
 
 </div>

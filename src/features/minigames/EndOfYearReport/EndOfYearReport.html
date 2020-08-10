@@ -82,5 +82,5 @@
 </div>
 
 <!-- ko if: yearTracker.yearHasEnded -->
-<button style="border: 1px solid red;" data-bind="click: () => yearTracker.startNewYear()">Start a new year</button>
+<button style="border: 1px solid red;" data-bind="click: () => getController('year-tracker').startNewYear()">Start a new year</button>
 <!-- /ko -->

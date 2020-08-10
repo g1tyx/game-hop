@@ -57,6 +57,16 @@ export class Game {
         }
     }
 
+    public getController(key: string): Controller {
+        for (const controller of this.featureControllers) {
+            if (controller.key == key) {
+                return controller;
+            }
+        }
+        console.error(`Could not load controller with key ${key}`);
+        return null;
+    }
+
     public addController(controller: Controller): void {
         this.featureControllers.push(controller);
     }

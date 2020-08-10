@@ -5,8 +5,6 @@ import {ISignal, SignalDispatcher} from "ste-signals";
 
 import {Feature} from "../../engine/Feature";
 import {YearTrackerSaveData} from "./YearTrackerSaveData";
-import {GameState} from "../../GameState";
-import {App} from "../../App";
 
 /**
  * Year tracker to track how far into the year we are.
@@ -44,7 +42,6 @@ export class YearTracker extends Feature {
     }
 
     startNewYear(): void {
-        App.game.start();
         this.reset();
         this._onYearStart.dispatch();
         this._onMonthStart.dispatch(0);

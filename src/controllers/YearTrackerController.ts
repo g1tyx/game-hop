@@ -6,7 +6,7 @@ import {App} from "../App";
 export class YearTrackerController extends Controller {
 
     constructor() {
-        super();
+        super('year-tracker');
     }
 
     initialize(): void {
@@ -17,6 +17,11 @@ export class YearTrackerController extends Controller {
         App.game.stop();
         App.game.prestige.prestige();
         $("#reportPanel-label").click();
+    }
+
+    startNewYear(): void {
+        App.game.start();
+        App.game.yearTracker.startNewYear();
     }
 
 }
