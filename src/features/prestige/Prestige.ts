@@ -39,8 +39,8 @@ export class Prestige extends Feature {
 
         if (report.isCompleted()) {
             App.game.budget.shrinkBudget(report.moneyLeft);
-
         }
+
         App.game.wallet.gainPrestige(report.getTotalReward());
         App.game.miniGames.reset();
     }

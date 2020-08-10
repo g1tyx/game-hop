@@ -28,6 +28,10 @@ export class EndOfYearReport {
         return reward * this.multiplier;
     }
 
+    getSurplus(): number {
+        return this.isCompleted() ? this.moneyLeft : 0;
+    }
+
     getCompletionBonus(): number {
         return this.isCompleted() ? this._completionBonus : 0;
     }
