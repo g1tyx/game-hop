@@ -2,7 +2,7 @@ import {Feature} from "../../engine/Feature";
 import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
-import {EndOfYearReport} from "./EndOfYearReport";
+import {EndOfYearReport} from "./EndOfYearReport/EndOfYearReport";
 import {MiniGame} from "./MiniGame";
 
 export class MiniGames extends Feature {

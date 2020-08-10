@@ -1,4 +1,4 @@
-import {MiniGameReport} from "./MiniGameReport";
+import {MiniGameReport} from '../MiniGameReport';
 
 export class EndOfYearReport {
     reports: MiniGameReport[];
