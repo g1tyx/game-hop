@@ -1,9 +1,8 @@
 import {MiniGame} from "../MiniGame";
 import * as ko from "knockout";
 import {BalancingFocusRequirement} from "./BalancingFocusRequirement";
+import {BalancingMiniGameSaveData} from "./BalancingMiniGameSaveData";
 
-class BalancingMiniGameSaveData {
-}
 
 export class BalancingMiniGame extends MiniGame {
     name: string = "Balancing";

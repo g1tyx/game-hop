@@ -5,6 +5,7 @@ import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
 import {BalancingMiniGame} from "./balancing/BalancingMiniGame";
+import {DesignMiniGame} from "./design/DesignMiniGame";
 import {EndOfYearReport} from "./EndOfYearReport/EndOfYearReport";
 import {MiniGame} from "./MiniGame";
 
@@ -15,21 +16,23 @@ export class MiniGames extends Feature {
     dummy: DummyMiniGame
     marketing: MarketingMiniGame
     balancing: BalancingMiniGame;
+    design: DesignMiniGame;
 
     private readonly _endOfYearReport: ko.Observable<EndOfYearReport>;
 
-    constructor(dummy: DummyMiniGame, marketing: MarketingMiniGame, balancing: BalancingMiniGame) {
+    constructor(dummy: DummyMiniGame, marketing: MarketingMiniGame, balancing: BalancingMiniGame, design: DesignMiniGame) {
         super();
         this.dummy = dummy;
         this.marketing = marketing;
         this.balancing = balancing;
+        this.design = design
         this._endOfYearReport = ko.observable();
 
     }
 
     // TODO(@Isha) add more minigames
     getMiniGames(): MiniGame[] {
-        return [this.dummy, this.marketing, this.balancing];
+        return [this.dummy, this.marketing, this.balancing, this.design];
     }
 
     initialize(): void {
@@ -73,18 +76,20 @@ export class MiniGames extends Feature {
         this.dummy.load(data.dummy);
         this.marketing.load(data.marketing);
         this.balancing.load(data.balancing);
+        this.design.load(data.design);
     }
 
     parseSaveData(json: Record<string, unknown>): MiniGamesSaveData {
         const dummyData = this.dummy.parseSaveData(json?.dummy as Record<string, unknown>);
         const marketingData = this.marketing.parseSaveData(json?.marketing as Record<string, unknown>);
         const balancingData = this.balancing.parseSaveData(json?.balancing as Record<string, unknown>);
-        return new MiniGamesSaveData(dummyData, marketingData, balancingData);
+        const designData = this.design.parseSaveData(json?.design as Record<string, unknown>);
+        return new MiniGamesSaveData(dummyData, marketingData, balancingData, designData);
 
     }
 
     save(): MiniGamesSaveData {
-        return new MiniGamesSaveData(this.dummy.save(), this.marketing.save(), this.balancing.save());
+        return new MiniGamesSaveData(this.dummy.save(), this.marketing.save(), this.balancing.save(), this.design.save());
     }
 
     // Knockout getters/setters
