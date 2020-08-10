@@ -1,6 +1,6 @@
 <div class="barRoot">
     <!-- ko ifnot: yearTracker.yearHasEnded -->
-    <div class="monthLabel">Month: <span data-bind="text: yearTracker.month"></span></div>
+    <div class="monthLabel"><span data-bind="text: yearTracker.monthNames[yearTracker.month]"></span></div>
     <div class="progressBarOuter">
         <div class="progressBarInner" data-bind="style: {width: yearTracker.monthProgress * 100 + '%'}"></div>
     </div>

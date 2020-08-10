@@ -16,6 +16,8 @@ export class YearTracker extends Feature {
     name: string = "Year Tracker";
     saveKey: string = 'year-tracker';
 
+    public readonly monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     private readonly _month: ko.Observable<number>;
     private readonly _monthProgress: ko.Observable<number>
 
