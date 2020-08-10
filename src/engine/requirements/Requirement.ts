@@ -13,7 +13,7 @@ export abstract class Requirement {
 
     getProgressString(): string {
         const targetValue = this.getTargetValue();
-        return `${Math.min(this.getActualValue(), targetValue)}/${targetValue}`;
+        return `${Math.min(this.getActualValue(), targetValue).toFixed(2)}/${targetValue}`;
     }
 
     abstract lockedReason(): string;
