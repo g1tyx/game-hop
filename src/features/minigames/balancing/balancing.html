@@ -1,0 +1,17 @@
+<div class="balancingMinigame">
+
+    <div class="balancingProgress">
+        <p data-bind="text: miniGames.balancing.yearRequirements[0].getProgressString()"> Progress</p>
+    </div>
+
+    <button data-bind="click: () => miniGames.balancing.moveLeft()">Left</button>
+    <button data-bind="click: () => miniGames.balancing.moveRight()">Right</button>
+
+    <p>
+        Actual:
+        <span data-bind="text: miniGames.balancing.actualCursor.toFixed(2)">Actual Cursor</span>
+        Target:
+        <span data-bind="text: miniGames.balancing.targetCursor.toFixed(2)">Target Cursor</span>
+
+    </p>
+</div>
