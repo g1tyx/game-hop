@@ -32,7 +32,7 @@ export class MarketingMiniGame extends MiniGame  {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new MarketingFameRequirement("Marketing fame", 1000, 200));
+        this.yearRequirements.push(new MarketingFameRequirement("Marketing - Gain fame", 1000, 200));
 
         this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 10% cheaper", new Currency(100, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingCost));
         this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 20% cheaper", new Currency(300, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingCost));

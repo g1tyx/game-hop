@@ -30,7 +30,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new DesignShapesRequirement("Create designs", 100, 400))
+        this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 400))
 
         this.generateNewPuzzle()
     }
