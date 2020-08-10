@@ -1,1 +1,17 @@
-test
+Last years report
+<table>
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th>Actual</th>
+        <th>Target</th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: miniGames.endOfYearReport.reports">
+    <tr>
+        <td data-bind="text: $data.description"></td>
+        <td data-bind="text: $data.actual"></td>
+        <td data-bind="text: $data.target"></td>
+    </tr>
+    </tbody>
+</table>
