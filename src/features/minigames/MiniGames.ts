@@ -1,8 +1,10 @@
+import * as ko from "knockout";
+
 import {Feature} from "../../engine/Feature";
 import {MiniGamesSaveData} from "./MiniGamesSaveData";
 import {DummyMiniGame} from "./dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./marketing/MarketingMiniGame";
-import {EndOfYearReport} from "./EndOfYearReport";
+import {EndOfYearReport} from "./EndOfYearReport/EndOfYearReport";
 import {MiniGame} from "./MiniGame";
 
 export class MiniGames extends Feature {
@@ -12,10 +14,13 @@ export class MiniGames extends Feature {
     dummy: DummyMiniGame
     marketing: MarketingMiniGame
 
+    private readonly _endOfYearReport: ko.Observable<EndOfYearReport>;
+
     constructor(dummy: DummyMiniGame, marketing: MarketingMiniGame) {
         super();
         this.dummy = dummy;
         this.marketing = marketing;
+        this._endOfYearReport = ko.observable();
     }
 
     // TODO(@Isha) add more minigames
@@ -27,6 +32,9 @@ export class MiniGames extends Feature {
         for (const miniGame of this.getMiniGames()) {
             miniGame.initialize();
         }
+
+        this.updateEndOfYearReport();
+
     }
 
 
@@ -40,6 +48,10 @@ export class MiniGames extends Feature {
         for (const miniGame of this.getMiniGames()) {
             miniGame.reset();
         }
+    }
+
+    updateEndOfYearReport(): void {
+        this.endOfYearReport = this.getEndOfYearReport();
     }
 
     getEndOfYearReport(): EndOfYearReport {
@@ -68,5 +80,15 @@ export class MiniGames extends Feature {
     save(): MiniGamesSaveData {
         return new MiniGamesSaveData(this.dummy.save(), this.marketing.save());
     }
+
+    // Knockout getters/setters
+    get endOfYearReport(): EndOfYearReport {
+        return this._endOfYearReport();
+    }
+
+    set endOfYearReport(value: EndOfYearReport) {
+        this._endOfYearReport(value);
+    }
+
 
 }
