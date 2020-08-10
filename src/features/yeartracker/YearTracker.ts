@@ -72,18 +72,19 @@ export class YearTracker extends Feature {
     nextMonth(): void {
         if (this.yearHasEnded) {
             console.error("Cannot go to next month when year is ended");
+            return;
         }
 
         this._onMonthEnd.dispatch(this.month);
         this.month++;
         this.monthProgress = 0;
-        this._onMonthStart.dispatch(this.month);
 
         // 11 is the last year, so 12 after incrementing
         if (this.month == 12) {
             this.yearEnd();
+            return;
         }
-
+        this._onMonthStart.dispatch(this.month);
     }
 
     yearEnd(): void {

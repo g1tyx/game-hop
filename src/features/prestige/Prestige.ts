@@ -35,11 +35,10 @@ export class Prestige extends Feature {
         const report = App.game.miniGames.endOfYearReport;
         report.print();
 
-        const moneyLeft = App.game.wallet.currencies[CurrencyType.money];
         App.game.wallet.resetMoney();
 
         if (report.isCompleted()) {
-            App.game.budget.shrinkBudget(moneyLeft);
+            App.game.budget.shrinkBudget(report.moneyLeft);
 
         }
         App.game.wallet.gainPrestige(report.getTotalReward());
