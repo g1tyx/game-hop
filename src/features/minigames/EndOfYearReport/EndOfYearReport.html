@@ -1,0 +1,31 @@
+<p style="font-size:2rem;text-align:center;">Last Year Reports</p>
+<div class="grid-x">
+    <div class="cell large-3">
+        <p>Description</p>
+    </div>
+    <div class="cell large-3">
+        <p>Actual</p>
+    </div>
+    <div class="cell large-3">
+        <p>Target</p>
+    </div>
+    <div class="cell large-3">
+        <p>Reward</p>
+    </div>
+</div>
+
+<div class="grid-x" data-bind="foreach: miniGames.endOfYearReport.reports">
+    <div class="cell large-3">
+        <span data-bind="text: $data.description"></span>
+        <span data-bind="text: '(' + ($data.getPercentage() * 100).toFixed(0) + '%)'"></span>
+    </div>
+    <div class="cell large-3">
+        <p data-bind="text: $data.actual"></p>
+    </div>
+    <div class="cell large-3">
+        <p data-bind="text: $data.target"></p>
+    </div>
+    <div class="cell large-3">
+        <span data-bind="text: $data.getReward()"></span><span> Prestige Points</span>
+    </div>
+</div>

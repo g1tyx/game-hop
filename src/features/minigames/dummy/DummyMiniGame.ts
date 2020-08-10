@@ -16,7 +16,7 @@ export class DummyMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new DummyClickRequirement("Clicks", 100))
+        this.yearRequirements.push(new DummyClickRequirement("Clicks", 100, 100))
     }
 
     click(): void {

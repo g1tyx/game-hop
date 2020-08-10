@@ -3,8 +3,8 @@ import {MiniGameRequirement} from "../MiniGameRequirement";
 
 export class DummyClickRequirement extends MiniGameRequirement {
 
-    constructor(description: string, target: number) {
-        super(description, target);
+    constructor(description: string, target: number, prestigeReward: number) {
+        super(description, target, prestigeReward);
     }
 
     getActualValue(): number {
