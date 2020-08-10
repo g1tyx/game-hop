@@ -6,7 +6,7 @@ import {CurrencyType} from "../wallet/CurrencyType";
 import {App} from "../../App";
 import {SkillTree} from "../../engine/skilltree/SkillTree";
 import {SkillTreeUpgrade} from "../../engine/skilltree/SkillTreeUpgrade";
-import {PrestigeUpgradeType} from "./PrestigeUpgradeType";
+import {MiniGameUpgradeType} from "../minigames/MiniGameUpgradeType";
 import {SkillTreeRequirement} from "../../engine/skilltree/SkillTreeRequirement";
 
 export class Prestige extends Feature {
@@ -21,8 +21,8 @@ export class Prestige extends Feature {
     }
 
     initialize(): void {
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(PrestigeUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
+        this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
 
         App.game.yearTracker.onYearEnd.subscribe(() => this.prestige());
     }
