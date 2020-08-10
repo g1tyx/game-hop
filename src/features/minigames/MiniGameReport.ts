@@ -15,6 +15,10 @@ export class MiniGameReport {
         return this.getPercentage() * this.basePrestigeReward;
     }
 
+    isCompleted(): boolean {
+        return this.actual >= this.target;
+    }
+
     getPercentage(): number {
         return this.actual / this.target;
     }

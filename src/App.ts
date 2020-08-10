@@ -11,6 +11,7 @@ import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGame";
 import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGame";
 import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
+import {Budget} from "./features/budget/Budget";
 
 export class App {
 
@@ -39,6 +40,7 @@ export class App {
                 new DesignMiniGame()
             ),
             new Wallet(),
+            new Budget(),
             new Statistics(),
             new Achievements(),
         );

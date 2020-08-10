@@ -24,6 +24,8 @@ export class YearTracker extends Feature {
     private readonly _onYearStart = new SignalDispatcher();
     private readonly _onYearEnd = new SignalDispatcher();
 
+    private _isStarted: boolean = false;
+
     private readonly realMonthTime: number;
     private yearHasEnded: boolean;
 
@@ -37,7 +39,6 @@ export class YearTracker extends Feature {
     }
 
     initialize(): void {
-        this.startNewYear();
     }
 
     startNewYear(): void {
@@ -47,6 +48,10 @@ export class YearTracker extends Feature {
     }
 
     update(delta: number): void {
+        if (!this._isStarted) {
+            this._isStarted = true;
+            this.startNewYear();
+        }
         if (this.yearHasEnded) {
             return;
         }

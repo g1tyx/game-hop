@@ -8,6 +8,9 @@ import {BalancingMiniGame} from "./balancing/BalancingMiniGame";
 import {DesignMiniGame} from "./design/DesignMiniGame";
 import {EndOfYearReport} from "./EndOfYearReport/EndOfYearReport";
 import {MiniGame} from "./MiniGame";
+import {App} from "../../App";
+import {CurrencyType} from "../wallet/CurrencyType";
+import {MiniGameUpgradeType} from "./MiniGameUpgradeType";
 
 export class MiniGames extends Feature {
     name: string = 'Minigames';
@@ -62,7 +65,9 @@ export class MiniGames extends Feature {
     }
 
     getEndOfYearReport(): EndOfYearReport {
-        const report = new EndOfYearReport([]);
+        const moneyLeft = App.game.wallet.currencies[CurrencyType.money];
+
+        const report = new EndOfYearReport(App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.PrestigeCurrency), moneyLeft);
         for (const miniGame of this.getMiniGames()) {
             for (const requirement of miniGame.yearRequirements) {
                 report.addReport(requirement.getReport());

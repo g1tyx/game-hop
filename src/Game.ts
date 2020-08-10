@@ -12,6 +12,7 @@ import {Controller} from "./engine/controllers/Controller";
 import {YearTracker} from "./features/yeartracker/YearTracker";
 import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
+import {Budget} from "./features/budget/Budget";
 
 export class Game {
     private _tickInterval: Timeout;
@@ -21,6 +22,7 @@ export class Game {
     public prestige: Prestige
     public miniGames: MiniGames;
     public wallet: Wallet;
+    public budget: Budget;
     public statistics: Statistics;
     public achievements: Achievements;
 
@@ -30,12 +32,13 @@ export class Game {
 
     private readonly TICK_DURATION_MS = 100.0;
 
-    constructor(settings: Settings, yearTracker: YearTracker, prestige: Prestige, miniGames: MiniGames, wallet: Wallet, statistics: Statistics, achievements: Achievements) {
+    constructor(settings: Settings, yearTracker: YearTracker, prestige: Prestige, miniGames: MiniGames, wallet: Wallet, budget: Budget, statistics: Statistics, achievements: Achievements) {
         this.settings = settings;
         this.yearTracker = yearTracker;
         this.prestige = prestige;
         this.miniGames = miniGames;
         this.wallet = wallet
+        this.budget = budget
         this.statistics = statistics;
         this.achievements = achievements
 
@@ -118,7 +121,7 @@ export class Game {
 
     public getAllFeatures(): Feature[] {
         // TODO(@Isha) Improve with JS hacks to gain all features
-        return [this.settings, this.yearTracker, this.prestige, this.miniGames, this.wallet, this.statistics, this.achievements];
+        return [this.settings, this.yearTracker, this.prestige, this.miniGames, this.wallet, this.budget, this.statistics, this.achievements];
     }
 
 

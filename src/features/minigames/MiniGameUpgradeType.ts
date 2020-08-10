@@ -1,5 +1,6 @@
 export enum MiniGameUpgradeType {
     MarketingFame,
     MarketingSpeed,
-    MarketingCost
+    MarketingCost,
+    PrestigeCurrency
 }
