@@ -5,6 +5,8 @@ import {ISignal, SignalDispatcher} from "ste-signals";
 
 import {Feature} from "../../engine/Feature";
 import {YearTrackerSaveData} from "./YearTrackerSaveData";
+import {GameState} from "../../GameState";
+import {App} from "../../App";
 
 /**
  * Year tracker to track how far into the year we are.
@@ -27,12 +29,12 @@ export class YearTracker extends Feature {
     private _isStarted: boolean = false;
 
     private readonly realMonthTime: number;
-    private yearHasEnded: boolean;
+    private _yearHasEnded: ko.Observable<boolean>;
 
     constructor(realMonthTime: number) {
         super();
         this.realMonthTime = realMonthTime;
-        this.yearHasEnded = false;
+        this._yearHasEnded = ko.observable(false);
         this._month = ko.observable(0);
         this._monthProgress = ko.observable(0);
 
@@ -42,6 +44,7 @@ export class YearTracker extends Feature {
     }
 
     startNewYear(): void {
+        App.game.start();
         this.reset();
         this._onYearStart.dispatch();
         this._onMonthStart.dispatch(0);
@@ -126,6 +129,14 @@ export class YearTracker extends Feature {
     }
 
     // Knockout getters/setters
+    get yearHasEnded(): boolean {
+        return this._yearHasEnded();
+    }
+
+    set yearHasEnded(value: boolean) {
+        this._yearHasEnded(value);
+    }
+
     get month(): number {
         return this._month();
     }

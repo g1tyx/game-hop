@@ -12,6 +12,7 @@ import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGam
 import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGame";
 import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
 import {Budget} from "./features/budget/Budget";
+import {YearTrackerController} from "./controllers/YearTrackerController";
 
 export class App {
 
@@ -22,6 +23,7 @@ export class App {
         App.game = this.createNewGame();
 
         App.game.addController(new AchievementsController(App.game.achievements));
+        App.game.addController(new YearTrackerController());
 
         App.game.initialize();
         App.game.load();

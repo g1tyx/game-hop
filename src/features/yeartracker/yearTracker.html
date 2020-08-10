@@ -1,7 +1,13 @@
 <div class="barRoot">
+    <!-- ko ifnot: yearTracker.yearHasEnded -->
     <div class="monthLabel">Month: <span data-bind="text: yearTracker.month"></span></div>
     <div class="progressBarOuter">
         <div class="progressBarInner" data-bind="style: {width: yearTracker.monthProgress * 100 + '%'}"></div>
     </div>
     <span data-bind="text: (yearTracker.monthProgress * 100).toFixed(0) + '%'"></span>
+    <!-- /ko -->
+    <!-- ko if: yearTracker.yearHasEnded -->
+    <button data-bind="click: () => yearTracker.startNewYear()">Start a new year</button>
+    <!-- /ko -->
+
 </div>
