@@ -9,6 +9,7 @@ import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
 import {DummyMiniGame} from "./features/minigames/dummy/DummyMiniGame";
 import {MarketingMiniGame} from "./features/minigames/marketing/MarketingMiniGame";
+import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGame";
 
 export class App {
 
@@ -33,6 +34,7 @@ export class App {
             new MiniGames(
                 new DummyMiniGame(),
                 new MarketingMiniGame(),
+                new BalancingMiniGame(),
             ),
             new Wallet(),
             new Statistics(),
