@@ -1,8 +1,8 @@
 export enum DesignColorType {
-    Red,
-    Orange,
-    Yellow,
-    Green,
-    Blue,
-    Indigo,
+    Red= "Red",
+    Orange = "Orange",
+    Yellow = "Yellow",
+    Green = "Green",
+    Blue = "Blue",
+    Indigo = "Indigo",
 }

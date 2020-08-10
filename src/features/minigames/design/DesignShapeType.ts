@@ -1,7 +1,7 @@
 export enum DesignShapeType {
-    Circle,
-    Triangle,
-    Square,
-    Pentagon,
-    Hexagon
+    Circle = "Circle",
+    Triangle = "Triangle",
+    Square = "Square",
+    Pentagon = "Pentagon",
+    Hexagon = "Hexagon"
 }

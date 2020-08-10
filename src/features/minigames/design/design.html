@@ -4,5 +4,13 @@
         <p data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</p>
     </div>
 
+    <p>Target:<span data-bind="text: miniGames.design.targetShape.toString()"> Target</span></p>
+
+    <div data-bind="foreach: miniGames.design.shapeOptions">
+        <button style="border:1px solid red;"  data-bind="click: () => $data.guess()">
+            <span data-bind="text: $data.toString()">Description</span>
+        </button>
+    </div>
+
 
 </div>

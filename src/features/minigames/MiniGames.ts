@@ -32,7 +32,7 @@ export class MiniGames extends Feature {
 
     // TODO(@Isha) add more minigames
     getMiniGames(): MiniGame[] {
-        return [this.dummy, this.marketing, this.balancing];
+        return [this.dummy, this.marketing, this.balancing, this.design];
     }
 
     initialize(): void {
