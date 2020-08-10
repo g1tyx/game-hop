@@ -1,4 +1,4 @@
-export enum PrestigeUpgradeType {
+export enum MiniGameUpgradeType {
     MarketingFame,
     MarketingSpeed,
     MarketingCost

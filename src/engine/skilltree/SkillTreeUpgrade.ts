@@ -1,14 +1,14 @@
 import {SingleLevelUpgrade} from "../upgrades/SingleLevelUpgrade";
 import {SkillTreeRequirement} from "./SkillTreeRequirement";
-import {PrestigeUpgradeType} from "../../features/prestige/PrestigeUpgradeType";
+import {MiniGameUpgradeType} from "../../features/minigames/MiniGameUpgradeType";
 
 export class SkillTreeUpgrade {
     upgrade: SingleLevelUpgrade;
     requirements: SkillTreeRequirement[];
 
-    type: PrestigeUpgradeType;
+    type: MiniGameUpgradeType;
 
-    constructor(type: PrestigeUpgradeType, upgrade: SingleLevelUpgrade, requirements: SkillTreeRequirement[] = []) {
+    constructor(type: MiniGameUpgradeType, upgrade: SingleLevelUpgrade, requirements: SkillTreeRequirement[] = []) {
         this.type = type;
         this.upgrade = upgrade;
         this.requirements = requirements;
