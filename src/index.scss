@@ -25,16 +25,15 @@ body,
   padding: 0;
 }
 
-
-.game-branches {
-  height: 100%;
+.tabs {
+  background-color: transparent;
+  border:none;
 }
 
-.full-height {
-  height: 100%
+.tabs-content {
+  background-color: transparent;
+  border:none;
 }
-
-
 
 /*
  * part of the style based on http://js13kgames.com/entries/lost-in-cyberspace
@@ -42,10 +41,6 @@ body,
 body {
   margin: 0;
   background: $defaultBackground;
-}
-
-#term {
-  height: 100vh;
 }
 
 /* to see yourself like in a mirror */

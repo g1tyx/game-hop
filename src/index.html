@@ -20,43 +20,47 @@
 
     <div class="tv">
         <div id="term">
-            <div class="grid-y medium-grid-frame">                           
-                <div class="cell shrink header medium-cell-block-container">   
-                    <div class="currency-bar cell">
-                        <%= require('html-loader!./features/wallet/wallet.html') %>
-                        <div class="progress-bar">
-                            <!-- main progress bar display -->
-                            <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
-                        </div> 
-                    </div>
-                </div> 
-                <div class="cell medium-auto medium-cell-block-container">     
-                  <div class="grid-x grid-padding-x full-height">                          
-                    <div class="cell medium-10 medium-cell-block-y">
-                        <div class="game-branches">
+            <div class="grid-x">
+                <div class="cell currency-bar">
+                    <%= require('html-loader!./features/wallet/wallet.html') %>
+                </div>
+
+                <div class="cell progress-bar">
+                    <!-- main progress bar display -->
+                    <%= require('html-loader!./features/yeartracker/yearTracker.html') %>
+                </div>
+                <div class="cell">
+                    <ul class="tabs" data-tabs id="example-tabs">
+                        <li class="tabs-title is-active"><a href="#jobsPanel" aria-selected="true">Jobs</a></li>
+                        <li class="tabs-title"><a data-tabs-target="reportPanel" href="#reportPanel">Report</a>
+                        </li>
+                        <li class="tabs-title"><a data-tabs-target="settingsPanel" href="#settingsPanel">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell">
+                    <div class="tabs-content" data-tabs-content="example-tabs">
+                        <div class="tabs-panel is-active" id="jobsPanel">
                             <%= require('html-loader!./features/minigames/marketing/marketing.html') %>
-                        </div>                    
-                    </div>
-                    <div class="cell medium-2 medium-cell-block-y">
-                        <div class="prestige-bar">
+                        </div>
+                        <div class="tabs-panel" id="reportPanel">
+                            <p>Report Panel goes here</p>
+                        </div>
+                        <div class="tabs-panel" id="settingsPanel">
                             <%= require('html-loader!./engine/features/settings/settings.html') %>
                             <button data-bind="click: () => save()">Save</button>
                             <button data-bind="click: () => deleteSave()">Delete save (no confirmation)</button>
                         </div>
-                    </div>  
-                  </div>
+                    </div>
                 </div>
-              </div>
+            </div>
         </div>
-        <!-- ko if: settings.getSetting('crt-style').value -->
-        <div class="flicker"></div>
-        <div class="scanlines"></div>
-        <!-- /ko -->
-
     </div>
-
-
-
+    <!-- ko if: settings.getSetting('crt-style').value -->
+    <div class="flicker"></div>
+    <div class="scanlines"></div>
+    <!-- /ko -->
+    </div>
 </body>
 
 </html>

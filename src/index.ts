@@ -1,6 +1,7 @@
 import {App} from "./App";
 import * as ko from 'knockout';
 import * as $ from 'jquery';
+import 'foundation-sites';
 
 import './index.scss';
 
@@ -16,6 +17,8 @@ declare global {
  */
 $(function () {
     App.start();
+
+    $().foundation(); //this should init the tabs but it doesnt
 
     // Expose the App class to the window (and the console)
     if (process.env.DEBUG && typeof window !== undefined) {
