@@ -1,6 +1,8 @@
 import {SingleLevelUpgrade} from "../upgrades/SingleLevelUpgrade";
 import {SkillTreeRequirement} from "./SkillTreeRequirement";
 import {MiniGameUpgradeType} from "../../features/minigames/MiniGameUpgradeType";
+import {Currency} from "../../features/wallet/Currency";
+import {App} from "../../App";
 
 export class SkillTreeUpgrade {
     upgrade: SingleLevelUpgrade;
@@ -23,12 +25,28 @@ export class SkillTreeUpgrade {
         return this.upgrade.canBuy();
     }
 
+    getRequirementsString(): string {
+        let res = "";
+        for (const req of this.requirements) {
+            res += App.game.prestige.skillTree.getUpgrade(req.upgradeKey).getDisplayName();
+        }
+        return res;
+    }
+
+    getDisplayName(): string {
+        return this.upgrade.displayName;
+    }
+
     buy(): boolean {
         if (this.canBuy()) {
             this.upgrade.buy();
             return true;
         }
         return false
+    }
+
+    getCost(): Currency {
+        return this.upgrade.getCost()
     }
 
     getBonus(): number {
