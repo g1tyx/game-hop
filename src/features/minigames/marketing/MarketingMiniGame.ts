@@ -35,8 +35,12 @@ export class MarketingMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new MarketingFameRequirement("Marketing - Gain fame", 1000, 200));
 
-        this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 10% cheaper", new Currency(100, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingCost));
-        this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 20% cheaper", new Currency(300, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 25% cheaper", new Currency(100, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 35% cheaper", new Currency(300, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MiniGameUpgrade('marketing-fame-1', "Campaigns give 10% more fame", new Currency(50, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingFame));
+        this.upgrades.push(new MiniGameUpgrade('marketing-fame-2', "Campaigns five 20 more fame", new Currency(100, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingFame));
+        this.upgrades.push(new MiniGameUpgrade('marketing-speed-1', "Campaigns are 20% faster", new Currency(50, CurrencyType.money), 0.90, MiniGameUpgradeType.MarketingSpeed));
+        this.upgrades.push(new MiniGameUpgrade('marketing-speed-2', "Campaigns are 40% faster", new Currency(100, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingSpeed));
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
     }
 
@@ -79,8 +83,8 @@ export class MarketingMiniGame extends MiniGame {
 
     private generateRandomCampaign(): MarketingCampaign {
         const fameReward = RandomHelper.fuzzNumber(30 + RandomHelper.randomBetween(100, 300), 0.4);
-        const cost = RandomHelper.fuzzNumber(fameReward/2.5, 0.4);
-        const monthsToComplete = RandomHelper.fuzzNumber(fameReward/100, 0.8);
+        const cost = RandomHelper.fuzzNumber(fameReward / 2.5, 0.4);
+        const monthsToComplete = RandomHelper.fuzzNumber(fameReward / 100, 0.8);
         return new MarketingCampaign("Flavour text", monthsToComplete, new Currency(cost, CurrencyType.money), fameReward)
     }
 
