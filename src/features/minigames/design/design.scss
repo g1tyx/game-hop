@@ -1,5 +1,11 @@
 // Filters generated using https://codepen.io/sosuke/pen/Pjoqqp
 
+
+.designMinigame{
+  height:100%;
+  width:100%;
+}
+
 .design-shape-red {
   filter: invert(12%) sepia(75%) saturate(7297%) hue-rotate(1deg) brightness(106%) contrast(117%);
 }
@@ -22,4 +28,20 @@
 
 .design-shape-purple {
   filter: invert(11%) sepia(100%) saturate(5465%) hue-rotate(273deg) brightness(103%) contrast(125%);
+}
+
+
+.designButtons{
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  justify-content: space-between;
+  margin:50px auto;
+
+  & button {
+    flex: 0 50%;
+    height:40px;
+    margin-bottom:10px;
+    cursor:pointer;
+  }
 }

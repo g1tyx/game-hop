@@ -21,6 +21,19 @@ $(function () {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     $(document).foundation();
 
+    $(".nav").off().on("click", function() {
+        $('.nav').removeClass("activeNav");
+        $(this).addClass("activeNav");
+        $('.panel').removeClass("activePanel");
+        $('.panel').addClass("hiddenPanel");
+        if ($(this).attr("data-target") == "jobsPanel") {
+            $(".minigame").removeClass("hiddenPanel");
+        } else {
+            $(".minigame").addClass("hiddenPanel");
+        }
+        $(`#${$(this).attr("data-target")}`).addClass("activePanel");
+    })
+
     // Expose the App class to the window (and the console)
     if (process.env.DEBUG && typeof window !== undefined) {
 

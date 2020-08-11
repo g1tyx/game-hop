@@ -1,39 +1,4 @@
 .marketingMinigame {
-    width:100%;
-    height:100%;
-    border: 1px solid $progressBarColor;
-}
-
-.marketingProgress {
-    display: flex;
-    height:10%;
-    width:100%;
-    justify-content: space-around;
-    border-bottom:1px solid $progressBarColor;
-}
-
-.campaignGrid {
-    display:flex;
-}
-
-.campaignOffers {
-    height:100%;
-    width:60%;
-    text-align: center;
-    border-right:1px solid $progressBarColor;
-}
-
-.campaignOffer {
-}
-
-.campaignUpgrades {
-    height:100%;
-    width:40%;
-    text-align: center;
-}
-
-.progressBar {
-    background-color:$progressBarColor;
-    width:100%;
-    height:2px;
+    width: 100%;
+    height: 100%;
 }

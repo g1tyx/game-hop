@@ -1,18 +1,17 @@
 <div class="marketingMinigame">
 
-    <div class="marketingProgress">
-        <p data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"> Progress</p>
+    <div class="minigameProgress">
+        Progress: <span data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"></span>
     </div>
 
-    <div class="campaignGrid">
-        <div class="campaignOffers">
-            <p>Campaign Offers</p>
-            <div data-bind="template: { name: 'campaign-offer-template', foreach: miniGames.marketing.availableCampaigns }"></div>
+    <div class="minigameTask">
+        <p>Campaign Offers</p>
+        <div data-bind="template: { name: 'campaign-offer-template', foreach: miniGames.marketing.availableCampaigns }">
         </div>
-        <div class="campaignUpgrades">
-            <p>Upgrades</p>
-            <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
+    </div>
 
-        </div>
+    <div class="minigameUpgrades">
+        <p>Upgrades</p>
+        <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
     </div>
 </div>
