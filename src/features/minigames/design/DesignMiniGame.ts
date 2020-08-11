@@ -7,6 +7,10 @@ import {EnumHelper} from "../../../engine/util/EnumHelper";
 import {DesignColorType} from "./DesignColorType";
 import {DesignShapeType} from "./DesignShapeType";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
+import {MiniGameUpgrade} from "../MiniGameUpgrade";
+import {Currency} from "../../wallet/Currency";
+import {CurrencyType} from "../../wallet/CurrencyType";
+import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 
 
 export class DesignMiniGame extends MiniGame {
@@ -32,6 +36,9 @@ export class DesignMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 400))
 
+        this.upgrades.push(new MiniGameUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new MiniGameUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+
         this.generateNewPuzzle()
     }
 
@@ -39,14 +46,23 @@ export class DesignMiniGame extends MiniGame {
         const correct = designShape.color == this.targetShape.color && designShape.shape == this.targetShape.shape;
 
         if (correct) {
-            this.shapesCorrect++;
+            this.shapesCorrect += this.getCorrectValue();
         } else {
-            this.shapesCorrect = Math.max(0, this.shapesCorrect - 1);
+            this.shapesCorrect = Math.max(0, this.shapesCorrect - this.getWrongPenalty());
         }
 
         this.generateNewPuzzle();
 
         return correct;
+    }
+
+    getCorrectValue(): number {
+        return this.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue);
+
+    }
+
+    getWrongPenalty(): number {
+        return this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length;
     }
 
     generateNewPuzzle(): void {

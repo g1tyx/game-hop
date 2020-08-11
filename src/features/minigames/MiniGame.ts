@@ -16,6 +16,12 @@ export abstract class MiniGame extends Feature {
         this.upgrades = new ObservableArrayProxy<MiniGameUpgrade>([]);
     }
 
+    resetUpgrades(): void {
+        for (const upgrade of this.upgrades) {
+            upgrade.level = 0;
+        }
+    }
+
     getBoughtUpgradesOfType(type: MiniGameUpgradeType): MiniGameUpgrade[] {
         return this.upgrades.filter(upgrade => upgrade.isBought() && upgrade.type == type);
     }

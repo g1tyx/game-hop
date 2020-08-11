@@ -54,6 +54,7 @@ export class MiniGames extends Feature {
     reset(): void {
         for (const miniGame of this.getMiniGames()) {
             miniGame.reset();
+            miniGame.resetUpgrades();
         }
     }
 
