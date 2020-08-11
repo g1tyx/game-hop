@@ -40,8 +40,6 @@ export class MiniGames extends Feature {
             miniGame.initialize();
         }
 
-        this.updateEndOfYearReport();
-
     }
 
 

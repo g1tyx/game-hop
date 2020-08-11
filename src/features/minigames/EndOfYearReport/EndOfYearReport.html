@@ -1,3 +1,8 @@
+<!-- ko if: miniGames.endOfYearReport == null -->
+Finish your first year to see your report.
+<!-- /ko -->
+<!-- ko ifnot: miniGames.endOfYearReport == null -->
+
 <p style="font-size:2rem;text-align:center;">Last Year Reports</p>
 <div class="grid-x">
     <div class="cell large-3">
@@ -148,4 +153,6 @@
 <button style="border: 1px solid red;" data-bind="click: () => getController('year-tracker').startNewYear()">Start a new
     year
 </button>
+<!-- /ko -->
+
 <!-- /ko -->
