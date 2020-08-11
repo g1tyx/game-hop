@@ -1,0 +1,21 @@
+<div>
+    <p>Upgrades</p>
+    <div data-bind="foreach: prestige.skillTree.upgrades">
+        <div class="upgrade">
+            <p>
+                <span data-bind="text: $data.getDisplayName()">Name</span>
+
+                <!-- ko if: !$data.isBought() -->
+                <button data-bind="click: () => $data.buy()">
+                    <span data-bind="template: { name: 'currency-template', data: $data.getCost() }"></span>
+                </button>
+                <!-- /ko -->
+
+                <!-- ko if: $data.requirements.length > 0 -->
+                (Requires <span data-bind="text: $data.getRequirementsString()">Requirements</span>)
+                <!-- /ko -->
+            </p>
+
+        </div>
+    </div>
+</div>
