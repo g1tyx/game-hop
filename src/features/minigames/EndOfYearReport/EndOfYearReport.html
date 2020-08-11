@@ -81,7 +81,11 @@
     </div>
 </div>
 
-<hr>
+<!-- ko if: miniGames.endOfYearReport.isCompleted() -->
+<br>
+<br>
+<br>
+
 <div class="grid-x">
     <div class="cell large-3">
         <p>Previous Budget</p>
@@ -116,6 +120,8 @@
     </div>
 </div>
 
+<hr>
+
 <div class="grid-x">
     <div class="cell large-3">
         <p>New Budget</p>
@@ -132,8 +138,10 @@
         </p>
     </div>
 </div>
-
-<hr>
+<!-- /ko -->
+<!-- ko ifnot: miniGames.endOfYearReport.isCompleted() -->
+<p>You did not meet the requirements for this year, so your budget will not shrink</p>
+<!-- /ko -->
 
 
 <!-- ko if: yearTracker.yearHasEnded -->
