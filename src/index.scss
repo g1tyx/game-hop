@@ -31,7 +31,7 @@ body {
 
 #menu {
 
-  display:flex; 
+  display:flex;
   align-items: center;
   height:50px;
   cursor: pointer;
@@ -95,6 +95,9 @@ a.btn {
   width:40%;
   float:right;
   text-align:center;
+  // TODO(@Baine) make pretty pls
+  overflow:auto;
+  height:100%;
 }
 
 

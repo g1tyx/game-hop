@@ -40,20 +40,21 @@ export class MiniGames extends Feature {
             miniGame.initialize();
         }
 
-        this.updateEndOfYearReport();
-
     }
 
 
     update(delta: number): void {
         for (const miniGame of this.getMiniGames()) {
-            miniGame.update(delta);
+            if (miniGame.canAccess()) {
+                miniGame.update(delta);
+            }
         }
     }
 
     reset(): void {
         for (const miniGame of this.getMiniGames()) {
             miniGame.reset();
+            miniGame.resetUpgrades();
         }
     }
 
@@ -66,8 +67,10 @@ export class MiniGames extends Feature {
 
         const report = new EndOfYearReport(App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.PrestigeCurrency), moneyLeft);
         for (const miniGame of this.getMiniGames()) {
-            for (const requirement of miniGame.yearRequirements) {
-                report.addReport(requirement.getReport());
+            if (miniGame.canAccess()) {
+                for (const requirement of miniGame.yearRequirements) {
+                    report.addReport(requirement.getReport());
+                }
             }
         }
 

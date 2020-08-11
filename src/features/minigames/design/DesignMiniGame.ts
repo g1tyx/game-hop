@@ -7,6 +7,10 @@ import {EnumHelper} from "../../../engine/util/EnumHelper";
 import {DesignColorType} from "./DesignColorType";
 import {DesignShapeType} from "./DesignShapeType";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
+import {MiniGameUpgrade} from "../MiniGameUpgrade";
+import {Currency} from "../../wallet/Currency";
+import {CurrencyType} from "../../wallet/CurrencyType";
+import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 
 
 export class DesignMiniGame extends MiniGame {
@@ -19,8 +23,8 @@ export class DesignMiniGame extends MiniGame {
     private readonly shapeOptions: ObservableArrayProxy<DesignShape>;
 
 
-    constructor() {
-        super();
+    constructor(budgetRequirement: number) {
+        super(budgetRequirement);
         this._shapesCorrect = ko.observable(0);
         this.yearRequirements = [];
 
@@ -32,6 +36,13 @@ export class DesignMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 400))
 
+        this.upgrades.push(new MiniGameUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new MiniGameUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-1", "Lose one less design on wrong answer", new Currency(50, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-2", "Lose one less design on wrong answer", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-1", "Reduce possible options by one", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-2", "Reduce possible options by one", new Currency(100, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
+
         this.generateNewPuzzle()
     }
 
@@ -39,14 +50,22 @@ export class DesignMiniGame extends MiniGame {
         const correct = designShape.color == this.targetShape.color && designShape.shape == this.targetShape.shape;
 
         if (correct) {
-            this.shapesCorrect++;
+            this.shapesCorrect += this.getCorrectValue();
         } else {
-            this.shapesCorrect = Math.max(0, this.shapesCorrect - 1);
+            this.shapesCorrect = Math.max(0, this.shapesCorrect - this.getWrongPenalty());
         }
 
         this.generateNewPuzzle();
 
         return correct;
+    }
+
+    getCorrectValue(): number {
+        return this.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue);
+    }
+
+    getWrongPenalty(): number {
+        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
     }
 
     generateNewPuzzle(): void {
@@ -70,7 +89,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     private getOptionCount(): number {
-        return 4;
+        return Math.max(1, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceOptions).length);
     }
 
     private generateRandomShape(): DesignShape {

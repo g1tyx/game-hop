@@ -22,6 +22,7 @@ export class YearTrackerController extends Controller {
     startNewYear(): void {
         App.game.start();
         App.game.yearTracker.startNewYear();
+        $("#jobsPanel-label").click();
     }
 
 }

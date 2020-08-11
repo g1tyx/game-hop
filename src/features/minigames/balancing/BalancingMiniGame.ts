@@ -18,8 +18,8 @@ export class BalancingMiniGame extends MiniGame {
 
     movementSpeed: number = 0.1;
 
-    constructor() {
-        super();
+    constructor(budgetRequirement: number) {
+        super(budgetRequirement);
         this._focus = ko.observable(0);
         this.yearRequirements = [];
         this._actualCursor = ko.observable(0.50);

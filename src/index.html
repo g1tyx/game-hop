@@ -30,16 +30,36 @@
             </div>
 
             <div id="menu">
-                <div class="nav activeNav" data-target="jobsPanel">Jobs</div>
+                <div id="jobsPanel-label" class="nav activeNav" data-target="jobsPanel">Jobs</div>
                 <div id="reportPanel-label" class="nav" data-target="reportPanel">Report</div>
                 <div class="nav" data-target="skillTreePanel">Skill Tree</div>
                 <div class="nav" data-target="settingsPanel">Settings</div>
             </div>
 
             <div id="jobsPanel" class="panel activePanel">
-                <div class='minigame'><%= require('html-loader!./features/minigames/marketing/marketing.html') %></div>
+
+                <!-- ko if: miniGames.balancing.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/balancing/balancing.html') %></div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.balancing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
+                <!-- /ko -->
+
+
+                <!-- ko if: miniGames.marketing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/marketing/marketing.html') %></div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.marketing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
+                <!-- /ko -->
+
+                <!-- ko if: miniGames.design.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/design/design.html') %></div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.design.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
+                <!-- /ko -->
+
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
             </div>
 
