@@ -23,8 +23,8 @@ export class DesignMiniGame extends MiniGame {
     private readonly shapeOptions: ObservableArrayProxy<DesignShape>;
 
 
-    constructor() {
-        super();
+    constructor(budgetRequirement: number) {
+        super(budgetRequirement);
         this._shapesCorrect = ko.observable(0);
         this.yearRequirements = [];
 

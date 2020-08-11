@@ -25,8 +25,8 @@ export class MarketingMiniGame extends MiniGame {
     private readonly _onCampaignCompletion = new SimpleEventDispatcher<MarketingCampaign>();
 
 
-    constructor() {
-        super();
+    constructor(budgetRequirement: number) {
+        super(budgetRequirement);
         this._fame = ko.observable(0);
         this.yearRequirements = [];
         this.availableCampaigns = new ObservableArrayProxy<MarketingCampaign>([]);
