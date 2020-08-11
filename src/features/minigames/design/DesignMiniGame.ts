@@ -38,6 +38,10 @@ export class DesignMiniGame extends MiniGame {
 
         this.upgrades.push(new MiniGameUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
         this.upgrades.push(new MiniGameUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-1", "Lose one less design on wrong answer", new Currency(50, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-2", "Lose one less design on wrong answer", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-1", "Reduce possible options by one", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
+        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-2", "Reduce possible options by one", new Currency(100, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
 
         this.generateNewPuzzle()
     }
@@ -58,11 +62,10 @@ export class DesignMiniGame extends MiniGame {
 
     getCorrectValue(): number {
         return this.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue);
-
     }
 
     getWrongPenalty(): number {
-        return this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length;
+        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
     }
 
     generateNewPuzzle(): void {
@@ -86,7 +89,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     private getOptionCount(): number {
-        return 4;
+        return Math.max(1, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceOptions).length);
     }
 
     private generateRandomShape(): DesignShape {
