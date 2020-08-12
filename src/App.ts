@@ -12,6 +12,7 @@ import {BalancingMiniGame} from "./features/minigames/balancing/BalancingMiniGam
 import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
 import {Budget} from "./features/budget/Budget";
 import {YearTrackerController} from "./controllers/YearTrackerController";
+import {BugFixingMiniGame} from "./features/minigames/bugfixing/BugFixingMiniGame";
 
 export class App {
 
@@ -37,7 +38,8 @@ export class App {
             new MiniGames(
                 new MarketingMiniGame(1000),
                 new BalancingMiniGame(1000),
-                new DesignMiniGame(1000)
+                new DesignMiniGame(1000),
+                new BugFixingMiniGame(1000),
             ),
             new Wallet(),
             new Budget(),

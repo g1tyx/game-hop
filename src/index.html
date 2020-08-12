@@ -60,7 +60,12 @@
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
                 <!-- /ko -->
 
+                <!-- ko if: miniGames.bugFixing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/bugfixing/bugFixing.html') %></div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.bugFixing.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
+                <!-- /ko -->
             </div>
 
             <div id="reportPanel" class="panel hiddenPanel">

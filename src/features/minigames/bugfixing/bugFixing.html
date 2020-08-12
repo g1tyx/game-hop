@@ -1,0 +1,15 @@
+<div class="minigameProgress">
+    Progress: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
+</div>
+
+
+<p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
+
+<button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">Up</button>
+<button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">Down</button>
+
+
+
+<div data-bind="foreach: miniGames.bugFixing.bugs">
+    <p data-bind="text: $data.toString()"></p>
+</div>
