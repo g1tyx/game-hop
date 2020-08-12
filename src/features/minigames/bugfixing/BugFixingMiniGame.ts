@@ -70,6 +70,7 @@ export class BugFixingMiniGame extends MiniGame {
 
     spawnBug(): void {
         const lane = Math.random() < 0.6 ? this.lastLaneSpawned : Math.floor(Math.random() * this.getLaneCount());
+        this.lastLaneSpawned = lane;
         this.bugs.push(new Bug(1, lane));
     }
 
