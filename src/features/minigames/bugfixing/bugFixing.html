@@ -9,7 +9,22 @@
 <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">Down</button>
 
 
+Lane 0:
+<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
+    <p data-bind="text: $data.toString()"></p>
+</div>
 
-<div data-bind="foreach: miniGames.bugFixing.bugs">
+Lane 1:
+<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
+    <p data-bind="text: $data.toString()"></p>
+</div>
+
+Lane 2:
+<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
+    <p data-bind="text: $data.toString()"></p>
+</div>
+
+Lane 3:
+<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
     <p data-bind="text: $data.toString()"></p>
 </div>

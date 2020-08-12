@@ -29,6 +29,10 @@ export class BugFixingMiniGame extends MiniGame {
         this.bugs = new ObservableArrayProxy<Bug>([]);
     }
 
+    getBugsOnLane(lane: number): Bug[] {
+        return this.bugs.filter(bug => bug.lane == lane);
+    }
+
     moveUp(): void {
         this.actualCursor = Math.max(0, this.actualCursor - 1);
     }
