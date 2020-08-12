@@ -2,29 +2,33 @@
     Progress: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
 </div>
 
+<div class="minigameTask">
+    <p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
 
-<p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
-
-<button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">Up</button>
-<button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">Down</button>
-
-
-Lane 0:
-<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
-    <p data-bind="text: $data.toString()"></p>
+    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">Up</button>
+    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">Down</button>
+    
+    <div class="bugfixingLanes">
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+        
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+        
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+        
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+    </div>
 </div>
 
-Lane 1:
-<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
-    <p data-bind="text: $data.toString()"></p>
-</div>
+<div class="minigameUpgrades"></div>
 
-Lane 2:
-<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
-    <p data-bind="text: $data.toString()"></p>
-</div>
 
-Lane 3:
-<div data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
-    <p data-bind="text: $data.toString()"></p>
-</div>
+
+
