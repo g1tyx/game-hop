@@ -7,6 +7,7 @@ $defaultBackground: #02110a;
 @import 'features/minigames/marketing/marketing.scss';
 @import 'features/minigames/balancing/balancing.scss';
 @import 'features/minigames/design/design.scss';
+@import 'features/minigames/bugfixing/bugFixing.scss';
 @import 'features/minigames/locked/locked.scss';
 
 @font-face {
@@ -97,7 +98,7 @@ a.btn {
   text-align:center;
   // TODO(@Baine) make pretty pls
   overflow:auto;
-  height:100%;
+  height:80%;
 }
 
 

@@ -1,0 +1,19 @@
+.bugfixingLanes {
+    width:100%;
+    margin: 0 1rem;
+    margin-left: 50px;
+
+    & .lane {
+        height:20px;
+        background-color: $progressBarColor;
+        margin-bottom:20px;
+        display:flex;
+
+        & .bug {
+            height:20px;
+            width:20px;
+            background-color:red;
+            position: relative;
+        }
+    }
+}

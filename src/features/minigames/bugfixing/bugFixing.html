@@ -1,0 +1,40 @@
+<div class="minigameProgress">
+    Progress: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
+</div>
+
+<div class="minigameTask">
+    <p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
+
+    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">
+        Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)
+    </button>
+    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">
+        Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)
+    </button>
+
+    <div class="bugfixingLanes">
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="minigameUpgrades">
+    <p>Upgrades</p>
+    <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.bugFixing.upgrades }"></div>
+</div>
+
+
+
