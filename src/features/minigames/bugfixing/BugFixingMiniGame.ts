@@ -4,6 +4,11 @@ import {BugFixingRequirement} from "./BugFixingRequirement";
 import {BugFixingMiniGameSaveData} from "./BugFixingMiniGameSaveData";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {Bug} from "./Bug";
+import {MiniGameUpgrade} from "../MiniGameUpgrade";
+import {Currency} from "../../wallet/Currency";
+import {CurrencyType} from "../../wallet/CurrencyType";
+import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
+import {App} from "../../../App";
 
 
 export class BugFixingMiniGame extends MiniGame {
@@ -16,8 +21,7 @@ export class BugFixingMiniGame extends MiniGame {
 
     public bugs: ObservableArrayProxy<Bug>;
 
-    spawnTicks: number = 20;
-    currentTicks: number = 0;
+    currentMonthTime: number = 0;
     movementSpeed: number = 0.1;
     lastLaneSpawned: number = 1;
 
@@ -29,31 +33,59 @@ export class BugFixingMiniGame extends MiniGame {
         this.bugs = new ObservableArrayProxy<Bug>([]);
     }
 
+    initialize(): void {
+        this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 1000, 100))
+
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-movement-cost', "Reduce the cost of switching lanes by 30%", new Currency(100, CurrencyType.money), 0.70, MiniGameUpgradeType.BugFixingMoveCost));
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-value-1', "Improve bug value by 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-value-2', "Improve bug value by 50%", new Currency(150, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-remove-lane', "Remove a lane", new Currency(150, CurrencyType.money), 1.00, MiniGameUpgradeType.BugFixingReduceLane));
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-spawn-1', "Bugs spawn 25% more often", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
+        this.upgrades.push(new MiniGameUpgrade('bug-fixing-spawn-2', "Bugs spawn 25% more often", new Currency(150, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
+
+        this.spawnBug();
+    }
+
     getBugsOnLane(lane: number): Bug[] {
         return this.bugs.filter(bug => bug.lane == lane);
     }
 
     moveUp(): void {
-        this.actualCursor = Math.max(0, this.actualCursor - 1);
+        if (App.game.wallet.hasCurrency(this.getSwitchCost())) {
+            App.game.wallet.loseCurrency(this.getSwitchCost());
+            this.actualCursor = Math.max(0, this.actualCursor - 1);
+        }
     }
 
     moveDown(): void {
-        this.actualCursor = Math.min(this.getLaneCount() - 1, this.actualCursor + 1);
+        if (App.game.wallet.hasCurrency(this.getSwitchCost())) {
+            App.game.wallet.loseCurrency(this.getSwitchCost());
+            this.actualCursor = Math.min(this.getLaneCount() - 1, this.actualCursor + 1);
+        }
+    }
+
+    // In months
+    getSpawnTime(): number {
+        return 0.1 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
+    }
+    getSwitchCost(): Currency {
+        return new Currency(10 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
     }
 
     private getLaneCount(): number {
-        return 4;
+        return Math.max(0, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length - App.game.prestige.skillTree.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length);
     }
 
     private getSquashValue() {
-        return 1;
+        return this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingValue) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingValue);
     }
 
     update(delta: number): void {
-        this.currentTicks++;
+        const monthDelta: number = App.game.yearTracker.secondsToMonthPercentage(delta);
+        this.currentMonthTime+= monthDelta;
 
         this.bugs.forEach((bug, index) => {
-            bug.position -= 0.1 * delta;
+            bug.position -= 2 * monthDelta;
             if (bug.position <= 0) {
                 if (bug.lane == this.actualCursor) {
                     this.squashed += this.getSquashValue();
@@ -62,23 +94,19 @@ export class BugFixingMiniGame extends MiniGame {
             }
         });
 
-        if (this.currentTicks >= this.spawnTicks) {
-            this.currentTicks = 0;
+        if (this.currentMonthTime >= this.getSpawnTime()) {
+            this.currentMonthTime = 0;
             this.spawnBug();
         }
     }
 
     spawnBug(): void {
-        const lane = Math.random() < 0.6 ? this.lastLaneSpawned : Math.floor(Math.random() * this.getLaneCount());
+        const shouldSwitch = Math.random() < 0.25;
+        const newLane = Math.floor(Math.random() * this.getLaneCount());
+        const lane = shouldSwitch ? this.lastLaneSpawned : newLane;
+
         this.lastLaneSpawned = lane;
         this.bugs.push(new Bug(1, lane));
-    }
-
-
-    initialize(): void {
-        this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 1000, 100))
-
-        this.spawnBug();
     }
 
     load(data: BugFixingMiniGameSaveData): void {

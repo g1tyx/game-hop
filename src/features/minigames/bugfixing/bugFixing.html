@@ -7,28 +7,30 @@
 
     <button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">Up</button>
     <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">Down</button>
-    
+
     <div class="bugfixingLanes">
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
-        
+
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
-        
+
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
-        
+
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
     </div>
 </div>
 
-<div class="minigameUpgrades"></div>
-
+<div class="minigameUpgrades">
+    <p>Upgrades</p>
+    <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.bugFixing.upgrades }"></div>
+</div>
 
 
 
