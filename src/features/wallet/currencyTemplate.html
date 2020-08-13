@@ -1,6 +1,3 @@
 <script type="text/html" id="currency-template">
-        <p>
-            <span data-bind="text: $data.amount">Amount</span>
-            <span data-bind="text: $data.getTypeString()">Type</span>
-        </p>
+    <span data-bind="text: $data.amount + ' ' + $data.getTypeString()">Amount</span>
 </script>
