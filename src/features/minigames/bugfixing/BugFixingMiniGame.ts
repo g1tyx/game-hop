@@ -51,16 +51,33 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     moveUp(): void {
-        if (App.game.wallet.hasCurrency(this.getSwitchCost())) {
-            App.game.wallet.loseCurrency(this.getSwitchCost());
+        if (this.actualCursor == 0) {
+            return;
+        }
+        const switchCost = this.getSwitchCost();
+
+        if (App.game.wallet.hasCurrency(switchCost)) {
+            if (switchCost.amount > 0) {
+                App.game.wallet.loseCurrency(switchCost);
+
+            }
             this.actualCursor = Math.max(0, this.actualCursor - 1);
         }
+
     }
 
     moveDown(): void {
-        if (App.game.wallet.hasCurrency(this.getSwitchCost())) {
-            App.game.wallet.loseCurrency(this.getSwitchCost());
-            this.actualCursor = Math.min(this.getLaneCount() - 1, this.actualCursor + 1);
+        if (this.actualCursor == 3) {
+            return;
+        }
+        const switchCost = this.getSwitchCost();
+
+        if (App.game.wallet.hasCurrency(switchCost)) {
+            if (switchCost.amount > 0) {
+                App.game.wallet.loseCurrency(switchCost);
+
+            }
+            this.actualCursor = Math.min(3, this.actualCursor + 1);
         }
     }
 
@@ -68,6 +85,7 @@ export class BugFixingMiniGame extends MiniGame {
     getSpawnTime(): number {
         return 0.1 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
     }
+
     getSwitchCost(): Currency {
         return new Currency(10 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
     }
@@ -82,7 +100,7 @@ export class BugFixingMiniGame extends MiniGame {
 
     update(delta: number): void {
         const monthDelta: number = App.game.yearTracker.secondsToMonthPercentage(delta);
-        this.currentMonthTime+= monthDelta;
+        this.currentMonthTime += monthDelta;
 
         this.bugs.forEach((bug, index) => {
             bug.position -= 2 * monthDelta;
@@ -101,12 +119,13 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     spawnBug(): void {
-        const shouldSwitch = Math.random() < 0.25;
+        const shouldSwitch = this.lastLaneSpawned >= this.getLaneCount() || Math.random() < 0.25;
         const newLane = Math.floor(Math.random() * this.getLaneCount());
-        const lane = shouldSwitch ? this.lastLaneSpawned : newLane;
+        const lane = shouldSwitch ? newLane : this.lastLaneSpawned;
+        console.log(shouldSwitch, newLane, lane);
 
         this.lastLaneSpawned = lane;
-        this.bugs.push(new Bug(1, lane));
+        this.bugs.push(new Bug(0.9, lane));
     }
 
     load(data: BugFixingMiniGameSaveData): void {
