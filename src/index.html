@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Incremental game</title>
+    <title>GameHop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"
         integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug=="
         crossorigin="anonymous" />
@@ -107,7 +107,7 @@
         <p>Can you make this company efficient enough to run itself on a shoestring budget?</p>
         <p>You win the game when you complete a year with a budget of $0</p>
         <p>Let’s get you started and introduce you to your first team, our very own GameHop BugHunters!</p>
-        <button data-bind="click: () => {hideModal('introModal'); start()}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('introModal'); showModal('debugModal')}">Meat the team!</button>
     </div>
 
     <div class='customModal' id="debugModal">
@@ -118,7 +118,7 @@
         Watch them carefully as they don’t always stay in their own swimlane.</p>
         <p>If you need to put them on track, use the up and down arrow keys to jolt the BugHunters to the right lane.</p>
         <p>Be careful, that jolt costs money since cattle prods are not cheap!</p>
-        <button data-bind="click: () => {hideModal('debugModal'); startNewYear()}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('debugModal'); start()}">Begin the work!!</button>
     </div>
 
     <div class='customModal' id="marketModal">
