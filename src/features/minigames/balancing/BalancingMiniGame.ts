@@ -62,7 +62,7 @@ export class BalancingMiniGame extends MiniGame {
 
         const focusGain = 1 - 8 * error;
         if (focusGain > 0) {
-            this.focus += monthDelta * this.getFocusGain();
+            this.focus += monthDelta * focusGain * this.getFocusMultiplier();
         }
 
         if (this.currentMonthTime >= this.getMoveTime()) {
@@ -79,8 +79,8 @@ export class BalancingMiniGame extends MiniGame {
         return 2 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingMovementSpeed) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingMovementSpeed);
     }
 
-    getFocusGain(): number {
-        return 100 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain);
+    getFocusMultiplier(): number {
+        return 50 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain);
     }
 
     // In months
