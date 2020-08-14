@@ -12,6 +12,8 @@ import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProx
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 import {RandomHelper} from "../../../engine/util/RandomHelper";
 import {MarketingUpgrade} from "./MarketingUpgrade";
+import {MarketingCampaignSaveData} from "./MarketingCampaignSaveData";
+import {UpgradeListSaveData} from "../../../engine/upgrades/UpgradeListSaveData";
 
 export class MarketingMiniGame extends MiniGame {
     name: string = "Marketing";
@@ -104,7 +106,6 @@ export class MarketingMiniGame extends MiniGame {
         this.fame += campaign.fameReward;
         this._onCampaignCompletion.dispatch(campaign);
         this.removeCampaign(campaign);
-
     }
 
 
@@ -116,14 +117,35 @@ export class MarketingMiniGame extends MiniGame {
     }
 
     load(data: MarketingMiniGameSaveData): void {
+        this.fame = data.fame;
+        for (const campaign of data.campaigns) {
+            console.log("adding campaign");
+            this.availableCampaigns.push(new MarketingCampaign(campaign.description, campaign.months, new Currency(campaign.cost, CurrencyType.money), campaign.fame));
+        }
+        this.loadUpgrades(data.upgrades);
     }
 
+
     parseSaveData(json: Record<string, unknown>): MarketingMiniGameSaveData {
-        return undefined;
+        if (json == undefined) {
+            return new MarketingMiniGameSaveData(0, new UpgradeListSaveData(), []);
+        }
+        console.log(json.campaigns);
+        const campaigns: MarketingCampaignSaveData[] = [];
+        for (const campaign of json.campaigns as Record<string, unknown>[]) {
+            campaigns.push(new MarketingCampaignSaveData(campaign.description as string, campaign.months as number, campaign.cost as number, campaign.fame as number));
+        }
+        return new MarketingMiniGameSaveData(json?.fame as number ?? 0, this.parseUpgradeSaveData(json?.upgrades as Record<string, unknown>), campaigns);
     }
 
     save(): MarketingMiniGameSaveData {
-        return undefined;
+        const campaigns: MarketingCampaignSaveData[] = [];
+        for (const campaign of this.availableCampaigns) {
+            campaigns.push(new MarketingCampaignSaveData(campaign.description, campaign._baseMonthsToComplete, campaign._baseCost.amount, campaign._baseFameReward));
+        }
+
+        return new MarketingMiniGameSaveData(this.fame, this.saveUpgrades(), campaigns);
+
     }
 
     // Knockout getters/setters
