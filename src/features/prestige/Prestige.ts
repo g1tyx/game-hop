@@ -23,7 +23,7 @@ export class Prestige extends Feature {
     initialize(): void {
         // Inner global upgrades
         this.addPrestigeUpgrade("global-unlock-minigame-upgrades", MiniGameUpgradeType.UnlockMiniGameUpgrades, "Unlock Minigame Upgrades", 10, 1);
-        this.addPrestigeUpgrade("global-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce Yearly Requirements for all minigames by 10%", 200, 0.9, ['design-value-1', 'development-focus-gain-1']);
+        this.addPrestigeUpgrade("global-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce all Yearly Requirements by 10%", 200, 0.9, ['design-value-1', 'development-focus-gain-1']);
         this.addPrestigeUpgrade("global-prestige-upgrade-cost", MiniGameUpgradeType.PrestigeUpgradeCost, "Reduce all prestige upgrade costs by 10%", 200, 0.9, ['marketing-fame-1', 'design-value-1']);
         this.addPrestigeUpgrade("global-minigame-upgrade-cost", MiniGameUpgradeType.MiniGameUpgradeCost, "Reduce all minigame upgrade costs by 20%", 200, 0.80, ['debugging-reduce-movement-cost-1', 'development-focus-gain-1']);
         this.addPrestigeUpgrade("global-prestige-multiplier", MiniGameUpgradeType.PrestigeCurrency, "Gain 20% more prestige points", 200, 1.20, ['marketing-fame-1', 'debugging-reduce-movement-cost-1']);
@@ -58,7 +58,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-3", MiniGameUpgradeType.BugFixingMoveCost, "Remove movement cost", 250, 0, ['debugging-improve-spawn-1', 'debugging-reduce-lane-2']);
         this.addPrestigeUpgrade("debugging-improve-value-1", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-improve-value-2", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-improve-value-1']);
-        this.addPrestigeUpgrade("debugging-reduce-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce yearly requirements for all minigames cost by 20%", 50, 0.80, ['debugging-improve-value-2']);
+        this.addPrestigeUpgrade("debugging-reduce-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce all Yearly Requirements by 20%", 50, 0.80, ['debugging-improve-value-2']);
 
         // Development
         this.addPrestigeUpgrade("development-focus-gain-1", MiniGameUpgradeType.BalancingFocusGain, "Improve focus gain by 20%", 50, 1.20, ['global-unlock-minigame-upgrades']);
