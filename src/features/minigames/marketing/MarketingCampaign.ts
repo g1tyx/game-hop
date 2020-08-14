@@ -5,9 +5,9 @@ import {App} from "../../../App";
 export class MarketingCampaign {
     public description: string;
 
-    private readonly _baseMonthsToComplete: number;
-    private readonly _baseCost: Currency;
-    private readonly _baseFameReward: number;
+    public readonly _baseMonthsToComplete: number;
+    public readonly _baseCost: Currency;
+    public readonly _baseFameReward: number;
 
     private readonly _completionProgress: ko.Observable<number>;
     private readonly _isStarted: ko.Observable<boolean>;
