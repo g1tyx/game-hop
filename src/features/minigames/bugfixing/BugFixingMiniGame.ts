@@ -37,11 +37,11 @@ export class BugFixingMiniGame extends MiniGame {
         this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 100, 10))
 
         this.upgrades.push(new BugFixingUpgrade('bug-fixing-movement-cost', "Reduce the cost of switching lanes by 30%", new Currency(100, CurrencyType.money), 0.70, MiniGameUpgradeType.BugFixingMoveCost));
-        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-1', "Improve bug value by 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
-        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-2', "Improve bug value by 50%", new Currency(150, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-1', "Improve bug value by 25%", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-2', "Improve bug value by 30%", new Currency(150, CurrencyType.money), 1.30, MiniGameUpgradeType.BugFixingValue));
         this.upgrades.push(new BugFixingUpgrade('bug-fixing-remove-lane', "Remove a lane", new Currency(150, CurrencyType.money), 1.00, MiniGameUpgradeType.BugFixingReduceLane));
         this.upgrades.push(new BugFixingUpgrade('bug-fixing-spawn-1', "Bugs spawn 25% more often", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
-        this.upgrades.push(new BugFixingUpgrade('bug-fixing-spawn-2', "Bugs spawn 25% more often", new Currency(150, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-spawn-2', "Bugs spawn 40% more often", new Currency(150, CurrencyType.money), 1.40, MiniGameUpgradeType.BugFixingSpawn));
 
         this.spawnBug();
     }

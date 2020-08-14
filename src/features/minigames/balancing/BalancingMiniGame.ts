@@ -7,7 +7,6 @@ import {App} from "../../../App";
 import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {BalancingUpgrade} from "./BalancingUpgrade";
-import {DesignMiniGameSaveData} from "../design/DesignMiniGameSaveData";
 
 
 export class BalancingMiniGame extends MiniGame {
@@ -90,13 +89,13 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new BalancingFocusRequirement("Development - Stay focused", 1000, 50))
+        this.yearRequirements.push(new BalancingFocusRequirement("Development - Stay focused", 500, 50))
 
         this.upgrades.push(new BalancingUpgrade('balancing-movement-speed-1', "Improve your movement speed by 100%", new Currency(100, CurrencyType.money), 2.00, MiniGameUpgradeType.BalancingMovementSpeed));
-        this.upgrades.push(new BalancingUpgrade('balancing-focus-1', "Improve focus gain 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BalancingFocusGain));
-        this.upgrades.push(new BalancingUpgrade('balancing-focus-2', "Improve focus gain 50%", new Currency(150, CurrencyType.money), 1.50, MiniGameUpgradeType.BalancingFocusGain));
+        this.upgrades.push(new BalancingUpgrade('balancing-focus-1', "Improve focus gain by 25%", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BalancingFocusGain));
+        this.upgrades.push(new BalancingUpgrade('balancing-focus-2', "Improve focus gain by 30%", new Currency(150, CurrencyType.money), 1.30, MiniGameUpgradeType.BalancingFocusGain));
         this.upgrades.push(new BalancingUpgrade('balancing-target-movement-1', "Remove target movement by 25%", new Currency(50, CurrencyType.money), 1.25, MiniGameUpgradeType.BalancingTargetMovement));
-        this.upgrades.push(new BalancingUpgrade('balancing-target-movement-2', "Remove target movement by 25%", new Currency(75, CurrencyType.money), 1.25, MiniGameUpgradeType.BalancingTargetMovement));
+        this.upgrades.push(new BalancingUpgrade('balancing-target-movement-2', "Remove target movement by 40%", new Currency(75, CurrencyType.money), 1.40, MiniGameUpgradeType.BalancingTargetMovement));
 
         this.randomizeTarget();
     }
