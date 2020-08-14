@@ -12,7 +12,7 @@ module.exports = merge(common, {
         })
     ],
     devServer: {
-        contentBase: './dist',
+        contentBase: './docs',
         overlay: true
     },
 });
