@@ -13,6 +13,7 @@ import {YearTracker} from "./features/yeartracker/YearTracker";
 import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
 import {Budget} from "./features/budget/Budget";
+import * as $ from "jquery";
 
 export class Game {
     private _tickInterval: Timeout;
@@ -82,6 +83,11 @@ export class Game {
 
         this.yearTracker.onMonthStart.subscribe(() => this.save());
         this.yearTracker.onYearEnd.subscribe(() => this.save());
+
+    }
+
+    hideModal(id: string): void {
+        $(`#${id}`).hide();
     }
 
     public start(): void {
