@@ -11,7 +11,7 @@ export class Budget extends Feature {
 
     _yearlyBudget: ko.Observable<number>;
 
-    readonly BUDGET_TRIGGER_AMOUNT: number = 10;
+    readonly BUDGET_TRIGGER_AMOUNT: number = 0;
 
     private _onBudgetIsGone = new SignalDispatcher();
 
