@@ -14,6 +14,7 @@ import {Prestige} from "./features/prestige/Prestige";
 import {MiniGames} from "./features/minigames/MiniGames";
 import {Budget} from "./features/budget/Budget";
 import * as $ from "jquery";
+import {App} from "./App";
 
 export class Game {
     private _tickInterval: Timeout;
@@ -46,6 +47,11 @@ export class Game {
         this.featureControllers = [];
 
         this._state = ko.observable(GameState.starting);
+    }
+
+    startANewYear(): void {
+        App.game.start();
+        App.game.yearTracker.startNewYear();
     }
 
     private update(): void {

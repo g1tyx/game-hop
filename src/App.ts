@@ -38,7 +38,6 @@ export class App {
             $("#introModal").show();
         } else {
             App.game.start();
-
         }
 
     }
