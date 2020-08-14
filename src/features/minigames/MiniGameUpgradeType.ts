@@ -3,11 +3,13 @@ export enum MiniGameUpgradeType {
     MarketingFame,
     MarketingSpeed,
     MarketingCost,
+    MarketingUpgradeCost,
 
     // Design
     DesignShapeValue,
     DesignReduceOptions,
     DesignReduceWrongPenalty,
+    DesignUpgradeCost,
 
     // Balancing
     BalancingFocusGain,
