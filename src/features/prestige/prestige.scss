@@ -34,12 +34,13 @@ ellipse {
 }
 
 ellipse:hover {
-  fill: $hoverColor;
+  fill: #4bdb2e;
 }
 
 ellipse.prestige-upgrade-bought {
-  fill: $boughtColor;
+  fill: #4bdb2e;
 }
+
 ellipse.prestige-upgrade-locked {
   fill: #0e1f45;
 }
