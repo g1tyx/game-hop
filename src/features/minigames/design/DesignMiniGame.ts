@@ -66,8 +66,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     getWrongPenalty(): number {
-
-        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
+        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length - App.game.prestige.skillTree.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
     }
 
     generateNewPuzzle(): void {
