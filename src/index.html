@@ -38,18 +38,25 @@
 
             <div id="jobsPanel" class="panel activePanel">
 
-                <!-- ko if: miniGames.balancing.canAccess() -->
-                <div class='minigame'><%= require('html-loader!./features/minigames/balancing/balancing.html') %></div>
+                <!-- ko if: miniGames.bugFixing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/bugfixing/bugFixing.html') %></div>
                 <!-- /ko -->
-                <!-- ko ifnot: miniGames.balancing.canAccess() -->
+                <!-- ko ifnot: miniGames.bugFixing.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
                 <!-- /ko -->
-
 
                 <!-- ko if: miniGames.marketing.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/marketing/marketing.html') %></div>
                 <!-- /ko -->
                 <!-- ko ifnot: miniGames.marketing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
+                <!-- /ko -->
+
+
+                <!-- ko if: miniGames.balancing.canAccess() -->
+                <div class='minigame'><%= require('html-loader!./features/minigames/balancing/balancing.html') %></div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.balancing.canAccess() -->
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
                 <!-- /ko -->
 
@@ -60,12 +67,7 @@
                 <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
                 <!-- /ko -->
 
-                <!-- ko if: miniGames.bugFixing.canAccess() -->
-                <div class='minigame'><%= require('html-loader!./features/minigames/bugfixing/bugFixing.html') %></div>
-                <!-- /ko -->
-                <!-- ko ifnot: miniGames.bugFixing.canAccess() -->
-                <div class='minigame'><%= require('html-loader!./features/minigames/locked/locked.html') %></div>
-                <!-- /ko -->
+
             </div>
 
             <div id="reportPanel" class="panel hiddenPanel">
