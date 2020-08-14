@@ -15,8 +15,8 @@
         </div>
         <!-- /ko -->
         <!-- ko ifnot: $data.isStarted -->
-        <button data-bind="click: () => $data.tryToStart()">Start</button>
-        <button data-bind="click: () => $data.cancel()">Cancel</button>
+        <button style="cursor: pointer;" data-bind="click: () => $data.tryToStart()">[Start]</button>
+        <button style="cursor: pointer;" data-bind="click: () => $data.cancel()">[Cancel]</button>
         <!-- /ko -->
 
     </div>

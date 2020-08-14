@@ -6,25 +6,29 @@
     <p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
 
     <button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">
-        Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)
+        [Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
     </button>
     <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">
-        Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)
+       [Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
     </button>
 
     <div class="bugfixingLanes">
+        <img src="https://lh3.googleusercontent.com/proxy/K_GInMGVrOnG1Kpgk9HalDThQN57DzNNZc3EJUxD1P8jVFS4OhL2aQ_ueBPcMJU-_dyBfN8mXY27nLB_3EOvuI5JT-DKfgoI" width='20px' />
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
 
+        <img src="https://lh3.googleusercontent.com/proxy/K_GInMGVrOnG1Kpgk9HalDThQN57DzNNZc3EJUxD1P8jVFS4OhL2aQ_ueBPcMJU-_dyBfN8mXY27nLB_3EOvuI5JT-DKfgoI" width='20px' />
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
 
+        <img src="https://lh3.googleusercontent.com/proxy/K_GInMGVrOnG1Kpgk9HalDThQN57DzNNZc3EJUxD1P8jVFS4OhL2aQ_ueBPcMJU-_dyBfN8mXY27nLB_3EOvuI5JT-DKfgoI" width='20px' />
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>
 
+        <img src="https://lh3.googleusercontent.com/proxy/K_GInMGVrOnG1Kpgk9HalDThQN57DzNNZc3EJUxD1P8jVFS4OhL2aQ_ueBPcMJU-_dyBfN8mXY27nLB_3EOvuI5JT-DKfgoI" width='20px' />
         <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
             <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
         </div>

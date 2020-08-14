@@ -1,5 +1,7 @@
 $textColorMain: #add8e6;
 $progressBarColor: #add8e6;
+$hoverColor: #18414e;
+$boughtColor: #2b748c;
 $defaultBackground: #02110a;
 
 @import 'features/yeartracker/yearTracker.scss';
@@ -100,6 +102,40 @@ a.btn {
   overflow:auto;
   height:80%;
 }
+
+.upgrade {
+  border: 1px solid $textColorMain;
+}
+
+.upgrade.upgrade-bought {
+  background-color: $boughtColor;
+}
+
+.upgrade:hover {
+  cursor: pointer;
+  background-color: $hoverColor;
+}
+
+
+//for scrollbars
+
+/* The emerging W3C standard
+   that is currently Firefox-only */
+   * {
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+  }
+
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #042013;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: $progressBarColor;
+  }
 
 
 /* flicker animation taken from http://goonhub.com/secret */

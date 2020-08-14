@@ -1,12 +1,8 @@
 <script type="text/html" id="upgrade-template">
-    <div class="upgrade">
-        <p>
-            <span data-bind="text: $data.displayName">Name</span>
-
+    <div class="upgrade" style="margin-bottom:10px;"data-bind="click: () => $data.buy(), css: {'upgrade-bought': $data.isMaxLevel()}" >
+            <p style="margin:0;" data-bind="text: $data.displayName">Name</p>
             <!-- ko if: !$data.isMaxLevel() -->
-                <span data-bind="template: { name: 'currency-template', data: $data.getCost() }"></span>
-                <button data-bind="click: () => $data.buy()">Buy</button>
+                <span style="font-size: .8rem;" data-bind="template: { name: 'currency-template', data: $data.getCost() }"></span>
             <!-- /ko -->
-        </p>
     </div>
 </script>
