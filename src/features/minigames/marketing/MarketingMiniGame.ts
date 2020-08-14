@@ -10,8 +10,8 @@ import {App} from "../../../App";
 import {ISimpleEvent, SimpleEventDispatcher} from "ste-simple-events";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
-import {MiniGameUpgrade} from "../MiniGameUpgrade";
 import {RandomHelper} from "../../../engine/util/RandomHelper";
+import {MarketingUpgrade} from "./MarketingUpgrade";
 
 export class MarketingMiniGame extends MiniGame {
     name: string = "Marketing";
@@ -20,7 +20,7 @@ export class MarketingMiniGame extends MiniGame {
     private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
 
-    private readonly maxCampaigns: number = 4;
+    private readonly maxCampaigns: number = 3;
 
     private readonly _onCampaignCompletion = new SimpleEventDispatcher<MarketingCampaign>();
 
@@ -35,12 +35,12 @@ export class MarketingMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new MarketingFameRequirement("Marketing - Gain fame", 1000, 200));
 
-        this.upgrades.push(new MiniGameUpgrade('marketing-cost-1', "Campaigns are 25% cheaper", new Currency(100, CurrencyType.money), 0.75, MiniGameUpgradeType.MarketingCost));
-        this.upgrades.push(new MiniGameUpgrade('marketing-fame-1', "Campaigns give 10% more fame", new Currency(50, CurrencyType.money), 1.10, MiniGameUpgradeType.MarketingFame));
-        this.upgrades.push(new MiniGameUpgrade('marketing-speed-1', "Campaigns are 20% faster", new Currency(50, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingSpeed));
-        this.upgrades.push(new MiniGameUpgrade('marketing-cost-2', "Campaigns are 35% cheaper", new Currency(300, CurrencyType.money), 0.65, MiniGameUpgradeType.MarketingCost));
-        this.upgrades.push(new MiniGameUpgrade('marketing-fame-2', "Campaigns give 20 more fame", new Currency(100, CurrencyType.money), 1.20, MiniGameUpgradeType.MarketingFame));
-        this.upgrades.push(new MiniGameUpgrade('marketing-speed-2', "Campaigns are 40% faster", new Currency(100, CurrencyType.money), 0.60, MiniGameUpgradeType.MarketingSpeed));
+        this.upgrades.push(new MarketingUpgrade('marketing-cost-1', "Campaigns are 25% cheaper", new Currency(100, CurrencyType.money), 0.75, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MarketingUpgrade('marketing-fame-1', "Campaigns give 10% more fame", new Currency(50, CurrencyType.money), 1.10, MiniGameUpgradeType.MarketingFame));
+        this.upgrades.push(new MarketingUpgrade('marketing-speed-1', "Campaigns are 20% faster", new Currency(50, CurrencyType.money), 0.80, MiniGameUpgradeType.MarketingSpeed));
+        this.upgrades.push(new MarketingUpgrade('marketing-cost-2', "Campaigns are 35% cheaper", new Currency(300, CurrencyType.money), 0.65, MiniGameUpgradeType.MarketingCost));
+        this.upgrades.push(new MarketingUpgrade('marketing-fame-2', "Campaigns give 20 more fame", new Currency(100, CurrencyType.money), 1.20, MiniGameUpgradeType.MarketingFame));
+        this.upgrades.push(new MarketingUpgrade('marketing-speed-2', "Campaigns are 40% faster", new Currency(100, CurrencyType.money), 0.60, MiniGameUpgradeType.MarketingSpeed));
         App.game.yearTracker.onMonthStart.subscribe(() => this.spawnCampaign());
     }
 

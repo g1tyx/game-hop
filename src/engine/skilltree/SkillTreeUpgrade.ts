@@ -15,6 +15,7 @@ export class SkillTreeUpgrade {
         this.shortHand = shortHand;
         this.type = type;
         this.upgrade = upgrade;
+        this.upgrade.isPrestige = true;
         this.requirements = requirements;
     }
 
