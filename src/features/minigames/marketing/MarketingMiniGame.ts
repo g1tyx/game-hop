@@ -20,7 +20,7 @@ export class MarketingMiniGame extends MiniGame {
     private _fame: ko.Observable<number>;
     availableCampaigns: ObservableArrayProxy<MarketingCampaign>;
 
-    private readonly maxCampaigns: number = 4;
+    private readonly maxCampaigns: number = 3;
 
     private readonly _onCampaignCompletion = new SimpleEventDispatcher<MarketingCampaign>();
 
