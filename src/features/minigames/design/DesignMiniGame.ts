@@ -11,6 +11,7 @@ import {MiniGameUpgrade} from "../MiniGameUpgrade";
 import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
+import {App} from "../../../App";
 
 
 export class DesignMiniGame extends MiniGame {
@@ -61,11 +62,12 @@ export class DesignMiniGame extends MiniGame {
     }
 
     getCorrectValue(): number {
-        return this.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue);
+        return this.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.DesignShapeValue);
     }
 
     getWrongPenalty(): number {
-        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
+
+        return Math.max(0, 3 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceWrongPenalty).length);
     }
 
     generateNewPuzzle(): void {
@@ -89,7 +91,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     private getOptionCount(): number {
-        return Math.max(1, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceOptions).length);
+        return Math.max(1, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceOptions).length) -  App.game.prestige.skillTree.getBoughtUpgradesOfType(MiniGameUpgradeType.DesignReduceOptions).length;
     }
 
     private generateRandomShape(): DesignShape {
