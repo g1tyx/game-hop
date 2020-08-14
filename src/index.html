@@ -117,7 +117,7 @@
         Watch them carefully as they don’t always stay in their own swimlane.</p>
         <p>If you need to put them on track, use the up and down arrow keys to jolt the BugHunters to the right lane.</p>
         <p>Be careful, that jolt costs money since cattle prods are not cheap!</p>
-        <button data-bind="click: () => {hideModal('debugModal'); App.game.start(); App.game.yearTracker.startNewYear();}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('debugModal'); startNewYear()}">Begin the work!!</button>
     </div>
 
     <div class='customModal' id="marketModal">
@@ -125,7 +125,7 @@
         <p>The Marketeers team is all about the PR. Not pull requests, but public relations! </p>
         <p>They brainstorm ideas for the company and suggest campaigns for you to dump money on to gain the company some more fame, which attracts <span style="text-decoration: line-through;">slaves</span> employees and patrons! </p>
         <p></p>Just click start the campaigns you like and cancel on the ones you don’t.</p>
-        <button data-bind="click: () => {hideModal('marketModal'); App.game.start(); App.game.yearTracker.startNewYear();}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('marketModal'); startNewYear()}">Begin the work!!</button>
     </div>
 
     <div class='customModal' id="devModal">
@@ -136,7 +136,7 @@
         <p>When you see their focus sliding off, use the left and right arrow keys to send them our own GameHop Patent Pending Pill blend of Caffeine, Monstar Energy, and Soda Tarts that we like to call F.0.0.D.
         F.0.0.D used to stand for what's in it, but our executive team changed that up and did not want to spend money on re-labeling old stock.</p>
 
-        <button data-bind="click: () => {hideModal('devModal');  App.game.start(); App.game.yearTracker.startNewYear();}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('devModal'); startNewYear()}">Begin the work!!</button>
     </div>
 
     <div class='customModal' id="designModal">
@@ -147,7 +147,7 @@
         <p>Remember, they are designers, not managers like you so their ability to read and write, even speak, has been diminished purposefully with science to move all of those skill points to drawing.</p>
         <p>We didn’t even bother to give them a cool name as they can't complain about it anyways!</p>
 
-        <button data-bind="click: () => {hideModal('designModal');  App.game.start(); App.game.yearTracker.startNewYear();}">Begin the work!!</button>
+        <button data-bind="click: () => {hideModal('designModal'); startNewYear()}">Begin the work!!</button>
     </div>
 
 </body>

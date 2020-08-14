@@ -13,6 +13,12 @@ export class YearTrackerController extends Controller {
 
     initialize(): void {
         App.game.yearTracker.onYearEnd.subscribe(() => this.endOfYear())
+        App.game.budget.onBudgetIsGone.subscribe(() => this.youWin())
+    }
+
+    youWin(): void {
+        console.log("You win!");
+        $("#winModal").show();
     }
 
     endOfYear(): void {
@@ -41,7 +47,7 @@ export class YearTrackerController extends Controller {
         }
 
         if (!modalShown) {
-            App.game.startANewYear();
+            App.game.startNewYear();
         }
 
         this.lastBudget = newBudget;

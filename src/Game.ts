@@ -15,6 +15,7 @@ import {MiniGames} from "./features/minigames/MiniGames";
 import {Budget} from "./features/budget/Budget";
 import * as $ from "jquery";
 import {App} from "./App";
+import {YearTrackerController} from "./controllers/YearTrackerController";
 
 export class Game {
     private _tickInterval: Timeout;
@@ -49,7 +50,7 @@ export class Game {
         this._state = ko.observable(GameState.starting);
     }
 
-    startANewYear(): void {
+    startNewYear(): void {
         App.game.start();
         App.game.yearTracker.startNewYear();
     }
@@ -133,6 +134,8 @@ export class Game {
             const featureSavedata: Record<string, unknown> = saveData == null ? {} : saveData[feature.saveKey] as Record<string, unknown> ?? {};
             feature.load(feature.parseSaveData(featureSavedata));
         }
+
+        (this.getController('year-tracker') as YearTrackerController).lastBudget = this.budget.yearlyBudget;
     }
 
     public getTotalMoneyMultiplier(): number {
