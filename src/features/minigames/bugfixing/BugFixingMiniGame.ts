@@ -4,11 +4,11 @@ import {BugFixingRequirement} from "./BugFixingRequirement";
 import {BugFixingMiniGameSaveData} from "./BugFixingMiniGameSaveData";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
 import {Bug} from "./Bug";
-import {MiniGameUpgrade} from "../MiniGameUpgrade";
 import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 import {App} from "../../../App";
+import {BugFixingUpgrade} from "./BugFixingUpgrade";
 
 
 export class BugFixingMiniGame extends MiniGame {
@@ -36,12 +36,12 @@ export class BugFixingMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 1000, 100))
 
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-movement-cost', "Reduce the cost of switching lanes by 30%", new Currency(100, CurrencyType.money), 0.70, MiniGameUpgradeType.BugFixingMoveCost));
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-value-1', "Improve bug value by 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-value-2', "Improve bug value by 50%", new Currency(150, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-remove-lane', "Remove a lane", new Currency(150, CurrencyType.money), 1.00, MiniGameUpgradeType.BugFixingReduceLane));
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-spawn-1', "Bugs spawn 25% more often", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
-        this.upgrades.push(new MiniGameUpgrade('bug-fixing-spawn-2', "Bugs spawn 25% more often", new Currency(150, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-movement-cost', "Reduce the cost of switching lanes by 30%", new Currency(100, CurrencyType.money), 0.70, MiniGameUpgradeType.BugFixingMoveCost));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-1', "Improve bug value by 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-2', "Improve bug value by 50%", new Currency(150, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-remove-lane', "Remove a lane", new Currency(150, CurrencyType.money), 1.00, MiniGameUpgradeType.BugFixingReduceLane));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-spawn-1', "Bugs spawn 25% more often", new Currency(100, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
+        this.upgrades.push(new BugFixingUpgrade('bug-fixing-spawn-2', "Bugs spawn 25% more often", new Currency(150, CurrencyType.money), 1.25, MiniGameUpgradeType.BugFixingSpawn));
 
         this.spawnBug();
     }
@@ -73,7 +73,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     private getLaneCount(): number {
-        return Math.max(0, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length - App.game.prestige.skillTree.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length);
+        return Math.max(1, 4 - this.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length - App.game.prestige.skillTree.getBoughtUpgradesOfType(MiniGameUpgradeType.BugFixingReduceLane).length);
     }
 
     private getSquashValue() {
