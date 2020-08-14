@@ -38,18 +38,22 @@ $(function () {
 
         switch (event.which) {
         case 37: // Key left.
-            $("#balanceLeftBtn").click();  
+            $("#balanceLeftBtn").click();
             break;
         case 38: // Key up.
-            $("#bugUpBtn").click();     
+            $("#bugUpBtn").click();
             break;
         case 39: // Key right.
-            $("#balanceRightBtn").click();   
+            $("#balanceRightBtn").click();
             break;
         case 40: // Key down
-            $("#bugDownBtn").click();   
+            $("#bugDownBtn").click();
             break;
-        }   
+        case 32: // Space.
+            $("#balanceStopBtn").click();
+            break;
+        }
+        event.preventDefault();
     });
 
     // Expose the App class to the window (and the console)
