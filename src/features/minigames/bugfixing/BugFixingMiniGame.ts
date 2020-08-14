@@ -119,7 +119,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     spawnBug(): void {
-        const shouldSwitch = this.lastLaneSpawned >= this.getLaneCount() || Math.random() < 0.7;
+        const shouldSwitch = this.lastLaneSpawned >= this.getLaneCount() || Math.random() < 0.4;
         const newLane = Math.floor(Math.random() * this.getLaneCount());
         const lane = shouldSwitch ? newLane : this.lastLaneSpawned;
 
