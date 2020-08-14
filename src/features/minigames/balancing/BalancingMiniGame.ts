@@ -2,6 +2,8 @@ import {MiniGame} from "../MiniGame";
 import * as ko from "knockout";
 import {BalancingFocusRequirement} from "./BalancingFocusRequirement";
 import {BalancingMiniGameSaveData} from "./BalancingMiniGameSaveData";
+import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
+import {App} from "../../../App";
 
 
 export class BalancingMiniGame extends MiniGame {
@@ -13,8 +15,10 @@ export class BalancingMiniGame extends MiniGame {
     private readonly _actualCursor: ko.Observable<number>;
     private readonly _targetCursor: ko.Observable<number>;
 
-    resetTicks: number = 50;
-    currentTicks: number = 0;
+    currentMonthTime: number = 0;
+
+    movingLeft: boolean = false;
+    movingRight: boolean = false;
 
     movementSpeed: number = 0.1;
 
@@ -27,31 +31,58 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     moveLeft(): void {
-        this.actualCursor = Math.max(0, this.actualCursor - this.movementSpeed);
+        this.movingLeft = true;
+        this.movingRight = false;
+    }
+
+    stopMovement(): void {
+        this.movingLeft = false;
+        this.movingRight = false;
     }
 
     moveRight(): void {
-        this.actualCursor = Math.min(1, this.actualCursor + this.movementSpeed);
+        this.movingLeft = false;
+        this.movingRight = true;
     }
 
     update(delta: number): void {
-        this.currentTicks++;
+        const monthDelta: number = App.game.yearTracker.secondsToMonthPercentage(delta);
+        this.currentMonthTime += monthDelta;
+
+        if (this.movingLeft) {
+            this.actualCursor = Math.max(0, this.actualCursor - this.getMovementSpeed() * monthDelta);
+        } else if (this.movingRight) {
+            this.actualCursor = Math.min(1, this.actualCursor + this.getMovementSpeed() * monthDelta);
+        }
 
         const error = Math.abs(this.targetCursor - this.actualCursor);
 
-        const focusGain = 1 - 3 * error;
+        const focusGain = 1 - 8 * error;
         if (focusGain > 0) {
-            this.focus += focusGain * delta * 20;
+            this.focus += monthDelta * this.getFocusGain();
         }
 
-        if (this.currentTicks >= this.resetTicks) {
-            this.currentTicks = 0;
+        if (this.currentMonthTime >= this.getMoveTime()) {
+            this.currentMonthTime = 0;
             this.randomizeTarget();
         }
     }
 
     randomizeTarget(): void {
         this.targetCursor = Math.random();
+    }
+
+    getMovementSpeed(): number {
+        return 2 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingMovementSpeed) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingMovementSpeed);
+    }
+
+    getFocusGain(): number {
+        return 100 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingFocusGain);
+    }
+
+    // In months
+    getMoveTime(): number {
+        return 0.5 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement);
     }
 
     initialize(): void {

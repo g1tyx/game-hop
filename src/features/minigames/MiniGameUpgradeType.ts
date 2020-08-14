@@ -9,6 +9,12 @@ export enum MiniGameUpgradeType {
     DesignReduceOptions,
     DesignReduceWrongPenalty,
 
+    // Balancing
+    BalancingFocusGain,
+    BalancingMovementSpeed,
+    BalancingUpgradeCost,
+    BalancingTargetMovement,
+
     // BugFixing
     BugFixingReduceLane,
     BugFixingValue,
