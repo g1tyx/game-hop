@@ -30,7 +30,7 @@ export class Prestige extends Feature {
 
 
         // Marketing
-        this.addPrestigeUpgrade("marketing-fame-1", MiniGameUpgradeType.MarketingFame, "Increase marketing Fame gain by 50%", 50, 1.5, ['unlock-minigame-upgrades']);
+        this.addPrestigeUpgrade("marketing-fame-1", MiniGameUpgradeType.MarketingFame, "Increase marketing Fame by 50%", 50, 1.5, ['global-unlock-minigame-upgrades']);
         this.addPrestigeUpgrade("marketing-speed-1", MiniGameUpgradeType.MarketingSpeed, "Increase marketing speed by 50%", 50, 0.5, ['marketing-fame-1']);
         this.addPrestigeUpgrade("marketing-cost-1", MiniGameUpgradeType.MarketingCost, "Reduce marketing cost by 50%", 50, 0.5, ['marketing-fame-1']);
         this.addPrestigeUpgrade("marketing-upgrade-cost-1", MiniGameUpgradeType.MarketingUpgradeCost, "Reduce marketing upgrade costs by 30%", 50, 0.7, ['marketing-speed-1', 'marketing-cost-1']);
@@ -40,7 +40,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("marketing-speed-2", MiniGameUpgradeType.MarketingSpeed, "Increase marketing speed by 50%", 50, 0.5, ['marketing-fame-2']);
 
         // Design
-        this.addPrestigeUpgrade("design-value-1", MiniGameUpgradeType.DesignShapeValue, "Increase design value by 50%", 50, 1.5, ['unlock-minigame-upgrades']);
+        this.addPrestigeUpgrade("design-value-1", MiniGameUpgradeType.DesignShapeValue, "Increase design value by 50%", 50, 1.5, ['global-unlock-minigame-upgrades']);
         this.addPrestigeUpgrade("design-remove-option-1", MiniGameUpgradeType.DesignReduceOptions, "Remove one of the incorrect options", 50, 1, ['design-value-1']);
         this.addPrestigeUpgrade("design-reduce-wrong-penalty-1", MiniGameUpgradeType.DesignReduceWrongPenalty, "Reduce the penalty for wrong answers by 1", 250, 1, ['design-remove-option-1']);
         this.addPrestigeUpgrade("design-remove-option-2", MiniGameUpgradeType.DesignReduceOptions, "Remove one of the incorrect options", 50, 1, ['design-reduce-wrong-penalty-1']);
@@ -50,7 +50,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("design-minigame-upgrade-cost", MiniGameUpgradeType.PrestigeCurrency, "Increase prestige points gain by 25%", 500, 1.25, ['design-reduce-wrong-penalty-2']);
 
         // Debugging
-        this.addPrestigeUpgrade("debugging-reduce-movement-cost-1", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['unlock-minigame-upgrades']);
+        this.addPrestigeUpgrade("debugging-reduce-movement-cost-1", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['global-unlock-minigame-upgrades']);
         this.addPrestigeUpgrade("debugging-reduce-lane-1", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 50, 1, ['debugging-reduce-movement-cost-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-2", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-lane-2", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 50, 1, ['debugging-reduce-movement-cost-2']);
@@ -61,7 +61,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("debugging-reduce-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce yearly requirements for all minigames cost by 20%", 50, 0.80, ['debugging-reduce-movement-cost-3']);
 
         // Development
-        this.addPrestigeUpgrade("development-focus-gain-1", MiniGameUpgradeType.BalancingFocusGain, "Improve focus gain by 20%", 50, 1.20, ['unlock-minigame-upgrades']);
+        this.addPrestigeUpgrade("development-focus-gain-1", MiniGameUpgradeType.BalancingFocusGain, "Improve focus gain by 20%", 50, 1.20, ['global-unlock-minigame-upgrades']);
         this.addPrestigeUpgrade("development-movement-speed-1", MiniGameUpgradeType.BalancingMovementSpeed, "Improve movement speed by 40%", 50, 1.40, ['development-focus-gain-1']);
         this.addPrestigeUpgrade("development-reduce-target-movement-1", MiniGameUpgradeType.BalancingTargetMovement, "Reduce target movement by 30%", 50, 0.7, ['development-movement-speed-1']);
         this.addPrestigeUpgrade("development-minigame-upgrade-cost-1", MiniGameUpgradeType.BalancingUpgradeCost, "Reduce development upgrade cost by 30%", 50, 0.7, ['development-movement-speed-1']);

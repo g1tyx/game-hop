@@ -51,6 +51,22 @@ export class SkillTreeUpgrade {
         return false
     }
 
+    getShortCostString(): string {
+        if (this.isBought()) {
+            return ""
+        } else {
+            return `(${this.getCost().amount})`
+        }
+    }
+
+    getLongCostString(): string {
+        if (this.isBought()) {
+            return "(Bought)"
+        } else {
+            return `(${this.getCost().amount} prestige points)`
+        }
+    }
+
     getCost(): Currency {
         return this.upgrade.getCost()
     }
