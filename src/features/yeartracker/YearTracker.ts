@@ -99,16 +99,20 @@ export class YearTracker extends Feature {
     load(data: YearTrackerSaveData): void {
         this.month = data.month;
         this.monthProgress = data.monthProgress
+        this._isStarted = data.isStarted;
+        this.yearHasEnded = data.hasEnded;
     }
 
     parseSaveData(json: Record<string, unknown>): YearTrackerSaveData {
         const month = json?.month as number ?? 0;
         const monthProgress = json?.monthProgress as number ?? 0;
-        return new YearTrackerSaveData(month, monthProgress);
+        const isStarted = json?.isStarted as boolean ?? false;
+        const hasEnded = json?.hasEnded as boolean ?? false;
+        return new YearTrackerSaveData(month, monthProgress, isStarted, hasEnded);
     }
 
     save(): YearTrackerSaveData {
-        return new YearTrackerSaveData(this.month, this.monthProgress);
+        return new YearTrackerSaveData(this.month, this.monthProgress, this._isStarted, this.yearHasEnded);
     }
 
     // Event getters/setters
@@ -142,6 +146,7 @@ export class YearTracker extends Feature {
     }
 
     set month(value: number) {
+        console.trace("setting month", value)
         this._month(value);
     }
 
