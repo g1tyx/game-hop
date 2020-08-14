@@ -23,10 +23,10 @@ export class Prestige extends Feature {
     initialize(): void {
         // Inner global upgrades
         this.addPrestigeUpgrade("global-unlock-minigame-upgrades", MiniGameUpgradeType.UnlockMiniGameUpgrades, "Unlock Minigame Upgrades", 10, 1);
-        this.addPrestigeUpgrade("global-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce Yearly Requirements for all minigames by 10%", 200, 0.9);
-        this.addPrestigeUpgrade("global-prestige-upgrade-cost", MiniGameUpgradeType.PrestigeUpgradeCost, "Reduce all prestige upgrade cost by 10%", 200, 0.9);
-        this.addPrestigeUpgrade("global-minigame-upgrade-cost", MiniGameUpgradeType.MiniGameUpgradeCost, "Reduce all minigame upgrade costs by 20%", 200, 0.80);
-        this.addPrestigeUpgrade("global-prestige-multiplier", MiniGameUpgradeType.PrestigeCurrency, "Gain 20% more prestige points", 200, 1.20);
+        this.addPrestigeUpgrade("global-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce Yearly Requirements for all minigames by 10%", 200, 0.9, ['design-value-1', 'development-focus-gain-1']);
+        this.addPrestigeUpgrade("global-prestige-upgrade-cost", MiniGameUpgradeType.PrestigeUpgradeCost, "Reduce all prestige upgrade costs by 10%", 200, 0.9, ['marketing-fame-1', 'design-value-1']);
+        this.addPrestigeUpgrade("global-minigame-upgrade-cost", MiniGameUpgradeType.MiniGameUpgradeCost, "Reduce all minigame upgrade costs by 20%", 200, 0.80, ['debugging-reduce-movement-cost-1', 'development-focus-gain-1']);
+        this.addPrestigeUpgrade("global-prestige-multiplier", MiniGameUpgradeType.PrestigeCurrency, "Gain 20% more prestige points", 200, 1.20, ['marketing-fame-1', 'debugging-reduce-movement-cost-1']);
 
 
         // Marketing
