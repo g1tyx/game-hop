@@ -36,9 +36,9 @@ export class App {
             new YearTracker(15.0),
             new Prestige(),
             new MiniGames(
-                new MarketingMiniGame(999),
-                new BalancingMiniGame(600),
-                new DesignMiniGame(400),
+                new MarketingMiniGame(650),
+                new BalancingMiniGame(999),
+                new DesignMiniGame(350),
                 new BugFixingMiniGame(1000),
             ),
             new Wallet(),
