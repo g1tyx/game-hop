@@ -7,6 +7,7 @@ import {App} from "../../../App";
 import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {BalancingUpgrade} from "./BalancingUpgrade";
+import {DesignMiniGameSaveData} from "../design/DesignMiniGameSaveData";
 
 
 export class BalancingMiniGame extends MiniGame {
@@ -101,10 +102,12 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     load(data: BalancingMiniGameSaveData): void {
+        this.focus = data.focus;
+        this.loadUpgrades(data.upgrades);
     }
 
     parseSaveData(json: Record<string, unknown>): BalancingMiniGameSaveData {
-        return undefined;
+        return new BalancingMiniGameSaveData(json?.focus as number ?? 0, this.parseUpgradeSaveData(json?.upgrades as Record<string, unknown>));
     }
 
     reset(): void {
@@ -112,7 +115,7 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     save(): BalancingMiniGameSaveData {
-        return undefined;
+        return new BalancingMiniGameSaveData(this.focus, this.saveUpgrades());
     }
 
     // Knockout getters/setters
