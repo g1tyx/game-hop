@@ -1,24 +1,26 @@
 .bugfixingLanes {
-    width:100%;
-    padding-left: 20px;
+    width:90%;
+    padding-left: 40px;
 
     & img {
         float:left;
         margin-right:5px;
+        position: relative;
+        left:-40px;
     }
 
     & .lane {
+        position: relative;
         height:20px;
         border-top: 1px solid $progressBarColor;
         border-bottom: 1px dashed $progressBarColor;
         margin-bottom:20px;
-        display:flex;
 
         & .bug {
             height:20px;
             width:30px;
-            position: relative;
-            background-image: url("https://lh3.googleusercontent.com/proxy/FFk4YDcAVDaj9vQ-7c7SN2YFxT1xSHj9FmkS_Wd2PNGS7UAl4P4GT82DhhAYzfE4fK4ClQjc8ycihm-nlYu4mdjBQbJqmM7W");
+            position: absolute;
+            background-color: red;
             background-size:30px 20px;
             background-repeat:no-repeat;
         }
