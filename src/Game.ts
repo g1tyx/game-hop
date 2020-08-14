@@ -80,6 +80,8 @@ export class Game {
             controller.initialize();
         }
 
+        this.yearTracker.onMonthStart.subscribe(() => this.save());
+        this.yearTracker.onYearEnd.subscribe(() => this.save());
     }
 
     public start(): void {

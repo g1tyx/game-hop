@@ -130,10 +130,11 @@ export class BugFixingMiniGame extends MiniGame {
 
     load(data: BugFixingMiniGameSaveData): void {
         this.squashed = data.squashed
+        this.loadUpgrades(data.upgrades)
     }
 
     parseSaveData(json: Record<string, unknown>): BugFixingMiniGameSaveData {
-        return new BugFixingMiniGameSaveData(json?.squashed as number ?? 0);
+        return new BugFixingMiniGameSaveData(json?.squashed as number ?? 0, this.parseUpgradeSaveData(json?.upgrades as Record<string, unknown>));
     }
 
     reset(): void {
@@ -141,7 +142,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     save(): BugFixingMiniGameSaveData {
-        return new BugFixingMiniGameSaveData(this.squashed);
+        return new BugFixingMiniGameSaveData(this.squashed, this.saveUpgrades());
     }
 
     // Knockout getters/setters
