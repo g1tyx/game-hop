@@ -4,5 +4,5 @@ export enum DesignColorType {
     Yellow = "Yellow",
     Green = "Green",
     Blue = "Blue",
-    Indigo = "Indigo",
+    Purple = "Purple",
 }
