@@ -32,7 +32,7 @@
             <div id="menu">
                 <div id="jobsPanel-label" class="nav activeNav" data-target="jobsPanel">Jobs</div>
                 <div id="reportPanel-label" class="nav" data-target="reportPanel">Report</div>
-                <div class="nav" data-target="skillTreePanel">Skill Tree</div>
+                <div class="nav" data-target="skillTreePanel">Prestige Shop</div>
                 <div class="nav" data-target="settingsPanel">Settings</div>
             </div>
 
@@ -103,6 +103,7 @@
             You have four teams that will help you do this automatically as time goes on.
             But it is up to you how to best stretch every dollar.
         </p>
+        <p>Our executives have opened up an expirimental prestige shop just for you to tinker around with. Check it out sometime.</p>
         <p>Can you make this company efficient enough to run itself on a shoestring budget?</p>
         <p>You win the game when you complete a year with a budget of $0</p>
         <p>Let’s get you started and introduce you to your first team, our very own GameHop BugHunters!</p>
@@ -148,6 +149,14 @@
         <p>We didn’t even bother to give them a cool name as they can't complain about it anyways!</p>
 
         <button data-bind="click: () => {hideModal('designModal'); startNewYear()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="winModal">
+        <h2>Holy Crap!</h2>
+        <p>Honestly, we did not think you could do it. The last time we tried this with the previous guy, it took wayy longer and he eventually was sent back to <span style="text-decoration: line-through;">the dungeon</span> his home.</p>
+        <p>Because we really didn't think you could do it, you don't really get a reward or anything other than a nice pat on the back.</p>
+        <p>If you really want to try your luck, you can see if you can do it even faster using the time machine controls on the settings panel to wipe everything and start anew.</p>
+        <p>Congrats again - GameHop</p>
     </div>
 
 </body>
