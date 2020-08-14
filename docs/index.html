@@ -55,7 +55,7 @@
 </script>
 
     <script type="text/html" id="currency-template">
-    <span data-bind="text: $data.amount + ' ' + $data.getTypeString()">Amount</span>
+    <span data-bind="text: $data.amount.toFixed(2) + ' ' + $data.getTypeString()">Amount</span>
 </script>
 
 
@@ -95,7 +95,7 @@
             <div id="menu">
                 <div id="jobsPanel-label" class="nav activeNav" data-target="jobsPanel">Jobs</div>
                 <div id="reportPanel-label" class="nav" data-target="reportPanel">Report</div>
-                <div class="nav" data-target="skillTreePanel">Skill Tree</div>
+                <div class="nav" data-target="skillTreePanel">Prestige Shop</div>
                 <div class="nav" data-target="settingsPanel">Settings</div>
             </div>
 
@@ -103,7 +103,7 @@
 
                 <!-- ko if: miniGames.bugFixing.canAccess() -->
                 <div class='minigame'><div class="minigameProgress">
-    Debugging - Bugs Fixed: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
+    BugHunters - Bugs Fixed: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
 </div>
 
 <div class="minigameTask">
@@ -170,7 +170,7 @@
                 <div class='minigame'><div class="balancingMinigame">
 
     <div class="minigameProgress">
-        Development - Focus: <span data-bind="text: miniGames.balancing.yearRequirements[0].getProgressString()"></span>
+        DevoDevs - Focus: <span data-bind="text: miniGames.balancing.yearRequirements[0].getProgressString()"></span>
     </div>
 
     <div style="padding-left: 20px; padding-right: 20px" class="minigameTask">
@@ -216,7 +216,7 @@
                 <div class='minigame'><div class="marketingMinigame">
 
     <div class="minigameProgress">
-        Marketing - Fame: <span data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"></span>
+        Marketeers - Fame: <span data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"></span>
     </div>
 
     <div class="minigameTask">
@@ -246,7 +246,7 @@
                 <div class='minigame'><div class="designMinigame">
 
      <div class="minigameProgress">
-          Design - Designs: <span data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</span>
+          Designs: <span data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</span>
      </div>
      <!--    Stupid webpack not bundling ko images correctly -->
      <div class="minigameTask">
@@ -1657,6 +1657,73 @@
     <div class="scanlines"></div>
     <!-- /ko -->
     </div>
+
+
+    <!-- MODALS -->
+
+    <div class='customModal' id="introModal">
+        <h2>Welcome to GameHop!</h2>
+        <p>Your new role as Budget Master Battle Royale Supervisor is simple!
+            Spend your money by the end of each year or lose it from your budget.
+            You have four teams that will help you do this automatically as time goes on.
+            But it is up to you how to best stretch every dollar.
+        </p>
+        <p>Our executives have opened up an expirimental prestige shop just for you to tinker around with. Check it out sometime.</p>
+        <p>Can you make this company efficient enough to run itself on a shoestring budget?</p>
+        <p>You win the game when you complete a year with a budget of $0</p>
+        <p>Let’s get you started and introduce you to your first team, our very own GameHop BugHunters!</p>
+        <button data-bind="click: () => {hideModal('introModal'); start()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="debugModal">
+        <h2>BugHunters</h2>
+        <p>The BugHunters team role is simple.</p>
+        <p>They have a reddit feed from r/softwaregore of all the bugs people find constantly flowing in.
+        They take their mighty Hammers of Code and bring down the wrath onto the bugs.
+        Watch them carefully as they don’t always stay in their own swimlane.</p>
+        <p>If you need to put them on track, use the up and down arrow keys to jolt the BugHunters to the right lane.</p>
+        <p>Be careful, that jolt costs money since cattle prods are not cheap!</p>
+        <button data-bind="click: () => {hideModal('debugModal'); startNewYear()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="marketModal">
+        <h2>Marketeers</h2>
+        <p>The Marketeers team is all about the PR. Not pull requests, but public relations! </p>
+        <p>They brainstorm ideas for the company and suggest campaigns for you to dump money on to gain the company some more fame, which attracts <span style="text-decoration: line-through;">slaves</span> employees and patrons! </p>
+        <p></p>Just click start the campaigns you like and cancel on the ones you don’t.</p>
+        <button data-bind="click: () => {hideModal('marketModal'); startNewYear()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="devModal">
+        <h2>DevoDevs</h2>
+        <p>The DevoDevs are the real blackbox of the company.</p>
+        <p>We just constantly make sure they have the right amount of coffee to keep them focused.
+        We give them caffeine and hold their razor keyboards hostage and they give us completed code! </p>
+        <p>When you see their focus sliding off, use the left and right arrow keys to send them our own GameHop Patent Pending Pill blend of Caffeine, Monstar Energy, and Soda Tarts that we like to call F.0.0.D.
+        F.0.0.D used to stand for what's in it, but our executive team changed that up and did not want to spend money on re-labeling old stock.</p>
+
+        <button data-bind="click: () => {hideModal('devModal'); startNewYear()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="designModal">
+        <h2>Design</h2>
+        <p>The Design team is basically a bunch of baristas from the local AstriskBucks with Wacon pens glued to their hands.</p>
+        <p>They like to pump out a bunch of different designs for you to review.
+        You simply have to click what best title fits their design.</p>
+        <p>Remember, they are designers, not managers like you so their ability to read and write, even speak, has been diminished purposefully with science to move all of those skill points to drawing.</p>
+        <p>We didn’t even bother to give them a cool name as they can't complain about it anyways!</p>
+
+        <button data-bind="click: () => {hideModal('designModal'); startNewYear()}">Begin the work!!</button>
+    </div>
+
+    <div class='customModal' id="winModal">
+        <h2>Holy Crap!</h2>
+        <p>Honestly, we did not think you could do it. The last time we tried this with the previous guy, it took wayy longer and he eventually was sent back to <span style="text-decoration: line-through;">the dungeon</span> his home.</p>
+        <p>Because we really didn't think you could do it, you don't really get a reward or anything other than a nice pat on the back.</p>
+        <p>If you really want to try your luck, you can see if you can do it even faster using the time machine controls on the settings panel to wipe everything and start anew.</p>
+        <p>Congrats again - GameHop</p>
+    </div>
+
 <script src="bundle.js"></script></body>
 
 </html>
