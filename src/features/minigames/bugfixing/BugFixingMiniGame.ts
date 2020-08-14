@@ -83,11 +83,11 @@ export class BugFixingMiniGame extends MiniGame {
 
     // In months
     getSpawnTime(): number {
-        return 0.1 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
+        return 0.075 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
     }
 
     getSwitchCost(): Currency {
-        return new Currency(10 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
+        return new Currency(20 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
     }
 
     private getLaneCount(): number {
@@ -119,7 +119,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     spawnBug(): void {
-        const shouldSwitch = this.lastLaneSpawned >= this.getLaneCount() || Math.random() < 0.75;
+        const shouldSwitch = this.lastLaneSpawned >= this.getLaneCount() || Math.random() < 0.7;
         const newLane = Math.floor(Math.random() * this.getLaneCount());
         const lane = shouldSwitch ? newLane : this.lastLaneSpawned;
 
