@@ -4,6 +4,7 @@ import {Feature} from "../../engine/Feature";
 import {BudgetSaveData} from "./BudgetSaveData";
 import {App} from "../../App";
 import {ISignal, SignalDispatcher} from "ste-signals";
+import * as $ from "jquery";
 
 export class Budget extends Feature {
     name: string = "Budget";
@@ -11,7 +12,7 @@ export class Budget extends Feature {
 
     _yearlyBudget: ko.Observable<number>;
 
-    readonly BUDGET_TRIGGER_AMOUNT: number = 10;
+    readonly BUDGET_TRIGGER_AMOUNT: number = 0;
 
     private _onBudgetIsGone = new SignalDispatcher();
 
@@ -25,10 +26,12 @@ export class Budget extends Feature {
     }
 
     shrinkBudget(amount: number): void {
-        this.yearlyBudget = Math.max(0, this.yearlyBudget - amount);
         if (this.yearlyBudget <= this.BUDGET_TRIGGER_AMOUNT) {
+            console.log("winnnnn");
+            $("#winModal").show();
             this._onBudgetIsGone.dispatch();
         }
+        this.yearlyBudget = Math.max(0, this.yearlyBudget - amount);
     }
 
     gainMoney(): void {

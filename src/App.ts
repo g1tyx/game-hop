@@ -13,6 +13,9 @@ import {DesignMiniGame} from "./features/minigames/design/DesignMiniGame";
 import {Budget} from "./features/budget/Budget";
 import {YearTrackerController} from "./controllers/YearTrackerController";
 import {BugFixingMiniGame} from "./features/minigames/bugfixing/BugFixingMiniGame";
+import {LocalStorage} from "./engine/saving/LocalStorage";
+
+import * as $ from 'jquery';
 
 export class App {
 
@@ -26,9 +29,19 @@ export class App {
         App.game.addController(new YearTrackerController());
 
         App.game.initialize();
+
+
         App.game.load();
-        App.game.start();
+
+        const saveData = LocalStorage.get('save')
+        if (saveData == null) {
+            $("#introModal").show();
+        } else {
+            App.game.start();
+        }
+
     }
+
 
     static createNewGame(): Game {
         return new Game(

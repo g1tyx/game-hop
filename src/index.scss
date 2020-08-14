@@ -357,5 +357,54 @@ https://blog.carbonfive.com/2015/01/07/vintage-terminal-effect-in-css3/
     opacity: 0;
   }
 }
+// modal styling
 
+.customModal {
+  width: 50%;
+  left: 25%;
+  top:25%;
+  text-align:center;
+  height:auto;
+  background-color:#02110a;
+  position: absolute;
+  z-index: 1000000;
+  border-radius:5px;
+  border: 1px solid $progressBarColor;
+  padding:1rem;
+  padding-top:2rem;
+  display:none;
 
+  & h2 {
+    font-family: WhiteRabbit, serif;
+  }
+
+  & button {
+    padding:1rem;
+    border: 1px solid $progressBarColor;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-top:2rem;
+    margin-bottom:2rem;
+  }
+}
+
+//settings panel styling
+
+#settingsPanel {
+  width:60%;
+  margin: 0 auto;
+  margin-top:20px;
+  text-align:center;
+  
+  & table,tbody,tr,th,thead {
+    background-color:transparent !important;
+    text-align: center;
+  }
+
+  button {
+    padding:2rem;
+    border:1px solid $progressBarColor;
+    border-radius: 5px;
+  }
+
+}

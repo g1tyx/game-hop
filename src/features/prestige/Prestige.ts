@@ -36,7 +36,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("marketing-upgrade-cost-1", MiniGameUpgradeType.MarketingUpgradeCost, "Reduce marketing upgrade costs by 30%", 75, 0.7, ['marketing-speed-1', 'marketing-cost-1']);
         this.addPrestigeUpgrade("marketing-minigame-upgrade-cost", MiniGameUpgradeType.MiniGameUpgradeCost, "Reduce all minigame upgrade costs by 25%", 200, 0.75, ['marketing-upgrade-cost-1']);
         this.addPrestigeUpgrade("marketing-fame-2", MiniGameUpgradeType.MarketingFame, "Increase marketing Fame gain by 50%", 100, 1.5, ['marketing-cost-1']);
-        this.addPrestigeUpgrade("marketing-cost-2", MiniGameUpgradeType.MarketingCost, "Reduce marketing cost by 50%", 150, 0.5, ['marketing-fame-2']);
+        this.addPrestigeUpgrade("marketing-cost-2", MiniGameUpgradeType.MarketingCost, "Marketing is now free!", 150, 0, ['marketing-fame-2']);
         this.addPrestigeUpgrade("marketing-speed-2", MiniGameUpgradeType.MarketingSpeed, "Increase marketing speed by 50%", 150, 0.5, ['marketing-fame-2']);
 
         // Design
@@ -54,7 +54,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("debugging-reduce-lane-1", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 25, 1, ['debugging-reduce-movement-cost-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-2", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-lane-2", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 75, 1, ['debugging-reduce-movement-cost-2']);
-        this.addPrestigeUpgrade("debugging-improve-spawn-1", MiniGameUpgradeType.BugFixingSpawn, "Improve spawn rate by 20%", 50, 1.20, ['debugging-reduce-lane-1']);
+        this.addPrestigeUpgrade("debugging-improve-spawn-1", MiniGameUpgradeType.BugFixingSpawn, "Improve spawn rate by 20%", 50, 0.80, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-3", MiniGameUpgradeType.BugFixingMoveCost, "Remove movement cost", 250, 0, ['debugging-improve-spawn-1', 'debugging-reduce-lane-2']);
         this.addPrestigeUpgrade("debugging-improve-value-1", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-improve-value-2", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 50%", 75, 1.50, ['debugging-improve-value-1']);
