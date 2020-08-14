@@ -25,10 +25,10 @@ export class Budget extends Feature {
     }
 
     shrinkBudget(amount: number): void {
-        this.yearlyBudget = Math.max(0, this.yearlyBudget - amount);
         if (this.yearlyBudget <= this.BUDGET_TRIGGER_AMOUNT) {
             this._onBudgetIsGone.dispatch();
         }
+        this.yearlyBudget = Math.max(0, this.yearlyBudget - amount);
     }
 
     gainMoney(): void {
