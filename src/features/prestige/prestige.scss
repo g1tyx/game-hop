@@ -10,7 +10,6 @@ svg {
   color: #000000;
   line-height: 1.2;
   pointer-events: none;
-  font-weight: bold;
   white-space: normal;
   word-wrap: normal;
 }
@@ -40,7 +39,7 @@ ellipse {
 }
 
 ellipse:hover {
-  fill: #4bdb2e;
+  fill: #2c701d;
 }
 
 ellipse.prestige-upgrade-bought {
@@ -48,5 +47,5 @@ ellipse.prestige-upgrade-bought {
 }
 
 ellipse.prestige-upgrade-locked {
-  fill: #0e1f45;
+  fill: #2460e2;
 }
