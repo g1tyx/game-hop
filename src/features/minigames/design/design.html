@@ -1,7 +1,7 @@
 <div class="designMinigame">
 
      <div class="minigameProgress">
-          Progress: <span data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</span>
+          Design - Designs: <span data-bind="text: miniGames.design.yearRequirements[0].getProgressString()"> Progress</span>
      </div>
      <!--    Stupid webpack not bundling ko images correctly -->
      <div class="minigameTask">
@@ -38,7 +38,6 @@
      </div>
 
      <div class="minigameUpgrades">
-          <p>Upgrades</p>
           <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.design.upgrades }"></div>
      </div>
 

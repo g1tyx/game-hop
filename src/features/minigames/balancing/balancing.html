@@ -1,19 +1,20 @@
 <div class="balancingMinigame">
 
     <div class="minigameProgress">
-        Progress: <span data-bind="text: miniGames.balancing.yearRequirements[0].getProgressString()"></span>
+        Development - Focus: <span data-bind="text: miniGames.balancing.yearRequirements[0].getProgressString()"></span>
     </div>
 
-    <div class="minigameTask">
+    <div style="padding-left: 20px; padding-right: 20px" class="minigameTask">
         <div class="balanceScale">
             <div class="balanceActual" data-bind="style: {left: miniGames.balancing.actualCursor.toFixed(2) * 100 + '%'}"></div>
             <div class="balanceTarget" data-bind="style: {left: miniGames.balancing.targetCursor.toFixed(2) * 100 + '%'}"></div>
         </div>
-        
-    
+
+
         <button class='btn' data-bind="click: () => miniGames.balancing.moveLeft()">[Left]</button>
+        <button class='btn' data-bind="click: () => miniGames.balancing.stopMovement()">[Stop]</button>
         <button class='btn' data-bind="click: () => miniGames.balancing.moveRight()">[Right]</button>
-    
+
         <p>
             Actual:
             <span data-bind="text: miniGames.balancing.actualCursor.toFixed(2)">Actual Cursor</span>
@@ -22,9 +23,10 @@
         </p>
     </div>
 
+
     <div class="minigameUpgrades">
-        <p>Upgrades</p>
+        <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.balancing.upgrades }"></div>
     </div>
 
-    
+
 </div>

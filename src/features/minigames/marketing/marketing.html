@@ -1,7 +1,7 @@
 <div class="marketingMinigame">
 
     <div class="minigameProgress">
-        Progress: <span data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"></span>
+        Marketing - Fame: <span data-bind="text: miniGames.marketing.yearRequirements[0].getProgressString()"></span>
     </div>
 
     <div class="minigameTask">
@@ -11,7 +11,6 @@
     </div>
 
     <div class="minigameUpgrades">
-        <p>Upgrades</p>
         <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
     </div>
 </div>
