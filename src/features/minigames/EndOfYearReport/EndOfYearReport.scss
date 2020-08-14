@@ -2,11 +2,12 @@
     margin: 2rem;
 }
 
-.startNewYearBtn { 
+.startNewYearBtn {
     border: 1px solid $progressBarColor;
     padding:1rem;
     border-radius: 5px;
-    &::hover{
-        border: 1px solid #c3e1eb;
+    &:hover{
+        cursor: pointer;
+        background-color: #18414e;
     }
 }

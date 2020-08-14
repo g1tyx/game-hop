@@ -4,7 +4,6 @@ export class EndOfYearReport {
     reports: MiniGameReport[];
     multiplier: number;
     moneyLeft: number;
-    private _completionBonus: number = 100;
 
     constructor(multiplier: number, moneyLeft: number) {
         this.reports = [];
@@ -33,7 +32,7 @@ export class EndOfYearReport {
     }
 
     getCompletionBonus(): number {
-        return this.isCompleted() ? this._completionBonus : 0;
+        return this.getSurplus() / 2;
     }
 
 
