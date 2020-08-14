@@ -54,7 +54,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("debugging-reduce-lane-1", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 25, 1, ['debugging-reduce-movement-cost-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-2", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-lane-2", MiniGameUpgradeType.BugFixingReduceLane, "Bugs spawning on one less lane", 75, 1, ['debugging-reduce-movement-cost-2']);
-        this.addPrestigeUpgrade("debugging-improve-spawn-1", MiniGameUpgradeType.BugFixingSpawn, "Improve spawn rate by 20%", 50, 1.20, ['debugging-reduce-lane-1']);
+        this.addPrestigeUpgrade("debugging-improve-spawn-1", MiniGameUpgradeType.BugFixingSpawn, "Improve spawn rate by 20%", 50, 0.80, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-3", MiniGameUpgradeType.BugFixingMoveCost, "Remove movement cost", 250, 0, ['debugging-improve-spawn-1', 'debugging-reduce-lane-2']);
         this.addPrestigeUpgrade("debugging-improve-value-1", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-improve-value-2", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 50%", 75, 1.50, ['debugging-improve-value-1']);
