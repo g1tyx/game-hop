@@ -1,5 +1,7 @@
 $textColorMain: #add8e6;
 $progressBarColor: #add8e6;
+$hoverColor: #18414e;
+$boughtColor: #2b748c;
 $defaultBackground: #02110a;
 
 @import 'features/yeartracker/yearTracker.scss';
@@ -101,6 +103,19 @@ a.btn {
   height:80%;
 }
 
+.upgrade {
+  border: 1px solid $textColorMain;
+}
+
+.upgrade.upgrade-bought {
+  background-color: $boughtColor;
+}
+
+.upgrade:hover {
+  cursor: pointer;
+  background-color: $hoverColor;
+}
+
 
 //for scrollbars
 
@@ -110,7 +125,7 @@ a.btn {
     scrollbar-width: thin;
     scrollbar-color: blue orange;
   }
-  
+
   /* Works on Chrome/Edge/Safari */
   *::-webkit-scrollbar {
     width: 10px;
