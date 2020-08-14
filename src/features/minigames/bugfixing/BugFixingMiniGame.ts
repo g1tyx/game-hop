@@ -83,7 +83,7 @@ export class BugFixingMiniGame extends MiniGame {
 
     // In months
     getSpawnTime(): number {
-        return 0.09 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
+        return 0.085 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingSpawn);
     }
 
     getSwitchCost(): Currency {
