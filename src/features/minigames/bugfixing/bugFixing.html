@@ -5,10 +5,10 @@
 <div class="minigameTask">
     <p>Lane <span data-bind="text: miniGames.bugFixing.actualCursor + 1"></span></p>
 
-    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveUp()">
+    <button class='btn' id="bugUpBtn" data-bind="click: () => miniGames.bugFixing.moveUp()">
         [Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
     </button>
-    <button class='btn' data-bind="click: () => miniGames.bugFixing.moveDown()">
+    <button class='btn' id="bugDownBtn" data-bind="click: () => miniGames.bugFixing.moveDown()">
         [Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
     </button>
 

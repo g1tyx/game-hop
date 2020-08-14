@@ -34,6 +34,28 @@ $(function () {
         $(`#${$(this).attr("data-target")}`).addClass("activePanel");
     })
 
+    $(document).keydown(function(event) {
+
+        switch (event.which) {
+        case 37: // Key left.
+            $("#balanceLeftBtn").click();
+            break;
+        case 38: // Key up.
+            $("#bugUpBtn").click();
+            break;
+        case 39: // Key right.
+            $("#balanceRightBtn").click();
+            break;
+        case 40: // Key down
+            $("#bugDownBtn").click();
+            break;
+        case 32: // Space.
+            $("#balanceStopBtn").click();
+            break;
+        }
+        event.preventDefault();
+    });
+
     // Expose the App class to the window (and the console)
     if (process.env.DEBUG && typeof window !== undefined) {
 
