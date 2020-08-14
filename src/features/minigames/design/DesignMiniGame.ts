@@ -7,11 +7,11 @@ import {EnumHelper} from "../../../engine/util/EnumHelper";
 import {DesignColorType} from "./DesignColorType";
 import {DesignShapeType} from "./DesignShapeType";
 import {ObservableArrayProxy} from "../../../engine/knockout/ObservableArrayProxy";
-import {MiniGameUpgrade} from "../MiniGameUpgrade";
 import {Currency} from "../../wallet/Currency";
 import {CurrencyType} from "../../wallet/CurrencyType";
 import {MiniGameUpgradeType} from "../MiniGameUpgradeType";
 import {App} from "../../../App";
+import {DesignUpgrade} from "./DesignUpgrade";
 
 
 export class DesignMiniGame extends MiniGame {
@@ -37,12 +37,12 @@ export class DesignMiniGame extends MiniGame {
     initialize(): void {
         this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 400))
 
-        this.upgrades.push(new MiniGameUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
-        this.upgrades.push(new MiniGameUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
-        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-1", "Lose one less design on wrong answer", new Currency(50, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
-        this.upgrades.push(new MiniGameUpgrade("design-reduce-wrong-penalty-2", "Lose one less design on wrong answer", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
-        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-1", "Reduce possible options by one", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
-        this.upgrades.push(new MiniGameUpgrade("design-reduce-options-2", "Reduce possible options by one", new Currency(100, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
+        this.upgrades.push(new DesignUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new DesignUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
+        this.upgrades.push(new DesignUpgrade("design-reduce-wrong-penalty-1", "Lose one less design on wrong answer", new Currency(50, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new DesignUpgrade("design-reduce-wrong-penalty-2", "Lose one less design on wrong answer", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceWrongPenalty))
+        this.upgrades.push(new DesignUpgrade("design-reduce-options-1", "Reduce possible options by one", new Currency(75, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
+        this.upgrades.push(new DesignUpgrade("design-reduce-options-2", "Reduce possible options by one", new Currency(100, CurrencyType.money), 1, MiniGameUpgradeType.DesignReduceOptions))
 
         this.generateNewPuzzle()
     }
