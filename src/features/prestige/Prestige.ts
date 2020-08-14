@@ -36,7 +36,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("marketing-upgrade-cost-1", MiniGameUpgradeType.MarketingUpgradeCost, "Reduce marketing upgrade costs by 30%", 75, 0.7, ['marketing-speed-1', 'marketing-cost-1']);
         this.addPrestigeUpgrade("marketing-minigame-upgrade-cost", MiniGameUpgradeType.MiniGameUpgradeCost, "Reduce all minigame upgrade costs by 25%", 200, 0.75, ['marketing-upgrade-cost-1']);
         this.addPrestigeUpgrade("marketing-fame-2", MiniGameUpgradeType.MarketingFame, "Increase marketing Fame gain by 50%", 100, 1.5, ['marketing-cost-1']);
-        this.addPrestigeUpgrade("marketing-cost-2", MiniGameUpgradeType.MarketingCost, "Reduce marketing cost by 50%", 150, 0.5, ['marketing-fame-2']);
+        this.addPrestigeUpgrade("marketing-cost-2", MiniGameUpgradeType.MarketingCost, "Marketing is now free!", 150, 0, ['marketing-fame-2']);
         this.addPrestigeUpgrade("marketing-speed-2", MiniGameUpgradeType.MarketingSpeed, "Increase marketing speed by 50%", 150, 0.5, ['marketing-fame-2']);
 
         // Design
