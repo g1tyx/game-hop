@@ -146,7 +146,6 @@ export class YearTracker extends Feature {
     }
 
     set month(value: number) {
-        console.trace("setting month", value)
         this._month(value);
     }
 
