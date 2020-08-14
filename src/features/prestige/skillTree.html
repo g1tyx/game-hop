@@ -214,25 +214,31 @@
                 </text>
             </switch>
         </g>
-        <ellipse cx="430" cy="400" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 400px; margin-left: 391px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Focus
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-focus-gain-1')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="430" cy="400" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 400px; margin-left: 391px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="430" y="404" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Focus
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
+
+
         <ellipse cx="430" cy="500" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
@@ -253,160 +259,191 @@
                 </text>
             </switch>
         </g>
-        <ellipse cx="330" cy="350" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 350px; margin-left: 291px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Movement Speed
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-movement-speed-1')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="330" cy="350" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 350px; margin-left: 291px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="330" y="354" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Movement Speed
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="330" cy="460" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 460px; margin-left: 291px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Reduce Target Movement
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-reduce-target-movement-2')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="330" cy="460" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 460px; margin-left: 291px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="330" y="464" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Reduce Target...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="240" cy="500" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 500px; margin-left: 201px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Focus
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-focus-gain-2')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="240" cy="500" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 500px; margin-left: 201px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="240" y="504" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Focus
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="240" cy="400" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 400px; margin-left: 201px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Upgrade<br/>Cost
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-minigame-upgrade-cost-1')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="240" cy="400" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 400px; margin-left: 201px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="240" y="404" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Upgrade...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="240" cy="300" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 300px; margin-left: 201px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                <span style="color: rgb(0 , 0 , 0) ; font-family: &quot;helvetica&quot; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none">
-                                    Reduce Target Movement
-                                </span>
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-reduce-target-movement-1')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="240" cy="300" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 300px; margin-left: 201px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="240" y="304" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Reduce Target...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="150" cy="350" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 350px; margin-left: 111px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Reduce Target Movement
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-movement-speed-2')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="150" cy="350" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 350px; margin-left: 111px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="150" y="354" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Reduce Target...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="150" cy="460" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 460px; margin-left: 111px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                <b>Prestige Upgrade Cost</b>
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-prestige-upgrade-cost')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="150" cy="460" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 460px; margin-left: 111px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="150" y="464" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Prestige Upgr...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
-        <ellipse cx="50" cy="350" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
-                               height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                         style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 350px; margin-left: 11px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
-                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Remove Target Movement
+
+
+        <g class="prestige-upgrade-root" data-bind="with: prestige.getUpgrade('development-reduce-target-movement-3')">
+            <title data-bind="text: $data.getDisplayName() + ' ' + $data.getLongCostString()"></title>
+            <g data-bind="click: () => $data.buy()">
+                <ellipse
+                        data-bind="css: {'prestige-upgrade-bought': $data.isBought(), 'prestige-upgrade-locked': !$data.requirementsCompleted()}"
+                        cx="50" cy="350" rx="40" ry="40" stroke="#000000" pointer-events="all"/>
+                <g transform="translate(-0.5 -0.5)">
+
+                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%"
+                                   height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             class="prestige-upgrade-container" style="padding-top: 350px; margin-left: 11px;">
+                            <div class="prestige-upgrade-parent">
+                                <div data-bind="text: $data.getDisplayName() +  ' ' + $data.getShortCostString()"
+                                     class="prestige-upgrade-text">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </foreignObject>
-                <text x="50" y="354" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">Remove
-                    Target...
-                </text>
-            </switch>
+                    </foreignObject>
+                </g>
+            </g>
         </g>
+
         <path d="M 430 110 L 430 86.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
         <path d="M 430 81.12 L 433.5 88.12 L 430 86.37 L 426.5 88.12 Z" fill="#000000" stroke="#000000"
               stroke-miterlimit="10" pointer-events="all"/>
