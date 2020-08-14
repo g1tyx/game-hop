@@ -57,8 +57,8 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("debugging-improve-spawn-1", MiniGameUpgradeType.BugFixingSpawn, "Improve spawn rate by 20%", 50, 1.20, ['debugging-reduce-lane-1']);
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-3", MiniGameUpgradeType.BugFixingMoveCost, "Remove movement cost", 250, 0, ['debugging-improve-spawn-1', 'debugging-reduce-lane-2']);
         this.addPrestigeUpgrade("debugging-improve-value-1", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-reduce-lane-1']);
-        this.addPrestigeUpgrade("debugging-reduce-movement-cost-3", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['debugging-improve-value-1']);
-        this.addPrestigeUpgrade("debugging-reduce-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce yearly requirements for all minigames cost by 20%", 50, 0.80, ['debugging-reduce-movement-cost-3']);
+        this.addPrestigeUpgrade("debugging-improve-value-2", MiniGameUpgradeType.BugFixingValue, "Improve bug value by 25%", 50, 1.25, ['debugging-improve-value-1']);
+        this.addPrestigeUpgrade("debugging-reduce-yearly-requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce yearly requirements for all minigames cost by 20%", 50, 0.80, ['debugging-improve-value-2']);
 
         // Development
         this.addPrestigeUpgrade("development-focus-gain-1", MiniGameUpgradeType.BalancingFocusGain, "Improve focus gain by 20%", 50, 1.20, ['global-unlock-minigame-upgrades']);
