@@ -357,7 +357,7 @@ https://blog.carbonfive.com/2015/01/07/vintage-terminal-effect-in-css3/
     opacity: 0;
   }
 }
-
+// modal styling
 
 .customModal {
   width: 50%;
@@ -388,3 +388,23 @@ https://blog.carbonfive.com/2015/01/07/vintage-terminal-effect-in-css3/
   }
 }
 
+//settings panel styling
+
+#settingsPanel {
+  width:60%;
+  margin: 0 auto;
+  margin-top:20px;
+  text-align:center;
+  
+  & table,tbody,tr,th,thead {
+    background-color:transparent !important;
+    text-align: center;
+  }
+
+  button {
+    padding:2rem;
+    border:1px solid $progressBarColor;
+    border-radius: 5px;
+  }
+
+}
