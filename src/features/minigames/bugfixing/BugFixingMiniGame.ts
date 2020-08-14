@@ -34,7 +34,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 1000, 100))
+        this.yearRequirements.push(new BugFixingRequirement("Quality Assurance - Fix bugs", 1000, 25))
 
         this.upgrades.push(new BugFixingUpgrade('bug-fixing-movement-cost', "Reduce the cost of switching lanes by 30%", new Currency(100, CurrencyType.money), 0.70, MiniGameUpgradeType.BugFixingMoveCost));
         this.upgrades.push(new BugFixingUpgrade('bug-fixing-value-1', "Improve bug value by 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BugFixingValue));

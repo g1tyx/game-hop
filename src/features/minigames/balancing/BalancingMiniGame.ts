@@ -90,7 +90,7 @@ export class BalancingMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new BalancingFocusRequirement("Development - Stay focused", 1000, 100))
+        this.yearRequirements.push(new BalancingFocusRequirement("Development - Stay focused", 1000, 50))
 
         this.upgrades.push(new BalancingUpgrade('balancing-movement-speed-1', "Improve your movement speed by 100%", new Currency(100, CurrencyType.money), 2.00, MiniGameUpgradeType.BalancingMovementSpeed));
         this.upgrades.push(new BalancingUpgrade('balancing-focus-1', "Improve focus gain 50%", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.BalancingFocusGain));
