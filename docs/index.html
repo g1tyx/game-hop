@@ -101,6 +101,71 @@
 
             <div id="jobsPanel" class="panel activePanel">
 
+                <!-- ko if: miniGames.bugFixing.canAccess() -->
+                <div class='minigame'><div class="minigameProgress">
+    Debugging - Bugs Fixed: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
+</div>
+
+<div class="minigameTask">
+    <p>Lane <span data-bind="text: miniGames.bugFixing.actualCursor + 1"></span></p>
+
+    <button class='btn' id="bugUpBtn" data-bind="click: () => miniGames.bugFixing.moveUp()">
+        [Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
+    </button>
+    <button class='btn' id="bugDownBtn" data-bind="click: () => miniGames.bugFixing.moveDown()">
+        [Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
+    </button>
+
+    <div class="bugfixingLanes">
+        <!-- ko if: miniGames.bugFixing.actualCursor === 0 -->
+        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 1 -->
+        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 2 -->
+        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 3 -->
+        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
+<div class="minigameUpgrades">
+    <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.bugFixing.upgrades }"></div>
+</div>
+<!-- /ko -->
+
+
+
+</div>
+                <!-- /ko -->
+                <!-- ko ifnot: miniGames.bugFixing.canAccess() -->
+                <div class='minigame'><div class="locked">
+    <img src="6c0ed6851aa3af3f99dc5ce296a49661.png"/>
+    <p>This job is locked!</p>
+</div>
+</div>
+                <!-- /ko -->
+
+
                 <!-- ko if: miniGames.balancing.canAccess() -->
                 <div class='minigame'><div class="balancingMinigame">
 
@@ -128,9 +193,11 @@
     </div>
 
 
+    <!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
     <div class="minigameUpgrades">
         <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.balancing.upgrades }"></div>
     </div>
+    <!-- /ko -->
 
 
 </div>
@@ -158,9 +225,11 @@
         </div>
     </div>
 
+    <!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
     <div class="minigameUpgrades">
         <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
     </div>
+    <!-- /ko -->
 </div>
 </div>
                 <!-- /ko -->
@@ -171,6 +240,7 @@
 </div>
 </div>
                 <!-- /ko -->
+
 
                 <!-- ko if: miniGames.design.canAccess() -->
                 <div class='minigame'><div class="designMinigame">
@@ -212,9 +282,11 @@
 
      </div>
 
+     <!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
      <div class="minigameUpgrades">
           <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.design.upgrades }"></div>
      </div>
+     <!-- /ko -->
 
 
 </div>
@@ -228,67 +300,7 @@
 </div>
                 <!-- /ko -->
 
-                <!-- ko if: miniGames.bugFixing.canAccess() -->
-                <div class='minigame'><div class="minigameProgress">
-    Debugging - Bugs Fixed: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
-</div>
 
-<div class="minigameTask">
-    <p>Position <span data-bind="text: miniGames.bugFixing.actualCursor"></span></p>
-
-    <button class='btn' id="bugUpBtn" data-bind="click: () => miniGames.bugFixing.moveUp()">
-        [Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
-    </button>
-    <button class='btn' id="bugDownBtn" data-bind="click: () => miniGames.bugFixing.moveDown()">
-        [Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
-    </button>
-
-    <div class="bugfixingLanes">
-        <!-- ko if: miniGames.bugFixing.actualCursor === 0 -->
-        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
-        <!-- /ko -->
-        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
-            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
-        </div>
-
-        <!-- ko if: miniGames.bugFixing.actualCursor === 1 -->
-        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
-        <!-- /ko -->
-        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
-            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
-        </div>
-
-        <!-- ko if: miniGames.bugFixing.actualCursor === 2 -->
-        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
-        <!-- /ko -->
-        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
-            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
-        </div>
-
-        <!-- ko if: miniGames.bugFixing.actualCursor === 3 -->
-        <img src="34d3aa616f3a500b78147b360daa1531.png" width='36px'/>
-        <!-- /ko -->
-        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
-            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
-        </div>
-    </div>
-</div>
-
-<div class="minigameUpgrades">
-    <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.bugFixing.upgrades }"></div>
-</div>
-
-
-
-</div>
-                <!-- /ko -->
-                <!-- ko ifnot: miniGames.bugFixing.canAccess() -->
-                <div class='minigame'><div class="locked">
-    <img src="6c0ed6851aa3af3f99dc5ce296a49661.png"/>
-    <p>This job is locked!</p>
-</div>
-</div>
-                <!-- /ko -->
             </div>
 
             <div id="reportPanel" class="panel hiddenPanel">
