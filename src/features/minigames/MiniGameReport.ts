@@ -12,7 +12,7 @@ export class MiniGameReport {
     }
 
     getReward(): number {
-        return this.isCompleted() ? this.basePrestigeReward : 0;
+        return this.isCompleted() ? this.basePrestigeReward : 0.333 * this.getPercentage() * this.basePrestigeReward;
     }
 
     isCompleted(): boolean {
