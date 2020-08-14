@@ -4,6 +4,7 @@ import {Feature} from "../../engine/Feature";
 import {BudgetSaveData} from "./BudgetSaveData";
 import {App} from "../../App";
 import {ISignal, SignalDispatcher} from "ste-signals";
+import * as $ from "jquery";
 
 export class Budget extends Feature {
     name: string = "Budget";
@@ -26,6 +27,8 @@ export class Budget extends Feature {
 
     shrinkBudget(amount: number): void {
         if (this.yearlyBudget <= this.BUDGET_TRIGGER_AMOUNT) {
+            console.log("winnnnn");
+            $("#winModal").show();
             this._onBudgetIsGone.dispatch();
         }
         this.yearlyBudget = Math.max(0, this.yearlyBudget - amount);
