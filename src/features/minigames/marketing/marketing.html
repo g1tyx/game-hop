@@ -10,7 +10,9 @@
         </div>
     </div>
 
+    <!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
     <div class="minigameUpgrades">
         <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.marketing.upgrades }"></div>
     </div>
+    <!-- /ko -->
 </div>

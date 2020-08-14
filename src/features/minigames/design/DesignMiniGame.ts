@@ -35,7 +35,7 @@ export class DesignMiniGame extends MiniGame {
     }
 
     initialize(): void {
-        this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 400))
+        this.yearRequirements.push(new DesignShapesRequirement("Design - Recognize shapes", 100, 100))
 
         this.upgrades.push(new DesignUpgrade("design-value-1", "Designs are worth 50% more", new Currency(100, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))
         this.upgrades.push(new DesignUpgrade("design-value-2", "Designs are worth 50% more", new Currency(200, CurrencyType.money), 1.50, MiniGameUpgradeType.DesignShapeValue))

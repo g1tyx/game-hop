@@ -47,6 +47,9 @@ export class MiniGames extends Feature {
 
 
     update(delta: number): void {
+        if (App.game.yearTracker.yearHasEnded) {
+            return;
+        }
         for (const miniGame of this.getMiniGames()) {
             if (miniGame.canAccess()) {
                 miniGame.update(delta);
