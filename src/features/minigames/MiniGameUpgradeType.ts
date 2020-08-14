@@ -27,4 +27,7 @@ export enum MiniGameUpgradeType {
     MiniGameYearlyRequirements,
     PrestigeCurrency,
     PrestigeUpgradeCost,
+
+    // Special
+    UnlockMiniGameUpgrades
 }

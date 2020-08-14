@@ -9,20 +9,26 @@ export class SkillTreeUpgrade {
     requirements: SkillTreeRequirement[];
 
     type: MiniGameUpgradeType;
+    shortHand: string;
 
-    constructor(type: MiniGameUpgradeType, upgrade: SingleLevelUpgrade, requirements: SkillTreeRequirement[] = []) {
+    constructor(shortHand: string, type: MiniGameUpgradeType, upgrade: SingleLevelUpgrade, requirements: SkillTreeRequirement[] = []) {
+        this.shortHand = shortHand;
         this.type = type;
         this.upgrade = upgrade;
         this.requirements = requirements;
     }
 
     canBuy(): boolean {
+        return this.requirementsCompleted() && this.upgrade.canBuy();
+    }
+
+    requirementsCompleted(): boolean {
         for (const requirement of this.requirements) {
             if (!requirement.isCompleted()) {
                 return false;
             }
         }
-        return this.upgrade.canBuy();
+        return true;
     }
 
     getRequirementsString(): string {

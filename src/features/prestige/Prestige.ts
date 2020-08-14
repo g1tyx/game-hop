@@ -7,7 +7,6 @@ import {App} from "../../App";
 import {SkillTree} from "../../engine/skilltree/SkillTree";
 import {SkillTreeUpgrade} from "../../engine/skilltree/SkillTreeUpgrade";
 import {MiniGameUpgradeType} from "../minigames/MiniGameUpgradeType";
-import {SkillTreeRequirement} from "../../engine/skilltree/SkillTreeRequirement";
 
 export class Prestige extends Feature {
     name: string = "Prestige";
@@ -21,12 +20,23 @@ export class Prestige extends Feature {
     }
 
     initialize(): void {
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-1', "Gain 10% more fame", new Currency(10, CurrencyType.prestige), 1.10)))
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MarketingFame, new SingleLevelUpgrade('marketing-fame-2', "Gain 20% more fame", new Currency(10, CurrencyType.prestige), 1.20), [new SkillTreeRequirement('marketing-fame-1')]))
-        this.skillTree.addUpgrade(new SkillTreeUpgrade(MiniGameUpgradeType.MiniGameUpgradeCost, new SingleLevelUpgrade('minigame-upgrade-cost-1', "All minigame upgrades are 20% cheaper", new Currency(10, CurrencyType.prestige), 0.80)))
+        // Inner global upgrades
+        this.addPrestigeUpgrade("Unlock Minigame Upgrades", MiniGameUpgradeType.UnlockMiniGameUpgrades, "Unlock Minigame Upgrades", 10, 1);
+        this.addPrestigeUpgrade("Yearly Requirements", MiniGameUpgradeType.MiniGameYearlyRequirements, "Reduce Yearly Requirements by 10%", 50, 0.9);
+
 
     }
 
+    addPrestigeUpgrade(shortHand: string, type: MiniGameUpgradeType, displayName: string, cost: number, bonus: number): void {
+        const identifier = shortHand.toLowerCase().replace(" ", "-");
+        this.skillTree.addUpgrade(
+            new SkillTreeUpgrade(shortHand, type,
+                new SingleLevelUpgrade(identifier, displayName,
+                    new Currency(cost, CurrencyType.prestige), bonus)
+            )
+        );
+
+    }
 
     prestige(): void {
         //TODO(@Isha) do all prestige things here
