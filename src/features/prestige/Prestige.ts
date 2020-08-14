@@ -41,13 +41,13 @@ export class Prestige extends Feature {
 
         // Design
         this.addPrestigeUpgrade("design-value-1", MiniGameUpgradeType.DesignShapeValue, "Increase design value by 50%", 50, 1.5, ['global-unlock-minigame-upgrades']);
-        this.addPrestigeUpgrade("design-remove-option-1", MiniGameUpgradeType.DesignReduceOptions, "Remove one of the incorrect options", 50, 1, ['design-value-1']);
+        this.addPrestigeUpgrade("design-remove-option-1", MiniGameUpgradeType.DesignReduceOptions, "Remove an incorrect option", 50, 1, ['design-value-1']);
         this.addPrestigeUpgrade("design-reduce-wrong-penalty-1", MiniGameUpgradeType.DesignReduceWrongPenalty, "Reduce the penalty for wrong answers by 1", 250, 1, ['design-remove-option-1']);
-        this.addPrestigeUpgrade("design-remove-option-2", MiniGameUpgradeType.DesignReduceOptions, "Remove one of the incorrect options", 50, 1, ['design-reduce-wrong-penalty-1']);
+        this.addPrestigeUpgrade("design-remove-option-2", MiniGameUpgradeType.DesignReduceOptions, "Remove an incorrect option", 50, 1, ['design-reduce-wrong-penalty-1']);
         this.addPrestigeUpgrade("design-value-2", MiniGameUpgradeType.DesignShapeValue, "Increase design value by 50%", 50, 1.5, ['design-remove-option-1']);
-        this.addPrestigeUpgrade("design-minigame-upgrade-cost", MiniGameUpgradeType.DesignUpgradeCost, "Reduce design upgrade costs design value by 30%", 50, 0.7, ['design-value-2']);
+        this.addPrestigeUpgrade("design-minigame-upgrade-cost", MiniGameUpgradeType.DesignUpgradeCost, "Reduce design upgrade costs by 30%", 50, 0.7, ['design-value-2']);
         this.addPrestigeUpgrade("design-reduce-wrong-penalty-2", MiniGameUpgradeType.DesignReduceWrongPenalty, "Reduce the penalty for wrong answers by 1", 500, 1, ['design-value-2']);
-        this.addPrestigeUpgrade("design-minigame-upgrade-cost", MiniGameUpgradeType.PrestigeCurrency, "Increase prestige points gain by 25%", 500, 1.25, ['design-reduce-wrong-penalty-2']);
+        this.addPrestigeUpgrade("design-prestige-multiplier", MiniGameUpgradeType.PrestigeCurrency, "Increase prestige points gain by 25%", 500, 1.25, ['design-reduce-wrong-penalty-2']);
 
         // Debugging
         this.addPrestigeUpgrade("debugging-reduce-movement-cost-1", MiniGameUpgradeType.BugFixingMoveCost, "Reduce movement cost by 20%", 50, 0.80, ['global-unlock-minigame-upgrades']);
