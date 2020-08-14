@@ -66,7 +66,7 @@ export class Prestige extends Feature {
         this.addPrestigeUpgrade("development-reduce-target-movement-1", MiniGameUpgradeType.BalancingTargetMovement, "Reduce target movement by 30%", 50, 0.7, ['development-movement-speed-1']);
         this.addPrestigeUpgrade("development-minigame-upgrade-cost-1", MiniGameUpgradeType.BalancingUpgradeCost, "Reduce development upgrade cost by 30%", 50, 0.7, ['development-movement-speed-1']);
         this.addPrestigeUpgrade("development-reduce-target-movement-2", MiniGameUpgradeType.BalancingTargetMovement, "Reduce target movement by 30%", 50, 0.7, ['development-focus-gain-1']);
-        this.addPrestigeUpgrade("development-reduce-target-movement-3", MiniGameUpgradeType.BalancingTargetMovement, "Remove target movement", 800, 0, ['development-movement-speed-2']);
+        this.addPrestigeUpgrade("development-reduce-target-movement-3", MiniGameUpgradeType.BalancingTargetMovement, "Remove target movement", 800, Infinity, ['development-movement-speed-2']);
         this.addPrestigeUpgrade("development-prestige-upgrade-cost", MiniGameUpgradeType.PrestigeUpgradeCost, "Reduce prestige upgrade cost by 15%", 800, 0.85, ['development-minigame-upgrade-cost-1']);
         this.addPrestigeUpgrade("development-movement-speed-2", MiniGameUpgradeType.BalancingMovementSpeed, "Improve movement speed by 40%", 50, 1.40, ['development-minigame-upgrade-cost-1']);
         this.addPrestigeUpgrade("development-focus-gain-2", MiniGameUpgradeType.BalancingFocusGain, "Improve focus gain by 50%", 50, 1.50, ['development-reduce-target-movement-2']);
