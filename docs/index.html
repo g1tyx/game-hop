@@ -87,6 +87,9 @@
     <!-- ko if: yearTracker.yearHasEnded -->
     <button class='startNewYearBtn' data-bind="click: () => getController('year-tracker').startNewYear()">Start a new year</button>
     <!-- /ko -->
+    <!-- ko if: miniGames.allRequirementsCompleted() -->
+    <button class='startNewYearBtn' data-bind="click: () => yearTracker.endYearEarly()">End the year</button>
+    <!-- /ko -->
 
 </div>
 
@@ -364,7 +367,7 @@
 
     <div class="grid-x">
         <div class="cell large-3">
-            <p>Multiplier</p>
+            <p>Prestige Upgrades Multiplier</p>
         </div>
         <div class="cell large-3">
             <p></p>
@@ -375,6 +378,23 @@
         <div class="cell large-3">
             <p>
                 <span data-bind="text: miniGames.endOfYearReport.multiplier.toFixed(2)"></span>x
+            </p>
+        </div>
+    </div>
+
+    <div class="grid-x">
+        <div class="cell large-3">
+            <p>Budget Multiplier</p>
+        </div>
+        <div class="cell large-3">
+            <p></p>
+        </div>
+        <div class="cell large-3">
+            <p></p>
+        </div>
+        <div class="cell large-3">
+            <p>
+                <span data-bind="text: miniGames.endOfYearReport.budgetMultiplier.toFixed(2)"></span>x
             </p>
         </div>
     </div>
@@ -470,6 +490,7 @@
     <!-- /ko -->
 
 </div>
+
             </div>
 
             <div id="skillTreePanel" class="panel hiddenPanel">
@@ -1672,7 +1693,7 @@
         <p>Can you make this company efficient enough to run itself on a shoestring budget?</p>
         <p>You win the game when you complete a year with a budget of $0</p>
         <p>Let’s get you started and introduce you to your first team, our very own GameHop BugHunters!</p>
-        <button data-bind="click: () => {hideModal('introModal'); showModal('debugModal')}">Meat the team!</button>
+        <button data-bind="click: () => {hideModal('introModal'); showModal('debugModal')}">Meet the team!</button>
     </div>
 
     <div class='customModal' id="debugModal">
