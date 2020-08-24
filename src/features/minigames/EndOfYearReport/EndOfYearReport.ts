@@ -2,12 +2,16 @@ import {MiniGameReport} from '../MiniGameReport';
 
 export class EndOfYearReport {
     reports: MiniGameReport[];
+
+    year: number;
+
     multiplier: number;
     moneyLeft: number;
     budgetMultiplier: number;
 
-    constructor(multiplier: number, moneyLeft: number, budgetMultiplier: number) {
+    constructor(year: number, multiplier: number, moneyLeft: number, budgetMultiplier: number) {
         this.reports = [];
+        this.year = year
         this.multiplier = multiplier;
         this.moneyLeft = moneyLeft;
         this.budgetMultiplier = budgetMultiplier;
