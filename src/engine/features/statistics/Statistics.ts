@@ -55,7 +55,6 @@ export class Statistics extends Feature {
     }
 
     load(data: StatisticsSaveData): void {
-        console.log(data);
         for (const key in data.list) {
             if (Object.prototype.hasOwnProperty.call(data.list, key)) {
                 if (this.hasStatistic(key)) {

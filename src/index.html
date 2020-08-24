@@ -84,6 +84,9 @@
                 <%= require('html-loader!./engine/features/settings/settings.html') %>
                 <button data-bind="click: () => save()">Save</button>
                 <button data-bind="click: () => deleteSave()">Delete save (no confirmation)</button>
+
+                <%= require('html-loader!./credits.html') %>
+
             </div>
         </div>
     </div>
@@ -91,7 +94,6 @@
     <div class="flicker"></div>
     <div class="scanlines"></div>
     <!-- /ko -->
-    </div>
 
 
     <!-- MODALS -->
@@ -155,8 +157,13 @@
         <h2>Holy Crap!</h2>
         <p>Honestly, we did not think you could do it. The last time we tried this with the previous guy, it took wayy longer and he eventually was sent back to <span style="text-decoration: line-through;">the dungeon</span> his home.</p>
         <p>Because we really didn't think you could do it, you don't really get a reward or anything other than a nice pat on the back.</p>
-        <p>If you really want to try your luck, you can see if you can do it even faster using the time machine controls on the settings panel to wipe everything and start anew.</p>
         <p>Congrats again - GameHop</p>
+        <br><br>
+        <p>You have completed the game in <span data-bind="text: yearTracker.currentYear"></span> years!</p>
+        <p>But can you do it faster?</p>
+        <button data-bind="click: () => {deleteSave(); location.reload();}">Delete save and restart</button>
+
+
     </div>
 
 </body>
