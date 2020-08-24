@@ -83,6 +83,20 @@ export class MiniGames extends Feature {
         return report;
     }
 
+    allRequirementsCompleted(): boolean {
+        for (const miniGame of this.getMiniGames()) {
+            if (miniGame.canAccess()) {
+                for (const requirement of miniGame.yearRequirements) {
+                    if (!requirement.isCompleted()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+
+    }
+
     load(data: MiniGamesSaveData): void {
         this.marketing.load(data.marketing);
         this.balancing.load(data.balancing);
