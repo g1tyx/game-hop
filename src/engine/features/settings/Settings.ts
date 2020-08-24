@@ -44,7 +44,6 @@ export class Settings extends Feature {
     saveKey = "settings";
 
     load(data: SettingsSaveData): void {
-        console.log(data);
         for (const key in data.list) {
             if (Object.prototype.hasOwnProperty.call(data.list, key)) {
                 this.setSettingByName(key, data.list[key])

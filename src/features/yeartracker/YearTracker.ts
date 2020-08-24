@@ -19,6 +19,8 @@ export class YearTracker extends Feature {
 
     public readonly monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+    public currentYear: number;
+
     private readonly _month: ko.Observable<number>;
     private readonly _monthProgress: ko.Observable<number>
 
@@ -35,6 +37,7 @@ export class YearTracker extends Feature {
 
     constructor(realMonthTime: number) {
         super();
+        this.currentYear = 1;
         this.baseRealMonthTime = realMonthTime;
         this.realMonthTime = realMonthTime;
         this._yearHasEnded = ko.observable(false);
@@ -100,6 +103,7 @@ export class YearTracker extends Feature {
 
     yearEnd(): void {
         this.yearHasEnded = true;
+        this.currentYear++;
         this._onYearEnd.dispatch();
     }
 
@@ -108,6 +112,7 @@ export class YearTracker extends Feature {
     }
 
     load(data: YearTrackerSaveData): void {
+        this.currentYear = data.year;
         this.month = data.month;
         this.monthProgress = data.monthProgress
         this._isStarted = data.isStarted;
@@ -115,15 +120,16 @@ export class YearTracker extends Feature {
     }
 
     parseSaveData(json: Record<string, unknown>): YearTrackerSaveData {
+        const year = json?.year as number ?? 1;
         const month = json?.month as number ?? 0;
         const monthProgress = json?.monthProgress as number ?? 0;
         const isStarted = json?.isStarted as boolean ?? false;
         const hasEnded = json?.hasEnded as boolean ?? false;
-        return new YearTrackerSaveData(month, monthProgress, isStarted, hasEnded);
+        return new YearTrackerSaveData(year, month, monthProgress, isStarted, hasEnded);
     }
 
     save(): YearTrackerSaveData {
-        return new YearTrackerSaveData(this.month, this.monthProgress, this._isStarted, this.yearHasEnded);
+        return new YearTrackerSaveData(this.currentYear, this.month, this.monthProgress, this._isStarted, this.yearHasEnded);
     }
 
     // Event getters/setters

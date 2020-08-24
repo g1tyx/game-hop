@@ -1,5 +1,8 @@
 <div class="barRoot">
     <!-- ko ifnot: yearTracker.yearHasEnded -->
+    <div class="yearLabel">
+        Year <span data-bind="text: yearTracker.currentYear"></span>
+    </div>
     <div class="monthLabel">
         <span data-bind="text: yearTracker.monthNames[yearTracker.month]"></span>
         <span data-bind="text: yearTracker.month + 1"></span>/12
