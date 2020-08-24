@@ -12,5 +12,8 @@
     <!-- ko if: yearTracker.yearHasEnded -->
     <button class='startNewYearBtn' data-bind="click: () => getController('year-tracker').startNewYear()">Start a new year</button>
     <!-- /ko -->
+    <!-- ko if: miniGames.allRequirementsCompleted() -->
+    <button class='startNewYearBtn' data-bind="click: () => yearTracker.endYearEarly()">End the year</button>
+    <!-- /ko -->
 
 </div>

@@ -4,11 +4,13 @@ export class EndOfYearReport {
     reports: MiniGameReport[];
     multiplier: number;
     moneyLeft: number;
+    budgetMultiplier: number;
 
-    constructor(multiplier: number, moneyLeft: number) {
+    constructor(multiplier: number, moneyLeft: number, budgetMultiplier: number) {
         this.reports = [];
         this.multiplier = multiplier;
         this.moneyLeft = moneyLeft;
+        this.budgetMultiplier = budgetMultiplier;
     }
 
     addReport(report: MiniGameReport): void {
@@ -24,7 +26,7 @@ export class EndOfYearReport {
 
         reward += this.getCompletionBonus();
 
-        return reward * this.multiplier;
+        return reward * this.multiplier * this.budgetMultiplier;
     }
 
     getSurplus(): number {
@@ -51,6 +53,7 @@ export class EndOfYearReport {
         }
         console.log(`Completion Bonus: ${this.getCompletionBonus()}`)
         console.log(`Multiplier: ${this.multiplier}`);
+        console.log(`Budget Multiplier: ${this.budgetMultiplier}`);
         console.log(`Total: ${this.getTotalReward()}`);
 
     }

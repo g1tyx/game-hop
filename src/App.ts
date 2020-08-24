@@ -46,7 +46,7 @@ export class App {
     static createNewGame(): Game {
         return new Game(
             new Settings(),
-            new YearTracker(15.0),
+            new YearTracker(10.0),
             new Prestige(),
             new MiniGames(
                 new MarketingMiniGame(650),
