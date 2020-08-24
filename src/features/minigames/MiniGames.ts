@@ -71,7 +71,7 @@ export class MiniGames extends Feature {
     getEndOfYearReport(): EndOfYearReport {
         const moneyLeft = App.game.wallet.currencies[CurrencyType.money];
 
-        const report = new EndOfYearReport(App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.PrestigeCurrency), moneyLeft);
+        const report = new EndOfYearReport(App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.PrestigeCurrency), moneyLeft, App.game.budget.getPrestigeMultiplier());
         for (const miniGame of this.getMiniGames()) {
             if (miniGame.canAccess()) {
                 for (const requirement of miniGame.yearRequirements) {
