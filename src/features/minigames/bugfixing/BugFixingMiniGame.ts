@@ -87,7 +87,7 @@ export class BugFixingMiniGame extends MiniGame {
     }
 
     getSwitchCost(): Currency {
-        return new Currency(20 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
+        return new Currency(17.50 * this.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BugFixingMoveCost), CurrencyType.money);
     }
 
     private getLaneCount(): number {

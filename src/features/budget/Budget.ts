@@ -25,6 +25,10 @@ export class Budget extends Feature {
         App.game.yearTracker.onMonthStart.subscribe(() => this.gainMoney());
     }
 
+    getPrestigeMultiplier(): number {
+        return 1 + Math.pow(1000-this.yearlyBudget, 1/1.25)/125.594321575
+    }
+
     shrinkBudget(amount: number): void {
         if (this.yearlyBudget <= this.BUDGET_TRIGGER_AMOUNT) {
             console.log("winnnnn");

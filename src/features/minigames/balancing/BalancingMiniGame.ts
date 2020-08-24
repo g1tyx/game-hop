@@ -85,7 +85,7 @@ export class BalancingMiniGame extends MiniGame {
 
     // In months
     getMoveTime(): number {
-        return 0.5 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement);
+        return 0.75 * this.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement) * App.game.prestige.skillTree.getTotalMultiplierForType(MiniGameUpgradeType.BalancingTargetMovement);
     }
 
     initialize(): void {
