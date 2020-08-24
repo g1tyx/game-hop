@@ -47,6 +47,7 @@ export class YearTracker extends Feature {
     }
 
     startNewYear(): void {
+        App.game.wallet.currencies[0] = 0;
         this.realMonthTime = this.baseRealMonthTime;
         this.reset();
         this._onYearStart.dispatch();
