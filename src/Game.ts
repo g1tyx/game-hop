@@ -97,6 +97,10 @@ export class Game {
         $(`#${id}`).hide();
     }
 
+    showModal(id: string): void {
+        $(`#${id}`).show();
+    }
+
     public start(): void {
         if (this.state === GameState.playing) {
             console.error("Cannot start the game twice");
