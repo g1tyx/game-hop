@@ -119,7 +119,6 @@ export class MarketingMiniGame extends MiniGame {
     load(data: MarketingMiniGameSaveData): void {
         this.fame = data.fame;
         for (const campaign of data.campaigns) {
-            console.log("adding campaign");
             this.availableCampaigns.push(new MarketingCampaign(campaign.description, campaign.months, new Currency(campaign.cost, CurrencyType.money), campaign.fame));
         }
         this.loadUpgrades(data.upgrades);
@@ -130,7 +129,6 @@ export class MarketingMiniGame extends MiniGame {
         if (json == undefined) {
             return new MarketingMiniGameSaveData(0, new UpgradeListSaveData(), []);
         }
-        console.log(json.campaigns);
         const campaigns: MarketingCampaignSaveData[] = [];
         for (const campaign of json.campaigns as Record<string, unknown>[]) {
             campaigns.push(new MarketingCampaignSaveData(campaign.description as string, campaign.months as number, campaign.cost as number, campaign.fame as number));
