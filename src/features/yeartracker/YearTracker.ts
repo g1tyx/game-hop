@@ -19,8 +19,7 @@ export class YearTracker extends Feature {
 
     public readonly monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    public currentYear: number;
-
+    private readonly _currentYear: ko.Observable<number>;
     private readonly _month: ko.Observable<number>;
     private readonly _monthProgress: ko.Observable<number>
 
@@ -37,7 +36,7 @@ export class YearTracker extends Feature {
 
     constructor(realMonthTime: number) {
         super();
-        this.currentYear = 1;
+        this._currentYear = ko.observable(1);
         this.baseRealMonthTime = realMonthTime;
         this.realMonthTime = realMonthTime;
         this._yearHasEnded = ko.observable(false);
@@ -156,6 +155,14 @@ export class YearTracker extends Feature {
 
     set yearHasEnded(value: boolean) {
         this._yearHasEnded(value);
+    }
+
+    get currentYear(): number {
+        return this._currentYear();
+    }
+
+    set currentYear(value: number) {
+        this._currentYear(value);
     }
 
     get month(): number {
