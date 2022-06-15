@@ -1,0 +1,28 @@
+.bugfixingLanes {
+    width:90%;
+    padding-left: 40px;
+
+    & img {
+        float:left;
+        margin-right:5px;
+        position: relative;
+        left:-40px;
+    }
+
+    & .lane {
+        position: relative;
+        height:20px;
+        border-top: 1px solid $progressBarColor;
+        border-bottom: 1px dashed $progressBarColor;
+        margin-bottom:20px;
+
+        & .bug {
+            height:20px;
+            width:30px;
+            position: absolute;
+            background-color: red;
+            background-size:30px 20px;
+            background-repeat:no-repeat;
+        }
+    }
+}

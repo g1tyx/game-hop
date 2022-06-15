@@ -1,0 +1,14 @@
+.eoyreport {
+    margin: 2rem;
+}
+
+.startNewYearBtn {
+    border: 1px solid $progressBarColor;
+    margin: 1rem;
+    padding:1rem;
+    border-radius: 5px;
+    &:hover{
+        cursor: pointer;
+        background-color: #18414e;
+    }
+}

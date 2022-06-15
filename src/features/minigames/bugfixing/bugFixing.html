@@ -1,0 +1,53 @@
+<div class="minigameProgress">
+    BugHunters - Bugs Fixed: <span data-bind="text: miniGames.bugFixing.yearRequirements[0].getProgressString()"></span>
+</div>
+
+<div class="minigameTask">
+    <p>Lane <span data-bind="text: miniGames.bugFixing.actualCursor + 1"></span></p>
+
+    <button class='btn' id="bugUpBtn" data-bind="click: () => miniGames.bugFixing.moveUp()">
+        [Up ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
+    </button>
+    <button class='btn' id="bugDownBtn" data-bind="click: () => miniGames.bugFixing.moveDown()">
+        [Down ($<span data-bind="text: miniGames.bugFixing.getSwitchCost().amount.toFixed(2)"></span>)]
+    </button>
+
+    <div class="bugfixingLanes">
+        <!-- ko if: miniGames.bugFixing.actualCursor === 0 -->
+        <img src="./hammer.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(0)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 1 -->
+        <img src="./hammer.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(1)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 2 -->
+        <img src="./hammer.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(2)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+
+        <!-- ko if: miniGames.bugFixing.actualCursor === 3 -->
+        <img src="./hammer.png" width='36px'/>
+        <!-- /ko -->
+        <div class="lane" data-bind="foreach: miniGames.bugFixing.getBugsOnLane(3)">
+            <div class="bug" data-bind="style: {left: $data.position.toFixed(2) * 100 + '%'}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ko if: prestige.getUpgrade('global-unlock-minigame-upgrades').isBought() -->
+<div class="minigameUpgrades">
+    <div data-bind="template: { name: 'upgrade-template', foreach: miniGames.bugFixing.upgrades }"></div>
+</div>
+<!-- /ko -->
+
+
+
