@@ -71,7 +71,7 @@ var cnItems = {
     "Description": "描述",
     "Design": "设计",
     "Designs:": "设计：",
-    "Development": "发展",
+    "Development": "开发",
     "Development%3CmxGraphModel%3E%3Croot%3E%3...": "开发%3CmxGraphModel%3E%3Croot%3E%3...",
     "DevoDevs": "开发者",
     "DevoDevs - Focus:": "开发者 - 焦点：",
